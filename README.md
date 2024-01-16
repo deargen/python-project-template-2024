@@ -1,15 +1,15 @@
-# python-project-template-2023
+# python-project-template-2024
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
-[![Actions status](https://github.com/kiyoon/python-project-template-2023/workflows/Style%20checking/badge.svg)](https://github.com/kiyoon/python-project-template-2023/actions)
+[![Actions status](https://github.com/deagen/python-project-template-2024/workflows/Style%20checking/badge.svg)](https://github.com/deagen/python-project-template-2024/actions)
 
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
-[![Actions status](https://github.com/kiyoon/python-project-template-2023/workflows/Linting/badge.svg)](https://github.com/kiyoon/python-project-template-2023/actions)
+[![Actions status](https://github.com/deagen/python-project-template-2024/workflows/Linting/badge.svg)](https://github.com/deagen/python-project-template-2024/actions)
 
-[![Actions status](https://github.com/kiyoon/python-project-template-2023/workflows/Tests/badge.svg)](https://github.com/kiyoon/python-project-template-2023/actions)
+[![Actions status](https://github.com/deagen/python-project-template-2024/workflows/Tests/badge.svg)](https://github.com/deagen/python-project-template-2024/actions)
 
-[![Actions status](https://github.com/kiyoon/python-project-template-2023/workflows/Deploy%20docs/badge.svg)](https://github.com/kiyoon/python-project-template-2023/actions)
+[![Actions status](https://github.com/deagen/python-project-template-2024/workflows/Deploy%20docs/badge.svg)](https://github.com/deagen/python-project-template-2024/actions)
 
 새 파이썬 프로젝트 시작할 때 사용하실 템플릿입니다.
 
@@ -54,13 +54,13 @@
 ### 새 버전 Release
 어느 정도 stable한 버전이다 싶으면 release에서 새 버전 생성 가능. 내용은 비우고 tag로 버전 이름만 적으면 됨.
 
-`.github/workflows.deploy.yml`에 있는 대로, 새로운 버전 태그가 생기면 자동 release 및 `CHANGELOG.md` 생성이 됨.
+`.github/workflows/deploy.yml`에 있는 대로, 새로운 버전 태그가 생기면 자동 release 및 `CHANGELOG.md` 생성이 됨.
 
 ## 템플릿 사용하기
 
 1. `src/mlproject` 폴더 이름 원하는 걸로 바꾸기 (`import mlproject` 할 때 이름)
 2. `pyproject.toml`에 바꿔야하는 부분 주석 되어있음. 바꿔 쓰기
 3. `requirements.txt`에는 fixed version을 적고, `pyproject.toml`의 패키지들은 dynamic version으로 하기
-4. `README.md`에 있는 badge들 URL (python-project-template-2023 -> 새 주소) 바꾸어 주어야 제대로 테스트 결과가 뜸.
+4. `README.md`에 있는 badge들 URL (python-project-template-2024 -> 새 주소) 바꾸어 주어야 제대로 테스트 결과가 뜸.
 5. `.github` 폴더, `setup.py`는 그대로 복사해 두면 됨
 6. 테스트를 작성하지 않은 경우, `tests/` 폴더 안의 파일 전부 삭제하면 GitHub Actions에서 테스트 통과됨.
