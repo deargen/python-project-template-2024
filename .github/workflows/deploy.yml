@@ -36,7 +36,7 @@ jobs:
 
       - name: Update CHANGELOG
         id: changelog
-        uses: kiyoon/changelog-action@main
+        uses: requarks/changelog-action@main
         with:
           includeInvalidCommits: true
           excludeTypes: build,docs,style
