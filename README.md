@@ -2,14 +2,14 @@
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
-[![Actions status](https://github.com/deagen/python-project-template-2024/workflows/Style%20checking/badge.svg)](https://github.com/deagen/python-project-template-2024/actions)
+[![Actions status](https://github.com/deargen/python-project-template-2024/workflows/Style%20checking/badge.svg)](https://github.com/deargen/python-project-template-2024/actions)
 
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
-[![Actions status](https://github.com/deagen/python-project-template-2024/workflows/Linting/badge.svg)](https://github.com/deagen/python-project-template-2024/actions)
+[![Actions status](https://github.com/deargen/python-project-template-2024/workflows/Linting/badge.svg)](https://github.com/deargen/python-project-template-2024/actions)
 
-[![Actions status](https://github.com/deagen/python-project-template-2024/workflows/Tests/badge.svg)](https://github.com/deagen/python-project-template-2024/actions)
+[![Actions status](https://github.com/deargen/python-project-template-2024/workflows/Tests/badge.svg)](https://github.com/deargen/python-project-template-2024/actions)
 
-[![Actions status](https://github.com/deagen/python-project-template-2024/workflows/Deploy%20docs/badge.svg)](https://github.com/deagen/python-project-template-2024/actions)
+[![Actions status](https://github.com/deargen/python-project-template-2024/workflows/Deploy%20docs/badge.svg)](https://github.com/deargen/python-project-template-2024/actions)
 
 새 파이썬 프로젝트 시작할 때 사용하실 템플릿입니다.
 
