@@ -36,21 +36,22 @@ jobs:
 
       - name: Update CHANGELOG
         id: changelog
-        uses: requarks/changelog-action@v1
+        uses: kiyoon/changelog-action@main
         with:
           includeInvalidCommits: true
           excludeTypes: build,docs,style
           token: ${{ github.token }}
           tag: ${{ github.ref_name }}
+          changelogFilePath: docs/CHANGELOG.md
 
-      - name: Commit CHANGELOG.md
+      - name: Commit docs/CHANGELOG.md
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
           git tag -d ${{ github.ref_name }}
           git push origin --delete ${{ github.ref_name }}
-          git add CHANGELOG.md
-          git commit -m "docs: update CHANGELOG.md for ${{ github.ref_name }} [skip ci]"
+          git add docs/CHANGELOG.md
+          git commit -m "docs: update docs/CHANGELOG.md for ${{ github.ref_name }} [skip ci]"
           git tag -a ${{ github.ref_name }} -m ${{ github.ref_name }}
           git push
           git push --tags

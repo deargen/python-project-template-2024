@@ -12,7 +12,7 @@ validation:
 nav:
   - Home:
       - Overview: index.md
-      - Changelog: changelog.md
+      - Changelog: CHANGELOG.md
   - MkDocs:
       - 미리보기: mkdocs.md
       - 파이썬 referencing: mkdocstrings.md
