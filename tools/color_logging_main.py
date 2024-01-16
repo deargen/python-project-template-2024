@@ -1,13 +1,9 @@
-# 맨 위에 install() 코드 넣어주시면 어떤 모듈에서 에러가 나든 깔끔한 traceback이 나와 디버깅이 좋습니다
-from rich.traceback import install
-
-install()
-
 import logging
 import os
 
-import mlproject
 from rich.logging import RichHandler
+
+import mlproject
 
 # 옵션으로 `from accelerate.logging import get_logger`
 # 사용하시면 로깅할 때 main_process_only=False, in_order=True 등 옵션 사용 가능합니다
@@ -43,7 +39,7 @@ if __name__ == "__main__":
         show_time=True,
         show_level=True,
         show_path=True,
-        rich_tracebacks=True,
+        rich_tracebacks=True,  # 에러 발생 시 traceback을 rich로 출력
     )
     console_format = logging.Formatter(
         fmt="%(name)s - %(message)s",
