@@ -1,5 +1,5 @@
 site_name: My Docs
-site_url: 'https://https://python-project-template-docs-deargen-ai-fbb5547b320461edfb3d21a.gitlab.io/'
+site_url: 'https://python-project-template-docs-deargen-ai-fbb5547b320461edfb3d21a.gitlab.io/'
 repo_url: 'https://github.com/deargen/python-project-template-2024'
 copyright: |
   &copy; 2024 <a href="https://deargen.me"  target="_blank" rel="noopener">Deargen Inc.</a>
@@ -11,7 +11,7 @@ validation:
 
 nav:
   - Home:
-      - Overview: readme.md
+      - Overview: index.md
       - Changelog: changelog.md
   - MkDocs:
       - 미리보기: mkdocs.md
