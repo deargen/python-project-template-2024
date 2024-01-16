@@ -36,7 +36,7 @@ jobs:
 
       - name: Update CHANGELOG
         id: changelog
-        uses: requarks/changelog-action@main
+        uses: requarks/changelog-action@v1.10.0
         with:
           includeInvalidCommits: true
           excludeTypes: build,docs,style
