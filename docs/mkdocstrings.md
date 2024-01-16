@@ -51,3 +51,17 @@
 
 
 
+# 문제 사항 해결
+
+다음과 같은 에러가 날 경우, 파이썬 모듈을 찾지 못하는 것입니다.
+
+```
+🕙 18:14:24 ❯ mkdocs serve
+INFO    -  Building documentation...
+INFO    -  Cleaning site directory
+ERROR   -  mkdocstrings: ppmi.pymol_visulize.pymol_plugin could not be found
+ERROR   -  Error reading page 'reference/ppmi/pymol_visulize/pymol_plugin/index.md':
+ERROR   -  Could not collect 'ppmi.pymol_visulize.pymol_plugin'
+```
+
+**Solution**: 각 폴더에 `__init__.py` 파일을 만드세요.
