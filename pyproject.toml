@@ -1,0 +1,68 @@
+[build-system]
+requires = ["setuptools>=60", "versioneer[toml]==0.29"]
+build-backend = "setuptools.build_meta"
+
+[tool.versioneer]
+VCS = "git"
+style = "pep440"
+versionfile_source = "src/mlproject/_version.py" # CHANGE
+versionfile_build = "mlproject/_version.py"      # CHANGE
+tag_prefix = "v"
+parentdir_prefix = "mlproject-"                  # CHANGE
+
+[project]
+name = "mlproject" # CHANGE
+dynamic = ["version"]
+description = "Innerverz Python project template" # OPTIONALLY CHANGE
+authors = [
+  { name = "Kiyoon Kim" }, # OPTIONALLY CHANGE
+]
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+classifiers = [
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+keywords = ["development", "template", "innerverz"]
+dependencies = [
+  "rich >= 13.6.0",
+  # ADD MORE LATER (torch, torchvision, ...)
+]
+
+[project.optional-dependencies]
+dev = ["black >= 23.9.0"]
+test = ["pytest >= 7.4.0", "pytest-cov >= 4.1.0"]
+
+[project.urls]
+"Homepage" = "https://github.com/innerverz-ai/python-project-template-2023" # OPTIONALLY CHANGE
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "--cov=mlproject" # CHANGE (name of the importing module name)
+testpaths = ["tests"]
+
+[tool.isort]
+profile = "black"
+known_third_party = ["wandb"]
+
+[tool.ruff]
+target-version = "py311"
+
+# Black will enforce line length to be 88, except for docstrings and comments.
+# We set it to 120 so we have more space for docstrings and comments.
+line-length = 120
+
+# E402: Module level import not at top of file
+ignore = ["E402"] # OPTIONALLY ADD MORE LATER
+
+[tool.coverage.report]
+omit = [
+  "src/mlproject/_version.py", # CHANGE
+  # OPTIONALLY ADD MORE LATER
+]

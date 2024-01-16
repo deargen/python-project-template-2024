@@ -1,0 +1,93 @@
+site_name: My Docs
+site_url: 'https://python-project-template-docs-kiyoon-374453f33ef5ecc2d8bcdf2f633.gitlab.io/'
+repo_url: 'https://github.com/kiyoon/python-project-template-2023'
+copyright: |
+  &copy; 2024 <a href="https://kiyoon.kim"  target="_blank" rel="noopener">Kiyoon Kim</a>
+watch: [mkdocs.yml, README.md, CHANGELOG.md, src/]
+validation:
+  omitted_files: warn
+  absolute_links: warn
+  unrecognized_links: warn
+
+nav:
+  - Home:
+      - Overview: readme.md
+      - Changelog: changelog.md
+  - MkDocs:
+      - 미리보기: mkdocs.md
+      - 파이썬 referencing: mkdocstrings.md
+  # defer to gen-files + literate-nav
+  - API reference:
+      - mkdocstrings-python: reference/
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.follow
+    - navigation.top
+    - navigation.footer
+    - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.indexes
+    - navigation.path
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+  language: ko
+  palette:
+    - media: '(prefers-color-scheme: light)'
+      scheme: default
+      primary: teal
+      accent: purple
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - media: '(prefers-color-scheme: dark)'
+      scheme: slate
+      primary: black
+      accent: lime
+      toggle:
+        icon: material/weather-night
+        name: Switch to system preference
+
+plugins:
+  - search
+  - social
+  - gen-files:
+      scripts:
+        - scripts/gen_ref_nav.py
+  - literate-nav:
+      nav_file: SUMMARY.md
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src] # search packages in the src folder
+
+extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/kiyoon/python-project-template-2023
+  version:
+    provider: mike
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg

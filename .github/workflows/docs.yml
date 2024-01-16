@@ -1,0 +1,52 @@
+name: Deploy docs
+
+on:
+  push:
+    branches:
+      - master
+      - main
+
+jobs:
+  mkdocs:
+    runs-on: ubuntu-latest
+    environment: mkdocs
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip3 install -r requirements_docs.txt
+          # pip3 install -e .
+      - name: Run mkdocs
+        run: |
+          set +e  # Do not exit shell on failure
+          export GL_PROJECT=kiyoon/python-project-template-docs
+          export HTTPS_REMOTE="https://gitlab-ci-token:${{ secrets.GL_TOKEN }}@gitlab.com/$GL_PROJECT.git"
+
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git remote add gitlab "$HTTPS_REMOTE"
+          git pull gitlab gl-pages:gl-pages
+
+          out=$(mike deploy --deploy-prefix public -r $HTTPS_REMOTE -p -b gl-pages -u latest 2> stderr.txt)
+          exit_code=$?
+          err=$(<stderr.txt)
+
+          mike set-default --deploy-prefix public -r $HTTPS_REMOTE -p -b gl-pages latest
+
+          # Display the raw output in the step
+          echo "${out}"
+          echo "${err}"
+
+          # Display the Markdown output in the job summary
+          echo "\`\`\`python" >> $GITHUB_STEP_SUMMARY
+          echo "${out}" >> $GITHUB_STEP_SUMMARY
+          echo "${err}" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+
+          exit ${exit_code}
