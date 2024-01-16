@@ -16,6 +16,8 @@ nav:
   - MkDocs:
       - 미리보기: mkdocs.md
       - 파이썬 referencing: mkdocstrings.md
+  - Git:
+      - 커밋 메시지: git_commits.md
   # defer to gen-files + literate-nav
   - API reference:
       - mkdocstrings-python: reference/
