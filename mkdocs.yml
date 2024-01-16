@@ -3,7 +3,7 @@ site_url: 'https://python-project-template-docs-deargen-ai-fbb5547b320461edfb3d2
 repo_url: 'https://github.com/deargen/python-project-template-2024'
 copyright: |
   &copy; 2024 <a href="https://deargen.me"  target="_blank" rel="noopener">Deargen Inc.</a>
-watch: [mkdocs.yml, README.md, CHANGELOG.md, src/]
+watch: [mkdocs.yml, README.md, src/]
 validation:
   omitted_files: warn
   absolute_links: warn
