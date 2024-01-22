@@ -6,7 +6,7 @@
 
 ## Python formatters
 
-- [Black](https://github.com/psf/black): 파이썬 대표 formatter
+### [Black](https://github.com/psf/black): 파이썬 대표 formatter
     - line length: 88
         - Why?: 코드가 너무 길면 한 화면에 코드 두개를 띄워 비교하든지, 디버깅을 하느라 UI가 많이 떠 있을 때 읽기 힘듦.
     - string은 double quotation (")
@@ -38,7 +38,7 @@ def calculate(
     return overall_sum
 ```
 
-- [isort](https://github.com/PyCQA/isort): import 구문 정렬
+### [isort](https://github.com/PyCQA/isort): import 구문 정렬
     - 파이썬 내장, third party (pip install), first party (우리 프로젝트) 순서
     - 알파벳 순서
     - 같은 모듈에서 import 하는 elements 전부 합쳐줌
