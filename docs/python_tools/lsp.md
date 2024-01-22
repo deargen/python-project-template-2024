@@ -21,4 +21,42 @@ VSCode에서는 pylance, 다른 IDE에서는 오픈소스 버전인 pyright을 �
  			"python.analysis.typeCheckingMode": "basic",
             ```
 
+- Pylance 에러 예시
 
+```python
+def add_numbers(num1: int, num2: int) -> int:
+    return num1 + num2
+
+# Call the function with correct arguments
+num = add_numbers(2, 3)
+
+# Call the function with INCORRECT arguments
+add1 = 'abc'
+result = add_numbers(add1, num)     # 🚨 TYPE ERROR!
+
+# pylance 에러를 무시하기 위해서는 강제로 type을 지정해주면 됩니다.
+add1: int = 'abc'                # 🚨 이 라인에서 에러가 한번 나긴 함.
+# 하지만, 다음 줄 부터는 add1을 int라 생각하고 pylance가 코드를 파싱함.
+result = add_numbers(add1, num)  # ✅ NO TYPE ERROR!
+print(result)    # 'abc5'
+# result는 int라고 생각함. 이를 억지로 해결하려면 
+```
+
+위 처럼 억지로 type을 맞춰서 실행하면, 결국 result는 int라고 생각해 pylance가 프로젝트를 parsing합니다.  
+해결법:
+
+1. 억지로 해결:
+
+```python
+add1 = 'abc'
+result: str = add_numbers(add1, num)
+# 그 다음부터 result는 str이라고 생각됨.
+```
+
+2. 함수 definition을 변경:
+```python
+def add_numbers_or_string(var1: int | str, var2: int | str) -> int | str:
+    if isinstance(var2, str):
+        var1 = str(var1)
+    return var1 + var2
+```
