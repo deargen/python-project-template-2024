@@ -62,3 +62,21 @@ ignore = [
 [tool.ruff.lint.pydocstyle]
 convention = "google"
 ```
+
+## VSCode settings
+
+1. CLI commands 설치:  
+```bash
+conda deactivate
+pip install ruff
+```
+
+2. vscode extension에서 **[Ruff](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff)** 설치
+
+3. VSCode settings.json 수정
+
+```json
+// settings.json
+
+"ruff.organizeImports": false, // ruff가 import sorting 을 하지 못하게 함
+```

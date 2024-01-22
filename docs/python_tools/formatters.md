@@ -70,7 +70,15 @@ import mlproject
 
 ## VSCode settings
 
-vscode extension에서 **[Black Formatter](https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter), [isort](https://marketplace.visualstudio.com/items?itemName=ms-python.isort), [Ruff](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff)** 설치
+1. CLI commands 설치:  
+```bash
+conda deactivate
+pip install black isort
+```
+
+2. vscode extension에서 **[Black Formatter](https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter), [isort](https://marketplace.visualstudio.com/items?itemName=ms-python.isort)** 설치
+
+3. VSCode settings.json 수정
 
 ```json
 // settings.json
@@ -84,7 +92,6 @@ vscode extension에서 **[Black Formatter](https://marketplace.visualstudio.com/
 },
 "isort.args": ["--profile", "black"], // black과 호환성을 고려하겠다
 "isort.path": ["isort"], // isort extension의 isort가 아니라 환경에 설치된 isort 사용
-"ruff.organizeImports": false, // ruff가 import sorting 을 하지 못하게 함
 ```
 
 💡 isort의 버전이 5.13 이상이어야 합니다!! (`conda deactivate` 한 후 `isort --version`으로 확인)
