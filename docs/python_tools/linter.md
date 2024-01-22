@@ -11,7 +11,7 @@
 - flake8: PEP8 스타일 가이드를 지켜주는 파이썬 대표 linter. 확장 플러그인도 많습니다.
 - **ruff:** flake8 및 인기 플러그인을 전부 rust로 구현해 속도가 굉장히 빨라진 python linter. 저희 프로젝트에서는 ruff를 사용합니다.
     - 쉬운 설치: `pip install ruff` 후 플러그인을 따로 설치하지 않아도 됩니다.
-    - formatter 포함: black과 isort와 유사한 구현도 존재합니다.
+    - ~~formatter 포함: black과 isort와 유사한 구현도 존재합니다.~~
         - 다만 beta 버전이라 결과가 버전마다 자주 바뀌며, edge case 에러가 많이 있는것 같아 아직은 black, isort 사용합니다.
         - VSCode에서 ruff organizeImports를 꼭 비활성화 해 주세요.
 
