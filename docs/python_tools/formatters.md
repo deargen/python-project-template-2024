@@ -7,66 +7,68 @@
 ## Python formatters
 
 ### [Black](https://github.com/psf/black): 파이썬 대표 formatter
-    - line length: 88
-        - Why?: 코드가 너무 길면 한 화면에 코드 두개를 띄워 비교하든지, 디버깅을 하느라 UI가 많이 떠 있을 때 읽기 힘듦.
-    - string은 double quotation (")
-    - 함수 parameters는 한 줄에 하나씩
-    - Examples:
 
-**Before Black:**
+- line length: 88
+    - Why?: 코드가 너무 길면 한 화면에 코드 두개를 띄워 비교하든지, 디버깅을 하느라 UI가 많이 떠 있을 때 읽기 힘듦.
+- string은 double quotation (")
+- 함수 parameters는 한 줄에 하나씩
+- Examples:
 
-```python
-def calculate(a_large_number, another_large_number, yet_another_large_number, final_large_number):
-    sum_of_first_two=a_large_number+another_large_number
-    sum_of_last_two= yet_another_large_number+ final_large_number
-    overall_sum =sum_of_first_two +sum_of_last_two
-    return overall_sum
-```
+    **Before Black:**
 
-**After Black:**
+    ```python
+    def calculate(a_large_number, another_large_number, yet_another_large_number, final_large_number):
+        sum_of_first_two=a_large_number+another_large_number
+        sum_of_last_two= yet_another_large_number+ final_large_number
+        overall_sum =sum_of_first_two +sum_of_last_two
+        return overall_sum
+    ```
 
-```python
-def calculate(
-    a_large_number,
-    another_large_number,
-    yet_another_large_number,
-    final_large_number,
-):
-    sum_of_first_two = a_large_number + another_large_number
-    sum_of_last_two = yet_another_large_number + final_large_number
-    overall_sum = sum_of_first_two + sum_of_last_two
-    return overall_sum
-```
+    **After Black:**
+
+    ```python
+    def calculate(
+        a_large_number,
+        another_large_number,
+        yet_another_large_number,
+        final_large_number,
+    ):
+        sum_of_first_two = a_large_number + another_large_number
+        sum_of_last_two = yet_another_large_number + final_large_number
+        overall_sum = sum_of_first_two + sum_of_last_two
+        return overall_sum
+    ```
 
 ### [isort](https://github.com/PyCQA/isort): import 구문 정렬
-    - 파이썬 내장, third party (pip install), first party (우리 프로젝트) 순서
-    - 알파벳 순서
-    - 같은 모듈에서 import 하는 elements 전부 합쳐줌
-    - Examples:
 
-**Before isort:**
+- 파이썬 내장, third party (pip install), first party (우리 프로젝트) 순서
+- 알파벳 순서
+- 같은 모듈에서 import 하는 elements 전부 합쳐줌
+- Examples:
 
-```python
-from my_lib import Object
-import os
-from my_other_lib import run
-import sys
-import mlproject
-from third_lib import Widget
-```
+    **Before isort:**
 
-**After isort:**
+    ```python
+    from my_lib import Object
+    import os
+    from my_other_lib import run
+    import sys
+    import mlproject
+    from third_lib import Widget
+    ```
 
-```python
-import os
-import sys
+    **After isort:**
 
-from my_lib import Object
-from my_other_lib import run
-from third_lib import Widget
+    ```python
+    import os
+    import sys
 
-import mlproject
-```
+    from my_lib import Object
+    from my_other_lib import run
+    from third_lib import Widget
+
+    import mlproject
+    ```
 
 ## VSCode settings
 
