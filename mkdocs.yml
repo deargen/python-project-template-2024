@@ -18,6 +18,8 @@ nav:
       - 파이썬 referencing: mkdocstrings.md
   - Git:
       - 커밋 메시지: git_commit.md
+  - Python tools:
+      - Formatters: python_tools/formatters.md
   # defer to gen-files + literate-nav
   - API reference:
       - mkdocstrings-python: reference/
