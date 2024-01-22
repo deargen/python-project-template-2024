@@ -11,17 +11,21 @@ VSCode에서는 pylance, 다른 IDE에서는 오픈소스 버전인 pyright을 �
 - LSP 기능 이외 Static type checking 기능이 있습니다. C++ 처럼 type을 명확히 지켜줬는지 체크합니다.  
     - 모든 변수, 함수의 type을 적을 필요는 없고, 간단한 경우는 알아서 추측합니다.
     - Inlay hints 기능을 켜서 LSP에서 추측하는 타입이 뭔지 보면서, 잘못된 부분은 명시하면서 코딩해야 좋습니다.
-    - **VSCode에 type checking 및 inlay hint 적용**
-        - Pylance 플러그인 설치 확인. 기본으로 설치된 경우가 많음. 
-        - 너무 복잡해지면 안 좋으니 일단 functionReturnTypes, variableTypes 만 사용
-        - setting.json에 아래 내용 추가
-            ```json
-            "python.analysis.inlayHints.functionReturnTypes": true,
-            "python.analysis.inlayHints.variableTypes": true,
- 			"python.analysis.typeCheckingMode": "basic",
-            ```
 
-- Pylance 에러 예시
+## VSCode settings
+
+VSCode에 type checking 및 inlay hint 적용하기.
+
+- Pylance 플러그인 설치 확인. 기본으로 설치된 경우가 많음. 
+- 너무 복잡해지면 안 좋으니 일단 functionReturnTypes, variableTypes 만 사용 (그 외 함수 argument의 type도 볼 수 있음)
+- setting.json에 아래 내용 추가
+    ```json
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "python.analysis.inlayHints.variableTypes": true,
+    "python.analysis.typeCheckingMode": "basic",
+    ```
+
+## Pylance 에러 예시
 
 ```python
 def add_numbers(num1: int, num2: int) -> int:
@@ -43,20 +47,19 @@ print(result)    # 'abc5'
 ```
 
 위 처럼 억지로 type을 맞춰서 실행하면, 결국 result는 int라고 생각해 pylance가 프로젝트를 parsing합니다.  
-해결법:
+
+**해결법:**
 
 1. 억지로 해결:
-
-```python
-add1 = 'abc'
-result: str = add_numbers(add1, num)
-# 그 다음부터 result는 str이라고 생각됨.
-```
-
+    ```python
+    add1 = 'abc'
+    result: str = add_numbers(add1, num)
+    # 그 다음부터 result는 str이라고 생각됨.
+    ```
 2. 함수 definition을 변경:
-```python
-def add_numbers_or_string(var1: int | str, var2: int | str) -> int | str:
-    if isinstance(var2, str):
-        var1 = str(var1)
-    return var1 + var2
-```
+    ```python
+    def add_numbers_or_string(var1: int | str, var2: int | str) -> int | str:
+        if isinstance(var2, str):
+            var1 = str(var1)
+        return var1 + var2
+    ```
