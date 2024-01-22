@@ -19,7 +19,10 @@ nav:
   - Git:
       - 커밋 메시지: git_commit.md
   - Python tools:
-      - Formatters: python_tools/formatters.md
+      - Formatters (black, isort): python_tools/formatters.md
+      - Linter (ruff): python_tools/linter.md
+      - LSP (pylance): python_tools/lsp.md
+      - TODO highlights: python_tools/todo_highlights.md
   # defer to gen-files + literate-nav
   - API reference:
       - mkdocstrings-python: reference/
