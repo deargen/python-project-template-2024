@@ -23,6 +23,7 @@ nav:
       - Linter (ruff): python_tools/linter.md
       - LSP (pylance): python_tools/lsp.md
       - TODO highlights: python_tools/todo_highlights.md
+      - 기타 플러그인: python_tools/other_vscode_extensions.md
   # defer to gen-files + literate-nav
   - API reference:
       - mkdocstrings-python: reference/
