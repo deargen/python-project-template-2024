@@ -6,8 +6,8 @@ jobs:
   # ------------------------------------------------------------------------------------------------------------------------------------------------
   # Event `pull_request`: Compare the last commit of the main branch or last remote commit of the PR branch -> to the current commit of a PR branch.
   # ------------------------------------------------------------------------------------------------------------------------------------------------
-  black-only-changed:
-    name: Black-changed
+  ruff-format-only-changed:
+    name: ruff-format-changed
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -27,17 +27,17 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: 3.11
-      - name: Install black and requirements
+      - name: Install ruff
         if: steps.changed-python-files.outputs.any_changed == 'true'
         run: |
-          pip3 install black==23.9.1
-      - name: Run black
+          pip3 install ruff==0.1.14
+      - name: Run ruff
         if: steps.changed-python-files.outputs.any_changed == 'true'
         run: |
-          set +e  # Do not exit shell on black failure
-          out=$(black --check --diff ${{ steps.changed-python-files.outputs.all_changed_files }} 2> black_stderr.txt)
+          set +e  # Do not exit shell on app failure
+          out=$(ruff format --check --diff ${{ steps.changed-python-files.outputs.all_changed_files }} 2> app_stderr.txt)
           exit_code=$?
-          err=$(<black_stderr.txt)
+          err=$(<app_stderr.txt)
 
           # Display the raw output in the step
           echo "${out}"
@@ -49,11 +49,11 @@ jobs:
           echo "${err}" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
 
-          # Exit with the exit-code returned by black
+          # Exit with the exit-code returned by the app
           exit ${exit_code}
 
-  isort-only-changed:
-    name: isort-changed
+  ruff-isort-only-changed:
+    name: ruff-isort-changed
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -73,24 +73,17 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: 3.11
-      - name: Install isort and requirements
+      - name: Install ruff
         if: steps.changed-python-files.outputs.any_changed == 'true'
         run: |
-          pip3 install isort==5.12.0  # NOTE: requirements_dev.txt may install isort with another version
-
-          # Make sure you don't install torch as it's slow
-          # We just need to put those in pyproject.toml -> [tools.isort] -> known_third_party option.
-          pip install -r <(cat requirements.txt | grep -v -e ^torch== -e ^torchvision== -e ^accelerate== \
-              -e '^nvidia-.*-cu.*==' -e ^xformers==)
-          pip install -r <(cat requirements_dev.txt | grep -v -e ^torch== -e ^torchvision== -e ^accelerate== \
-              -e '^nvidia-.*-cu.*==' -e ^xformers==)
-      - name: Run isort
+          pip3 install ruff==0.1.14
+      - name: Run ruff isort
         if: steps.changed-python-files.outputs.any_changed == 'true'
         run: |
-          set +e  # Do not exit shell on isort failure
-          out=$(isort --check-only --diff ${{ steps.changed-python-files.outputs.all_changed_files }} 2> isort_stderr.txt)
+          set +e  # Do not exit shell on app failure
+          out=$(ruff --select I --diff ${{ steps.changed-python-files.outputs.all_changed_files }} 2> app_stderr.txt)
           exit_code=$?
-          err=$(<isort_stderr.txt)
+          err=$(<app_stderr.txt)
 
           # Display the raw output in the step
           echo "${out}"
@@ -102,7 +95,7 @@ jobs:
           echo "${err}" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
 
-          # Exit with the exit-code returned by isort
+          # Exit with the exit-code returned by the app
           exit ${exit_code}
 
   ruff-only-changed:
@@ -126,10 +119,10 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: 3.11
-      - name: Install ruff and requirements
+      - name: Install ruff
         if: steps.changed-python-files.outputs.any_changed == 'true'
         run: |
-          pip3 install ruff==0.1.0
+          pip3 install ruff==0.1.14
       - name: Run ruff
         if: steps.changed-python-files.outputs.any_changed == 'true'
         run: |
