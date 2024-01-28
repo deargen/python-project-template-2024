@@ -25,6 +25,7 @@ jobs:
           pip3 install ruff==0.1.14
       - name: Run ruff and push
         run: |
+          set +e  # Do not exit shell on ruff failure
           ruff --select=${{ github.event.inputs.ruff_select }} --ignore=${{ github.event.inputs.ruff_ignore }} --fix --unsafe-fixes .
           ruff format .
           git config user.name github-actions
