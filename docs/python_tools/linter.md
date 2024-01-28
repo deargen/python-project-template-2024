@@ -84,7 +84,7 @@ known-third-party = ["wandb"]
 1. CLI commands 설치:  
 ```bash
 conda deactivate
-pip install ruff
+pip3 install --user ruff
 ```
 
 2. vscode extension에서 **[Ruff](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff)** 설치

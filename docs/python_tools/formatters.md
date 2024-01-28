@@ -41,7 +41,7 @@
 
 ### [isort](https://github.com/PyCQA/isort): import 구문 정렬
 
-- 파이썬 내장, third party (pip install), first party (우리 프로젝트) 순서
+- 파이썬 내장, third party (pip install 된 모듈), first party (우리 프로젝트) 순서
 - 알파벳 순서
 - 같은 모듈에서 import 하는 elements 전부 합쳐줌
 - Examples:
@@ -96,7 +96,7 @@ required-imports = [
 1. CLI commands 설치:  
 ```bash
 conda deactivate
-pip install ruff
+pip3 install --user ruff
 ```
 
 2. vscode extension에서 **[Ruff](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff)** 설치
