@@ -6,8 +6,7 @@ from pathlib import Path
 
 from rich.logging import RichHandler
 
-import ppmi
-from ppmi import LOG_DIR, PROJECT_DIR, default_log_level
+from mlproject import LOG_DIR, PROJECT_DIR, __version__, default_log_level
 
 # 옵션으로 `from accelerate.logging import get_logger`
 # 사용하시면 로깅할 때 main_process_only=False, in_order=True 등 옵션 사용 가능합니다
@@ -20,12 +19,13 @@ def setup_logging(
     output_files: list[str] | None = None,
     file_levels: list[int] | None = None,
 ):
-    """Setup logging with RichHandler and FileHandler.
+    """
+    Setup logging with RichHandler and FileHandler.
 
     You should call this function at the beginning of your script.
 
     Args:
-        console_level: Logging level for console. Defaults to INFO or env var PPMI_LOG_LEVEL.
+        console_level: Logging level for console. Defaults to INFO or env var MLPROJECT_LOG_LEVEL.
         output_files: List of output file paths, relative to LOG_DIR. If None, use default.
         file_levels: List of logging levels for each output file. If None, use default.
     """
@@ -88,7 +88,7 @@ def setup_logging(
 
     log_path_map = {
         "name": name_or_path,
-        "version": ppmi.__version__,
+        "version": __version__,
         "date": datetime.now(),
     }
 
@@ -108,13 +108,13 @@ def setup_logging(
         # Add handlers to the logger
         root_logger.addHandler(f_handler)
 
-    logger.info(f"PPMI {ppmi.__version__}")
+    logger.info(f"mlproject {__version__}")
 
     for log_path in log_paths:
         logger.info(f"Logging to {log_path}")
 
 
-def main():  # noqa: D103
+def main():
     logger.info("Hello, world!")
     raise Exception("Test exception")
 
