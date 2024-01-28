@@ -17,7 +17,9 @@ nav:
       - 미리보기: mkdocs.md
       - 파이썬 referencing: mkdocstrings.md
   - Git:
-      - 커밋 메시지: git_commit.md
+      - 커밋 메시지: git/git_commit.md
+      - GitHub 사용법: git/github.md
+      - 버전 릴리즈: git/release_version.md
   - Python tools:
       - Formatters (black, isort): python_tools/formatters.md
       - Linter (ruff): python_tools/linter.md
