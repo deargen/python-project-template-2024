@@ -3,14 +3,14 @@
 ## 설명하고 싶은 모듈/함수/클래스가 있다면 다음과 같이 마크다운 파일에 적으면 됩니다.
 
 ```md
-::: mlproject.utils.TwoNumbers
+::: mlproject.two_numbers.TwoNumbers
     options:
         show_root_heading: true
 ```
 
 출력은 아래와 같습니다.
 
-::: mlproject.utils.TwoNumbers
+::: mlproject.two_numbers.TwoNumbers
     options:
         show_root_heading: true
 
@@ -35,14 +35,14 @@
 ## 소스코드만 출력하고 싶으시면 다음과 같이 작성합니다.
 
 ```md
-::: mlproject.utils.TwoNumbers
+::: mlproject.two_numbers.TwoNumbers
     options:
         members: false
 ```
 
 출력은 아래와 같습니다.
 
-::: mlproject.utils.TwoNumbers
+::: mlproject.two_numbers.TwoNumbers
     options:
         members: false
 
