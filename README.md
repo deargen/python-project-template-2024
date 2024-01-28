@@ -11,7 +11,7 @@
 [![pytest](https://img.shields.io/badge/unit_test-pytest-black)](https://github.com/pytest-dev/pytest)
 [![Actions status](https://github.com/deargen/python-project-template-2024/workflows/Tests/badge.svg)](https://github.com/deargen/python-project-template-2024/actions)
 
-[![pytest](https://img.shields.io/badge/unit_test-pytest-black)](https://github.com/pytest-dev/pytest)
+[![mkdocs-material](https://img.shields.io/badge/docs-mkdocs_material-blue)](https://github.com/squidfunk/mkdocs-material)
 [![Actions status](https://github.com/deargen/python-project-template-2024/workflows/Deploy%20docs/badge.svg)](https://github.com/deargen/python-project-template-2024/actions)
 
 새 파이썬 프로젝트 시작할 때 사용하실 템플릿입니다.
