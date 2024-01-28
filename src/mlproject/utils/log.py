@@ -4,10 +4,9 @@ import os
 from datetime import datetime
 from pathlib import Path
 
-from rich.logging import RichHandler
-
 import ppmi
 from ppmi import LOG_DIR, PROJECT_DIR, default_log_level
+from rich.logging import RichHandler
 
 # 옵션으로 `from accelerate.logging import get_logger`
 # 사용하시면 로깅할 때 main_process_only=False, in_order=True 등 옵션 사용 가능합니다
@@ -34,9 +33,7 @@ def setup_logging(
     if file_levels is None:
         file_levels = [logging.INFO]
 
-    assert len(output_files) == len(
-        file_levels
-    ), "output_files and file_levels must have the same length"
+    assert len(output_files) == len(file_levels), "output_files and file_levels must have the same length"
 
     # NOTE: Initialise with NOTSET level and null device, and add stream handler separately.
     # This way, the root logging level is NOTSET (log all), and we can customise each handler's behaviour.
@@ -77,9 +74,7 @@ def setup_logging(
         if function_caller_module.__file__ is None:
             name_or_path = function_caller_module.__name__
         else:
-            name_or_path = function_caller_module.__file__.replace(
-                str(PROJECT_DIR) + "/", ""
-            ).replace("/", ".")
+            name_or_path = function_caller_module.__file__.replace(str(PROJECT_DIR) + "/", "").replace("/", ".")
             # Remove .py extension
             name_or_path = Path(name_or_path).with_suffix("")
 

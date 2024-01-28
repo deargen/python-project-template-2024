@@ -1,12 +1,9 @@
 import pytest
-
 from mlproject.two_numbers import TwoNumbers
 
 
 def test_zero_zero(zero_zero):
-    """
-    Uses the fixture zero_zero defined in conftest.py
-    """
+    """Uses the fixture zero_zero defined in conftest.py"""
     assert zero_zero.add() == 0
 
 
@@ -36,17 +33,13 @@ def test_many_adds(num_1, num_2, add_result):
     ],
 )
 def test_swap_consistency(num_1, num_2):
-    """
-    Test consistency when swapping the order of the numbers
-    """
+    """Test consistency when swapping the order of the numbers"""
     assert TwoNumbers(num_1, num_2).add() == TwoNumbers(num_2, num_1).add()
 
 
 @pytest.mark.xfail(raises=AssertionError)
 def test_check_invalid():
-    """
-    Test if add() raises an AssertionError
-    """
+    """Test if add() raises an AssertionError"""
     TwoNumbers(1, "a").add()
 
 
@@ -61,7 +54,5 @@ def test_check_invalid():
 )
 @pytest.mark.xfail(raises=AssertionError)
 def test_many_check_invalid(num_1, num_2):
-    """
-    Test if add() raises an AssertionError
-    """
+    """Test if add() raises an AssertionError"""
     TwoNumbers(num_1, num_2).add()
