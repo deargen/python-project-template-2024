@@ -49,8 +49,8 @@ jobs:
           draft: false
           makeLatest: true
           name: ${{ github.event.inputs.version_tag }}
+          tag: ${{ github.event.inputs.version_tag }}
           body: ${{ steps.changelog.outputs.changes }}
-          token: ${{ github.token }}
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
