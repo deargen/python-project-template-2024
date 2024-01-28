@@ -70,30 +70,59 @@
     import mlproject
     ```
 
+### [ruff](https://github.com/astral-sh/ruff): Rust로 구현한 매우 빠른 black, isort (+ flake8 linter까지)
+
+- Black, isort와 99% 호환성
+- isort가 잘 되려면 `pyproject.toml`에 다음과 같이 추가해야 함
+
+```toml
+[tool.ruff]
+src = ["src"]  # first party 모듈을 찾는 위치
+```
+
+- 추가로 모든 파일에 required import 추가하는 기능이 있음
+
+```toml
+# pyproject.toml
+[tool.ruff.lint.isort]
+# Python < 3.10에서 typing 호환성 유지
+required-imports = [
+  "from __future__ import annotations",
+]
+```
+
 ## VSCode settings
 
 1. CLI commands 설치:  
 ```bash
 conda deactivate
-pip install black isort
+pip install ruff
 ```
 
-2. vscode extension에서 **[Black Formatter](https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter), [isort](https://marketplace.visualstudio.com/items?itemName=ms-python.isort)** 설치
-
+2. vscode extension에서 **[Ruff](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff)** 설치
 3. VSCode settings.json 수정
 
 ```json
 // settings.json
 
 "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.formatOnSave": true, // 저장할 때마다 formatting
     "editor.codeActionsOnSave": {
         "source.organizeImports": true // 저장할 때마다 import sorting
     },
 },
-"isort.args": ["--profile", "black"], // black과 호환성을 고려하겠다
-"isort.path": ["isort"], // isort extension의 isort가 아니라 환경에 설치된 isort 사용
+"ruff.organizeImports": true,
 ```
 
-💡 isort의 버전이 5.13 이상이어야 합니다!! (`conda deactivate` 한 후 `isort --version`으로 확인)
+## CLI로 포매팅 하기
+
+```bash
+ruff --select I --fix [파일.py]  # isort 적용
+ruff format [파일.py]  # black 적용
+```
+
+<aside>
+💡 isort는 엄밀히 말하면 프로그램 실행 순서를 변경하기 때문에 formatter가 아님.
+   따라서 ruff에서는 isort linting (I) 코드가 있고 그에 대한 fix가 존재함.
+</aside>
