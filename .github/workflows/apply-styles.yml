@@ -1,0 +1,34 @@
+name: Apply ruff format, isort, and fixes
+
+on:
+  workflow_dispatch:
+    inputs:
+      ruff_select:
+        description: 'ruff select'
+        default: I,D20,D21,UP00
+      ruff_ignore:
+        description: 'ruff ignore'
+        default: D212
+
+jobs:
+  apply-ruff:
+    name: Apply ruff
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+      - name: Install ruff
+        run: |
+          pip3 install ruff==0.1.14
+      - name: Run ruff and push
+        run: |
+          ruff --select=${{ github.event.inputs.ruff_select }} --ignore=${{ github.event.inputs.ruff_ignore }} --fix --unsafe-fixes .
+          ruff format .
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "style: ruff format, isort, fixes [skip ci]"
+          git push
