@@ -63,3 +63,60 @@ print(result)    # 'abc5'
             var1 = str(var1)
         return var1 + var2
     ```
+
+## Type stub
+
+외부 라이브러리의 typing이 문제가 있을 때, 우리가 직접 type stub을 만들어 custom할 수 있습니다.  
+프로젝트 루트에서 `typings/패키지명/모듈.pyi`를 만들어 typing을 합니다.  
+함수의 body는 `...` 이라고 적고, signature (definition)만 작성합니다.
+
+### 문제 상황 1
+
+EasyDict를 사용하니 key를 implicit하게 만들면 pyright 에러가 남.  
+![image](https://github.com/deargen/python-project-template-2024/assets/12980409/a70f1370-3937-42c0-8736-50587fe1a8a5)
+
+#### 해결
+
+1. 다음과 같이 stub 파일 탬플릿을 작성
+
+```bash
+pyright --createstub easydict
+```
+
+2. `typings/easydict/__init__.pyi` 에서 class definition 안에 `__getattr__` 함수를 만들어 type hint를 Any로 작성
+
+```python
+from typing import Any
+
+class EasyDict(dict):
+    # 다른 함수는 생략됨
+
+    # EasyDict({'a': 1}).a 할 때, __getattr__이 호출된다.
+    # 타입을 모르기 때문에, Any로 처리한다.
+    def __getattr__(self, name: str) -> Any: ...
+```
+
+### 문제 상황 2
+
+BioPython 라이브러리의 typing이 너무 안좋아서 에러가 너무 많이 남. 라이브러리가 복잡해서 직접 수정은 힘든 상황.
+
+#### 해결
+
+1. `typings/Bio/__init__.pyi`를 다음과 같이 작성
+
+```python
+from typing import Any
+
+def __getattr__(name: str) -> Any: ...
+```
+
+모든 Bio 모듈의 변수들은 Any (동적) 타입으로 되어 타입 체크를 건너뜀.
+
+2. 일부 typing만 켜고 싶으면 추가도 가능
+
+```python
+from typing import Any
+
+def __getattr__(name: str) -> Any: ...
+def some_function() -> str: ...
+```
