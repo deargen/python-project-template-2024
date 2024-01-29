@@ -73,7 +73,7 @@ print(result)    # 'abc5'
 ### 문제 상황 1
 
 EasyDict를 사용하니 key를 implicit하게 만들면 pyright 에러가 남.  
-![image](https://github.com/deargen/python-project-template-2024/assets/12980409/a70f1370-3937-42c0-8736-50587fe1a8a5)
+![image](https://github.com/kiyoon/jupynium.nvim/assets/12980409/e82c3964-4f02-42f9-84b1-ff857e3a4a15)
 
 #### 해결
 
