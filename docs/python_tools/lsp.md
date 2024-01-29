@@ -105,18 +105,22 @@ BioPython 라이브러리의 typing이 너무 안좋아서 에러가 너무 많�
 1. `typings/Bio/__init__.pyi`를 다음과 같이 작성
 
 ```python
-from typing import Any
+from typing import Incomplete
 
-def __getattr__(name: str) -> Any: ...
+def __getattr__(name: str) -> Incomplete: ...
 ```
 
-모든 Bio 모듈의 변수들은 Any (동적) 타입으로 되어 타입 체크를 건너뜀.
+모든 Bio 모듈의 변수들은 Incomplete (동적) 타입으로 되어 타입 체크를 건너뜀.
+
+```
+💡 Incomplete type은 Any type과 기능은 동일하지만, Any는 타입을 전혀 모르는 경우에 사용하고 Incomplete는 타이핑을 하다가 말았을 때 사용함.
+```
 
 2. 일부 typing만 켜고 싶으면 추가도 가능
 
 ```python
-from typing import Any
+from typing import Incomplete
 
-def __getattr__(name: str) -> Any: ...
+def __getattr__(name: str) -> Incomplete: ...
 def some_function() -> str: ...
 ```
