@@ -24,7 +24,7 @@ jobs:
 
       - name: Set up Python 3.11
         if: steps.changed-python-files.outputs.any_changed == 'true'
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: 3.11
       - name: Install ruff
@@ -70,7 +70,7 @@ jobs:
 
       - name: Set up Python 3.11
         if: steps.changed-python-files.outputs.any_changed == 'true'
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: 3.11
       - name: Install ruff
@@ -116,7 +116,7 @@ jobs:
 
       - name: Set up Python 3.11
         if: steps.changed-python-files.outputs.any_changed == 'true'
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: 3.11
       - name: Install ruff
