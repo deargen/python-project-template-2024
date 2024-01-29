@@ -104,6 +104,7 @@ pip3 install --user ruff
 
 ```json
 // settings.json
+// { .. } 안에 넣기
 
 "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff",

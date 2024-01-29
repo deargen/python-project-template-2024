@@ -45,6 +45,8 @@
 2. `pyproject.toml`에 바꿔야하는 부분 주석 되어있음. 바꿔 쓰기
 3. `requirements.txt`에는 fixed version을 적고, `pyproject.toml`의 패키지들은 dynamic version으로 하기
 4. `README.md`에 있는 badge들 URL (python-project-template-2024 -> 새 주소) 바꾸어 주어야 제대로 테스트 결과가 뜸.
-5. `.github` 폴더 복사한 뒤, 안에 있는 docs, deploy 할 때 gitlab 주소를 바꾸어야 함.
+5. `.github` 폴더 복사한 뒤,
+    - Dependabot은 필요없으면 수정 및 삭제 (새로운 버전 나오면 PR 만들어주는 봇)
+    - docs, deploy 할 때 필요한 gitlab 주소와 토큰은 Github 프로젝트 설정에서 Environment secrets / variable을 바꾸어야 함.
 6. `setup.py`는 그대로 복사해 두면 됨
 7. 테스트를 작성하지 않은 경우, `tests/` 폴더 안의 파일 전부 삭제하면 GitHub Actions에서 테스트 통과됨.

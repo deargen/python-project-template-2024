@@ -20,6 +20,8 @@ VSCode에 type checking 및 inlay hint 적용하기.
 - 너무 복잡해지면 안 좋으니 일단 functionReturnTypes, variableTypes 만 사용 (그 외 함수 argument의 type도 볼 수 있음)
 - setting.json에 아래 내용 추가
     ```json
+    // settings.json
+    // { .. } 안에 넣기
     "python.analysis.inlayHints.functionReturnTypes": true,
     "python.analysis.inlayHints.variableTypes": true,
     "python.analysis.typeCheckingMode": "basic",
