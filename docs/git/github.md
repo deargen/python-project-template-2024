@@ -46,11 +46,9 @@ mkdocs 자동 빌드를 후 GitLab으로 호스팅하기 위해서 환경변수 
 
 2. Environment secrets에 `GL_TOKEN`이라는 이름으로 GitLab token값 넣어두기.
 
-    ```md
-    💡 Token같은 민감한 데이터는 CI 코드에 넣지 말고 environment secrets을 사용합니다.
-
-    CI 파일에서 `environment: mkdocs` 추가 후 `${{ secrets.GL_TOKEN }}`과 같이 접근합니다.
-    ```
+    !!! danger
+        Token같은 민감한 데이터는 CI 코드에 넣지 말고 environment secrets을 사용합니다.  
+        CI 파일에서 `environment: mkdocs` 추가 후 `${{ secrets.GL_TOKEN }}`과 같이 접근합니다.
 
 3. Environment variables에 `GL_PROJECT` 이름으로 GitLab project 주소 넣어두기. (예: deargen-ai/python-project-template-docs)
 

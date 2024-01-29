@@ -14,8 +14,9 @@ nav:
       - Overview: index.md
       - Changelog: CHANGELOG.md
   - MkDocs:
-      - 미리보기: mkdocs.md
-      - 파이썬 referencing: mkdocstrings.md
+      - 미리보기: mkdocs/mkdocs.md
+      - 파이썬 referencing: mkdocs/mkdocstrings.md
+      - Admonition (Note 창): mkdocs/admonitions.md
   - Git:
       - 커밋 메시지: git/git_commit.md
       - GitHub 사용법: git/github.md
