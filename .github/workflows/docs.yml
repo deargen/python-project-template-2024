@@ -25,8 +25,7 @@ jobs:
       - name: Run mkdocs
         run: |
           set +e  # Do not exit shell on failure
-          export GL_PROJECT=deargen-ai/python-project-template-docs
-          export HTTPS_REMOTE="https://gitlab-ci-token:${{ secrets.GL_TOKEN }}@gitlab.com/$GL_PROJECT.git"
+          export HTTPS_REMOTE="https://gitlab-ci-token:${{ secrets.GL_TOKEN }}@gitlab.com/${{ env.GL_PROJECT }}.git"
 
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
