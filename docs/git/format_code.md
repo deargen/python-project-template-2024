@@ -1,6 +1,6 @@
 # 깃헙에서 즉시 formatting하기
 
-Formatting에 관련한 내용은 [Python tools / Formatters](../python_tools/formatters) 참고.
+Formatting에 관련한 내용은 [Python tools / Formatters](../python_tools/formatters.md) 참고.
 
 VSCode에서 자동 formatting을 적용할 수 있지만, 혹시 적용되지 않은 경우 GitHub Actions 메뉴에서 즉석으로 적용해 커밋 가능.
 
