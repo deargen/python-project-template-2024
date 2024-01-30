@@ -14,7 +14,7 @@ jobs:
           python-version: 3.11
       - name: Install ruff and requirements
         run: |
-          pip3 install ruff==0.1.0
+          pip3 install ruff==0.1.14
       - name: Run ruff
         run: |
           set +e  # Do not exit shell on ruff failure
