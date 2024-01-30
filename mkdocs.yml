@@ -21,6 +21,7 @@ nav:
       - 커밋 메시지: git/git_commit.md
       - GitHub 사용법: git/github.md
       - 버전 릴리즈: git/release_version.md
+      - Format code on GitHub: git/format_code.md
   - Python tools:
       - Formatters (black, isort): python_tools/formatters.md
       - Linter (ruff): python_tools/linter.md
