@@ -9,11 +9,12 @@ class TwoNumbers:
     num_2: int
 
     def add(self):
-        """Add two numbers together.
+        """
+        Add two numbers together.
 
         Examples:
             >>> TwoNumbers(1, 2).add()
-            4
+            3
 
             >>> TwoNumbers(1, -1).add()
             0

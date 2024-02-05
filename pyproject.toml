@@ -136,7 +136,7 @@ reportUnusedVariable = false
 # reportUnusedFunction = "warning"
 reportUndefinedVariable = false  # ruff handles this with F821
 
-pythonVersion = "3.10"
+pythonVersion = "3.11"
 pythonPlatform = "Linux"
 
 [tool.coverage.report]
