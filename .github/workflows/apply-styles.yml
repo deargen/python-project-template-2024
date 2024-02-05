@@ -5,7 +5,7 @@ on:
     inputs:
       ruff_select:
         description: 'ruff select'
-        default: I,D20,D21,UP00
+        default: I,D20,D21,UP00,UP032,UP034
       ruff_ignore:
         description: 'ruff ignore'
         default: D212
