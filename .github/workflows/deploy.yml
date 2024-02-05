@@ -52,10 +52,13 @@ jobs:
           tag: ${{ github.event.inputs.version_tag }}
           body: ${{ steps.changelog.outputs.changes }}
 
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: 3.11
+          python-version-file: pyproject.toml
+          cache: 'pip'
+          cache-dependency-path: |
+            requirements_docs.txt
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip

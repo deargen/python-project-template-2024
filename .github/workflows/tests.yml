@@ -12,10 +12,15 @@ jobs:
         shell: bash -el {0} # setup-miniconda requires bash
     steps:
       - uses: actions/checkout@v4
+      - run: |
+          pip3 install toml
+          echo "python_version=$(python3 scripts/get_python_version.py)" >> $GITHUB_OUTPUT
+        id: get-python-version
       - uses: conda-incubator/setup-miniconda@v3
         with:
           miniforge-version: latest
           activate-environment: test
+          python-version: ${{ steps.get-python-version.outputs.python_version }}
       - name: Cache Conda environment
         id: cache-conda
         uses: actions/cache@v4
@@ -34,7 +39,6 @@ jobs:
       - name: Install dependencies
         if: steps.cache-conda.outputs.cache-hit != 'true'
         run: |
-          mamba install python=3.11 -y
           python -m pip install --upgrade pip
           pip3 install -r requirements.txt -r requirements_dev.txt
           pip3 install -e .
@@ -72,10 +76,15 @@ jobs:
         shell: bash -el {0} # setup-miniconda requires bash
     steps:
       - uses: actions/checkout@v4
+      - run: |
+          pip3 install toml
+          echo "python_version=$(python3 scripts/get_python_version.py)" >> $GITHUB_OUTPUT
+        id: get-python-version
       - uses: conda-incubator/setup-miniconda@v3
         with:
           miniforge-version: latest
           activate-environment: test
+          python-version: ${{ steps.get-python-version.outputs.python_version }}
       - name: Cache Conda environment
         id: cache-conda
         uses: actions/cache@v4
@@ -94,7 +103,6 @@ jobs:
       - name: Install dependencies
         if: steps.cache-conda.outputs.cache-hit != 'true'
         run: |
-          mamba install python=3.11 -y
           python -m pip install --upgrade pip
           pip3 install -r requirements.txt -r requirements_dev.txt
           pip3 install -e .

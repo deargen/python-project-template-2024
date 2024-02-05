@@ -8,13 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Set up Python 3.11
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: 3.11
+          python-version-file: pyproject.toml
       - name: Install ruff and requirements
         run: |
-          pip3 install ruff==0.1.14
+          pip3 install -r <(cat requirements_dev.txt | grep '^ruff==')
       - name: Run ruff
         run: |
           set +e  # Do not exit shell on ruff failure

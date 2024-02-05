@@ -22,15 +22,15 @@ jobs:
           files: |
             **.py
 
-      - name: Set up Python 3.11
+      - name: Set up Python
         if: steps.changed-python-files.outputs.any_changed == 'true'
         uses: actions/setup-python@v5
         with:
-          python-version: 3.11
+          python-version-file: pyproject.toml
       - name: Install ruff
         if: steps.changed-python-files.outputs.any_changed == 'true'
         run: |
-          pip3 install ruff==0.1.14
+          pip3 install -r <(cat requirements_dev.txt | grep '^ruff==')
       - name: Run ruff
         if: steps.changed-python-files.outputs.any_changed == 'true'
         run: |
@@ -68,15 +68,15 @@ jobs:
           files: |
             **.py
 
-      - name: Set up Python 3.11
+      - name: Set up Python
         if: steps.changed-python-files.outputs.any_changed == 'true'
         uses: actions/setup-python@v5
         with:
-          python-version: 3.11
+          python-version-file: pyproject.toml
       - name: Install ruff
         if: steps.changed-python-files.outputs.any_changed == 'true'
         run: |
-          pip3 install ruff==0.1.14
+          pip3 install -r <(cat requirements_dev.txt | grep '^ruff==')
       - name: Run ruff isort
         if: steps.changed-python-files.outputs.any_changed == 'true'
         run: |
@@ -114,15 +114,15 @@ jobs:
           files: |
             **.py
 
-      - name: Set up Python 3.11
+      - name: Set up Python
         if: steps.changed-python-files.outputs.any_changed == 'true'
         uses: actions/setup-python@v5
         with:
-          python-version: 3.11
+          python-version-file: pyproject.toml
       - name: Install ruff
         if: steps.changed-python-files.outputs.any_changed == 'true'
         run: |
-          pip3 install ruff==0.1.14
+          pip3 install -r <(cat requirements_dev.txt | grep '^ruff==')
       - name: Run ruff
         if: steps.changed-python-files.outputs.any_changed == 'true'
         run: |

@@ -19,13 +19,11 @@ authors = [
 ]
 readme = "README.md"
 license = { file = "LICENSE" }
-requires-python = ">=3.10"
+requires-python = ">=3.11,<3.12"
 classifiers = [
   "Programming Language :: Python",
   "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
-  "Programming Language :: Python :: 3.12",
 ]
 keywords = ["development", "template"]
 dependencies = [
@@ -38,7 +36,7 @@ dev = ["black >= 23.9.0"]
 test = ["pytest >= 7.4.0", "pytest-cov >= 4.1.0"]
 
 [project.urls]
-"Homepage" = "https://github.com/innerverz-ai/python-project-template-2023" # OPTIONALLY CHANGE
+"Homepage" = "https://github.com/deargen/python-project-template-2024" # OPTIONALLY CHANGE
 
 [tool.setuptools.packages.find]
 where = ["src"]
