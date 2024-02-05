@@ -78,7 +78,6 @@ plugins:
       handlers:
         python:
           paths: [src] # search packages in the src folder
-  - markdown-exec
 
 extra:
   social:
