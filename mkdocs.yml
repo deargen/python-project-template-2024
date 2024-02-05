@@ -15,7 +15,9 @@ nav:
       - Changelog: CHANGELOG.md
   - Document Generator:
       - MkDocs: mkdocs/mkdocs.md
+      - GitLab Pages 세팅: mkdocs/gitlab_pages.md
       - 파이썬 referencing: mkdocs/mkdocstrings.md
+      - API Reference 페이지: mkdocs/api_reference.md
       - Admonition (Note 창): mkdocs/admonitions.md
   - Git:
       - 커밋 메시지: git/git_commit.md

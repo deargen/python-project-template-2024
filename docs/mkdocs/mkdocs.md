@@ -1,6 +1,9 @@
 # MkDocs 문서 생성
 
-[**MkDocs:**](https://www.mkdocs.org) 코드의 documentation을 모아 문서화하는 프로그램.
+- [**MkDocs:**](https://www.mkdocs.org) 코드의 documentation을 모아 문서화하는 프로그램.
+- mkdocs-material theme 사용
+- https://github.com/mkdocstrings/mkdocstrings repo의 mkdocs.yml 참고하면 좋음
+    - 결과 예시 [https://mkdocstrings.github.io/](https://mkdocstrings.github.io/)
 
 ## Project layout 및 사용법
 
@@ -17,7 +20,8 @@
 4. GitHub Actions를 통해 자동으로 document 생성 및 GitLab 호스팅 (`.github/workflows/docs.yml`)
     - Mike 플러그인을 이용해 생성된 문서의 버전 관리하게 되어있음. 없으면 최신버전 문서만 나옴.
 
-## Examples
+
+## Markdown Examples
 
 ### Code Annotation 
 
