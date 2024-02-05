@@ -37,7 +37,7 @@ jobs:
           git remote add gitlab "$HTTPS_REMOTE"
           git pull gitlab gl-pages:gl-pages
 
-          out=$(mike deploy --deploy-prefix public -r $HTTPS_REMOTE -p -b gl-pages -u latest 2> stderr.txt)
+          out=$(python -c "from mike.driver import main; main()" deploy --deploy-prefix public -r $HTTPS_REMOTE -p -b gl-pages -u latest 2> stderr.txt)
           exit_code=$?
           err=$(<stderr.txt)
 
