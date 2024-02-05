@@ -22,7 +22,6 @@ jobs:
           cache-dependency-path: |
             requirements_docs.txt
       - name: Install dependencies
-        if: steps.setup-python.outputs.cache-hit != 'true'
         run: |
           python -m pip install --upgrade pip
           pip3 install -r requirements_docs.txt
@@ -37,12 +36,11 @@ jobs:
           git remote add gitlab "$HTTPS_REMOTE"
           git pull gitlab gl-pages:gl-pages
 
-          python -m mkdocs
-          out=$(python -c "from mike.driver import main; main()" deploy --deploy-prefix public -r $HTTPS_REMOTE -p -b gl-pages -u latest 2> stderr.txt)
+          out=$(mike deploy --deploy-prefix public -r $HTTPS_REMOTE -p -b gl-pages -u latest 2> stderr.txt)
           exit_code=$?
           err=$(<stderr.txt)
 
-          python -c "from mike.driver import main; main()" set-default --deploy-prefix public -r $HTTPS_REMOTE -p -b gl-pages latest
+          mike set-default --deploy-prefix public -r $HTTPS_REMOTE -p -b gl-pages latest
 
           # Display the raw output in the step
           echo "${out}"

@@ -61,7 +61,6 @@ jobs:
           cache-dependency-path: |
             requirements_docs.txt
       - name: Install dependencies
-        if: steps.setup-python.outputs.cache-hit != 'true'
         run: |
           python -m pip install --upgrade pip
           pip3 install -r requirements_docs.txt
@@ -75,12 +74,12 @@ jobs:
           git pull gitlab gl-pages:gl-pages
 
           # Delete the latest page because we're going to make it as an alias to the latest version.
-          python -c "from mike.driver import main; main()" delete --deploy-prefix public -r $HTTPS_REMOTE -b gl-pages latest
-          out=$(python -c "from mike.driver import main; main()" deploy --deploy-prefix public -r $HTTPS_REMOTE -p -b gl-pages -u ${{ github.event.inputs.version_tag }} latest 2> stderr.txt)
+          mike delete --deploy-prefix public -r $HTTPS_REMOTE -b gl-pages latest
+          out=$(mike deploy --deploy-prefix public -r $HTTPS_REMOTE -p -b gl-pages -u ${{ github.event.inputs.version_tag }} latest 2> stderr.txt)
           exit_code=$?
           err=$(<stderr.txt)
 
-          python -c "from mike.driver import main; main()" set-default --deploy-prefix public -r $HTTPS_REMOTE -p -b gl-pages latest
+          mike set-default --deploy-prefix public -r $HTTPS_REMOTE -p -b gl-pages latest
 
           # Display the raw output in the step
           echo "${out}"
