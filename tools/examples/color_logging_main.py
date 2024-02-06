@@ -12,7 +12,8 @@ logger = logging.getLogger(__name__)
 
 
 def main():
-    """Log an info message and an exception.
+    """
+    Log an info message and an exception.
 
     Raises:
         Exception:
