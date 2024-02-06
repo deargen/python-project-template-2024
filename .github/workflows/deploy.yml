@@ -27,7 +27,7 @@ jobs:
         uses: requarks/changelog-action@v1.10.0
         with:
           includeInvalidCommits: true
-          excludeTypes: build,docs,style
+          excludeTypes: build,docs,style,other
           token: ${{ github.token }}
           tag: ${{ github.event.inputs.version_tag }}
           changelogFilePath: docs/CHANGELOG.md
