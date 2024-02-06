@@ -26,3 +26,19 @@
     "TEST:",
 ],
 ```
+
+## NeoVim settings
+
+1. [lazy.nvim](https://github.com/folke/lazy.nvim) 플러그인 매니저 설정 (설치)
+    - `init.lua` 파일에 설치 스크립트 복사하면 됨
+
+2. lazy.nvim에 [todo-comments.nvim](https://github.com/folke/todo-comments.nvim) 플러그인 추가 및 ruff 설정.
+
+    ```lua
+      {
+        "folke/todo-comments.nvim",
+        cmd = { "TodoTrouble", "TodoTelescope" },
+        event = { "BufReadPost", "BufNewFile" },
+        dependencies = "nvim-lua/plenary.nvim",
+      },
+    ```

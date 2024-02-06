@@ -116,6 +116,70 @@ pip3 install --user ruff
 "ruff.organizeImports": true,
 ```
 
+## NeoVim settings
+
+1. CLI commands 설치:  
+    ```bash
+    conda deactivate
+    pip3 install --user ruff
+    ```
+2. [lazy.nvim](https://github.com/folke/lazy.nvim) 플러그인 매니저 설정 (설치)
+    - `init.lua` 파일에 설치 스크립트 복사하면 됨
+
+3. lazy.nvim에 [conform.nvim](https://github.com/stevearc/conform.nvim) 플러그인 추가 및 ruff 설정.
+
+    ```lua
+      {
+        "stevearc/conform.nvim",
+        event = { "BufWritePre" },
+        cmd = { "ConformInfo" },
+        keys = {
+          {
+            -- Customize or remove this keymap to your liking
+            "<space>pf",
+            function()
+              require("conform").format { async = true, lsp_fallback = true }
+            end,
+            mode = "",
+            desc = "Format buffer",
+          },
+        },
+        -- Everything in opts will be passed to setup()
+        opts = {
+          -- Define your formatters
+          formatters_by_ft = {
+            python = { "ruff_fix", "ruff_format" },
+          },
+          -- Set up format-on-save
+          format_on_save = { timeout_ms = 2000, lsp_fallback = true },
+          -- Customize formatters
+          formatters = {
+            ruff_fix = {
+              -- I: isort
+              -- D20, D21: docstring
+              -- UP00: upgrade to python 3.10
+              -- UP032: f-string over str.format
+              -- UP034: extraneous parentheses
+              -- ruff:[RUF100]: unused noqa
+
+              -- IGNORED:
+              -- ruff:[D212]: multi-line docstring summary should start at the first line (in favor of D213, second line)
+              prepend_args = {
+                "--select",
+                "I,D20,D21,UP00,UP032,UP034",
+                "--ignore",
+                "D212",
+              },
+            },
+          },
+        },
+        init = function()
+          -- If you want the formatexpr, here is the place to set it
+          vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+        end,
+      },
+    ```
+
 ## CLI로 포매팅 하기
 
 ```bash
