@@ -51,7 +51,7 @@
 5. `.github` 폴더 복사한 뒤,
     - Dependabot은 필요없으면 수정 및 삭제 (새로운 버전 나오면 PR 만들어주는 봇)
     - GitLab에 document 호스팅용 새 repo를 만듦 (예: mlproject-docs)
-        - [GitLab Pages 설정](https://deargen-ai.gitlab.io/python-project-template-docs/latest/mkdocs/gitlab_pages.md) 문서 참고.
+        - [GitLab Pages 설정](https://deargen-ai.gitlab.io/python-project-template-docs/latest/mkdocs/gitlab_pages) 문서 참고.
     - docs, deploy 할 때 필요한 gitlab 주소와 토큰은 Github 프로젝트 설정에서 Environment secrets / variable을 바꾸어야 함.
 6. `setup.py`는 그대로 복사해 두면 됨
 7. 테스트를 작성하지 않은 경우, `tests/` 폴더 안의 파일 전부 삭제하면 GitHub Actions에서 테스트 통과됨.
