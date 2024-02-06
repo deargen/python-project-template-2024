@@ -80,6 +80,9 @@ plugins:
   - mkdocstrings:
       handlers:
         python:
+          options:
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
           paths: [src] # search packages in the src folder
 
 extra:

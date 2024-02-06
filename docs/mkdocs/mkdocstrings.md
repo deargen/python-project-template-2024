@@ -15,8 +15,8 @@
         show_root_heading: true
 
 
-
-## 만약 submodule까지 전부 포함하고 싶으시면 다음과 같이 작성합니다.
+---
+## Submodule까지 전부 포함하고 싶으시면 다음과 같이 작성합니다.
 
 ```md
 ::: mlproject
@@ -32,26 +32,30 @@
         show_submodules: true
 
 
+---
 ## 소스코드만 출력하고 싶으시면 다음과 같이 작성합니다.
 
 ```md
 ::: mlproject.two_numbers.TwoNumbers
     options:
+        show_docstring_description: false
         members: false
+        show_root_toc_entry: false
 ```
 
 출력은 아래와 같습니다.
 
 ::: mlproject.two_numbers.TwoNumbers
     options:
+        show_docstring_description: false
         members: false
+        show_root_toc_entry: false
 
 
 더 자세한 설명은 [mkdocstrings](https://mkdocstrings.github.io/usage/)를 참고하세요.
 
-
-
-# 문제 사항 해결
+---
+## 문제 사항 해결
 
 다음과 같은 에러가 날 경우, 파이썬 모듈을 찾지 못하는 것입니다.
 
@@ -64,4 +68,4 @@ ERROR   -  Error reading page 'reference/ppmi/pymol_visulize/pymol_plugin/index.
 ERROR   -  Could not collect 'ppmi.pymol_visulize.pymol_plugin'
 ```
 
-**Solution**: 각 폴더에 `__init__.py` 파일을 만드세요.
+**Solution**: 각 폴더에 `__init__.py` 파일을 만드세요. `scripts/gen_init_py.py` 파일을 실행하면 됩니다.
