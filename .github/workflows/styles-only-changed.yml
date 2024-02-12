@@ -130,7 +130,7 @@ jobs:
 
           nonzero_exit=0
           for file in ${{ steps.changed-python-files.outputs.all_changed_files }}; do
-            out=$(ruff check "$file" 2> ruff_stderr.txt)
+            out=$(ruff check --force-exclude "$file" 2> ruff_stderr.txt)
             exit_code=$?
             err=$(<ruff_stderr.txt)
 
@@ -153,7 +153,7 @@ jobs:
               echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
             fi
 
-            out=$(ruff check --diff "$file" 2> ruff_stderr.txt)
+            out=$(ruff check --diff --force-exclude "$file" 2> ruff_stderr.txt)
             err=$(<ruff_stderr.txt)
 
             if [[ -n "$out" ]]; then
