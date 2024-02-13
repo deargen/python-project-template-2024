@@ -96,6 +96,7 @@ ignore = [
   "PTH123",  # Path.open should be used instead of built-in open
   "RET504",  # Unnecessary assignment before `return` statement
   "PT006",   # Pytest parameterize style
+  "N812",    # Lowercase `functional` imported as non-lowercase `F` (import torch.nn.functional as F)
 ]
 
 [tool.ruff.lint.pydocstyle]
