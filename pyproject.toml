@@ -97,6 +97,7 @@ ignore = [
   "RET504",  # Unnecessary assignment before `return` statement
   "PT006",   # Pytest parameterize style
   "N812",    # Lowercase `functional` imported as non-lowercase `F` (import torch.nn.functional as F)
+  "NPY002",  # legacy numpy random
 ]
 
 [tool.ruff.lint.pydocstyle]
