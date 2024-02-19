@@ -39,8 +39,10 @@
 ::: mlproject.two_numbers.TwoNumbers
     options:
         show_docstring_description: false
+        show_docstring_examples: false
         members: false
-        show_root_toc_entry: false
+        show_bases: false
+        show_source: true
 ```
 
 출력은 아래와 같습니다.
@@ -48,13 +50,31 @@
 ::: mlproject.two_numbers.TwoNumbers
     options:
         show_docstring_description: false
+        show_docstring_examples: false
         members: false
-        show_root_toc_entry: false
+        show_bases: false
+        show_source: true
 
 
 더 자세한 설명은 [mkdocstrings](https://mkdocstrings.github.io/usage/)를 참고하세요.
 
 ---
+
+## 목차에서 Heading level을 바꾸고 싶다면 마크다운처럼 #을 쓰시면 됩니다.
+```md
+### ::: mlproject.two_numbers.TwoNumbers
+    options:
+        show_docstring_description: false
+        show_docstring_examples: false
+        members: false
+        show_bases: false
+        show_source: true
+```
+
+출력은 생략.
+
+---
+
 ## 문제 사항 해결
 
 다음과 같은 에러가 날 경우, 파이썬 모듈을 찾지 못하는 것입니다.
