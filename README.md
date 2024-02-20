@@ -31,16 +31,44 @@
 
 ## 파일 설명
 
-1. `.github` 폴더: 깃헙 액션 및 Issues 템플릿을 정의합니다.
-2. `src/mlproject` 폴더: `import mlproject` 해서 사용할 수 있는 함수나 클래스 등을 정의합니다.  
-    - 모델, 데이터셋 등
-3. `tools/` 폴더: import 하지 않고 바로 실행 가능한 파일들. (예: train.py)
-4. `tests/` 폴더: `pytest` 실행시 실행되는 함수들
-5. `scripts/` 폴더: 프로젝트와 직접 관련은 없고 프로젝트 관리를 위해 필요한 스크립트들
-6. `pyproject.toml`: 파이썬 프로젝트 일반 정보. `pip install -e .`으로 설치할 때 설치되는 dependencies는 물론, ruff등 외부 툴의 설정도 포함합니다.
-7. `requirements.txt`: 혹시 모를 dependency 오류를 방지하기 위해 현재 사용중인 static version 작성. `pyproject.toml`과 얼추 비슷해야함.
-8. `requirements_dev.txt`: 프로그램 사용자가 아닌 개발자에게 필요한 dependencies. `pyproject.toml`과 얼추 비슷해야함.
-9. `requirements_doc.txt`: mkdocs로 문서 생성할때 필요한 프로그램들
+```sh
+📂 .github/
+│ 📂 ISSUE_TEMPLATE/
+└ 📂 workflows/             # 깃헙 액션 자동화 배포 파이프라인
+  └ 📄 *.yml
+
+📂 src/
+└ 📂 mlproject/             # `import mlproject`해서 사용하는 함수나 클래스 등 정의하는 곳
+  │ 🐍 __init__.py
+  │ 🐍 _version.py          # git tag로 버전 정보를 읽는 versioneer 파일 (수정X)
+  └ 🐍 ...
+
+📂 tools/                   # import 하지 않고 바로 실행 가능한 파일들. (예: train.py)
+
+📂 tests/                   # `pytest` 실행시 실행되는 함수들
+
+📂 scripts/                 # 프로젝트와 직접 관련 X, but 프로젝트 관리를 위해 필요
+
+📂 deps/
+│ # 직접 수정 X
+│ * .requirements.in.sha256
+│ * .requirements_dev.in.sha256
+│ * .requirements_docs.in.sha256
+│
+│ # 혹시 모를 dependency 오류를 방지하기 위해 현재 사용중인 static version 작성. `pyproject.toml`과 얼추 비슷해야함.
+│ ✏️ requirements.in
+│ # 프로그램 사용자가 아닌 개발자에게 필요한 dependencies. `pyproject.toml`과 얼추 비슷해야함.
+│ ✏️ requirements_dev.in
+│ # mkdocs로 문서 생성할때 필요한 프로그램들
+│ ✏️ requirements_docs.in
+│
+│ # 직접 수정 X. in 파일에서 생성됨
+│ 🔒 requirements.txt
+│ 🔒 requirements_dev.txt
+└ 🔒 requirements_docs.txt
+
+⚙️ pyproject.toml            # 파이썬 프로젝트 일반 정보. `pip install -e .`으로 설치할 때 설치되는 dependencies는 물론, ruff등 외부 툴의 설정도 포함.
+```
 
 ## 템플릿 사용하기
 
@@ -49,7 +77,6 @@
 3. `requirements.txt`에는 fixed version을 적고, `pyproject.toml`의 패키지들은 dynamic version으로 하기
 4. `README.md`에 있는 badge들 URL (python-project-template-2024 -> 새 주소) 바꾸어 주어야 제대로 테스트 결과가 뜸.
 5. `.github` 폴더 복사한 뒤,
-    - Dependabot은 필요없으면 수정 및 삭제 (새로운 버전 나오면 PR 만들어주는 봇)
     - GitLab에 document 호스팅용 새 repo를 만듦 (예: mlproject-docs)
         - [GitLab Pages 설정](https://deargen-ai.gitlab.io/python-project-template-docs/latest/mkdocs/gitlab_pages) 문서 참고.
     - docs, deploy 할 때 필요한 gitlab 주소와 토큰은 Github 프로젝트 설정에서 Environment secrets / variable을 바꾸어야 함.
