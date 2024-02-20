@@ -19,7 +19,11 @@ class BaseConfig:
         from types import NoneType, UnionType
         from typing import get_args, get_origin
 
-        import rich
+        from rich.console import Console
+
+        # NOTE: without soft wrapping, it will line break depending on the width of the terminal.
+        # Which may cause the failure of the doctest.
+        console = Console(soft_wrap=True)
 
         # for key, value in asdict(self).items():
         for class_field in fields(self):
@@ -33,7 +37,8 @@ class BaseConfig:
                     # unless the value is None.
                     if NoneType in get_args(vartype) and env_var == "None":
                         setattr(self, key, None)
-                        rich.print(
+
+                        console.print(
                             f"{type(self).__name__}: Updating {key} from env var "
                             f"{self.envvar_prefix}{key}=None as NoneType"
                         )
@@ -52,7 +57,7 @@ class BaseConfig:
         import ast
         from typing import get_origin
 
-        import rich
+        from rich.console import Console
 
         if get_origin(vartype) is list:
             setattr(self, key, ast.literal_eval(value))
@@ -71,7 +76,8 @@ class BaseConfig:
         else:
             setattr(self, key, vartype(value))
 
-        rich.print(
+        console = Console(soft_wrap=True)
+        console.print(
             f"{type(self).__name__}: Updating {key} from env var "
             f"{self.envvar_prefix}{key}={value} as type {vartype}"
         )
@@ -79,11 +85,13 @@ class BaseConfig:
     def print_fields(self):
         from dataclasses import fields
 
-        import rich
+        from rich.console import Console
 
-        rich.print(f"{type(self).__name__}: Fields:")
+        console = Console(soft_wrap=True)
+
+        console.print(f"{type(self).__name__}: Fields:")
         for fld in fields(self):
-            rich.print(f"{fld.name}: {fld.type} = {fld.default!r}")
+            console.print(f"{fld.name}: {fld.type} = {fld.default!r}")
 
     def verify_unknown_env_vars(self):
         import os
