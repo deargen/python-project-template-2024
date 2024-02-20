@@ -5,8 +5,3 @@ updates:
     schedule:
       interval: 'daily'
     target-branch: 'master'
-  - package-ecosystem: 'pip'
-    directory: '/deps/'
-    schedule:
-      interval: 'weekly'
-    target-branch: 'master'
