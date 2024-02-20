@@ -6,7 +6,7 @@ updates:
       interval: 'daily'
     target-branch: 'master'
   - package-ecosystem: 'pip'
-    directory: '/'
+    directory: '/deps/'
     schedule:
       interval: 'weekly'
     target-branch: 'master'
