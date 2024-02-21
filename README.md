@@ -57,11 +57,11 @@
 │ 🛡️ .requirements_docs.in.sha256
 │
 │ # 혹시 모를 dependency 오류를 방지하기 위해 현재 사용중인 static version 작성. `pyproject.toml`과 얼추 비슷해야함.
-│ ✏️ requirements.in
+│ 🖊️ requirements.in
 │ # 프로그램 사용자가 아닌 개발자에게 필요한 dependencies. `pyproject.toml`과 얼추 비슷해야함.
-│ ✏️ requirements_dev.in
+│ 🖊️ requirements_dev.in
 │ # mkdocs로 문서 생성할때 필요한 프로그램들
-│ ✏️ requirements_docs.in
+│ 🖊️ requirements_docs.in
 │
 │ # 직접 수정 X. in 파일에서 생성됨
 │ 🔒 requirements.txt
