@@ -52,9 +52,9 @@
 
 📂 deps/
 │ # 직접 수정 X
-│ * .requirements.in.sha256
-│ * .requirements_dev.in.sha256
-│ * .requirements_docs.in.sha256
+│ 🛡️ .requirements.in.sha256
+│ 🛡️ .requirements_dev.in.sha256
+│ 🛡️ .requirements_docs.in.sha256
 │
 │ # 혹시 모를 dependency 오류를 방지하기 위해 현재 사용중인 static version 작성. `pyproject.toml`과 얼추 비슷해야함.
 │ ✏️ requirements.in
