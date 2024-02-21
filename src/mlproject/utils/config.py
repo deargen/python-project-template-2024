@@ -1,5 +1,5 @@
 # flake8: noqa: D100 D101 D102 D105 T201
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 
 @dataclass
