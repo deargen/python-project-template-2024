@@ -5,13 +5,13 @@ from clearml import PipelineDecorator
 
 @PipelineDecorator.component()
 def pipe1():
-    print("pipe1")
+    print("pipe1")  # noqa: T201
     time.sleep(10)
 
 
 @PipelineDecorator.component()
 def pipe2():
-    print("pipe2")
+    print("pipe2")  # noqa: T201
     time.sleep(20)
 
 

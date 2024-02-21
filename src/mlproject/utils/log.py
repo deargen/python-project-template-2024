@@ -1,7 +1,7 @@
 import inspect
 import logging
 import os
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 from rich.logging import RichHandler
@@ -89,7 +89,7 @@ def setup_logging(
     log_path_map = {
         "name": name_or_path,
         "version": __version__,
-        "date": datetime.now(),
+        "date": datetime.now(timezone.utc),
     }
 
     root_logger = logging.getLogger()
