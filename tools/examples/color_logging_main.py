@@ -1,8 +1,10 @@
 """Example main function template."""
 # 다른 import 하기 전, 맨 위에 추가하면 import 과정에서 생기는 에러들을 rich로 출력할 수 있습니다.
 import rich.traceback
+from dotenv import load_dotenv
 
 rich.traceback.install(show_locals=True)
+load_dotenv()
 
 import logging
 

@@ -1,2 +1,8 @@
 rich==13.7.0
 tqdm==4.66.2
+pillow
+matplotlib
+numpy
+slack-bolt
+clearml
+python-dotenv
