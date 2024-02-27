@@ -7,3 +7,4 @@ slack-bolt
 clearml
 python-dotenv
 ansi2html
+cairosvg
