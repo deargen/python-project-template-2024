@@ -191,6 +191,10 @@ def send_svg_as_pdf(
     Send an SVG file as a PDF file.
 
     Slack does not support previewing SVG files, so we convert it to PDF.
+
+    Issues:
+        The cairosvg library does not have good support for fonts, and if you `export_svg` from `rich.console`
+        then it will have font alignment issues, even if you install the Fira Code font on your system.
     """
     if client is None:
         client = default_client

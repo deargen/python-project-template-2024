@@ -12,6 +12,7 @@ import traceback
 
 from mlproject.utils import setup_logging
 from mlproject.utils.rich import (
+    CONSOLE_WIDTH,
     rich_traceback_to_html,
     rich_traceback_to_string,
     rich_traceback_to_svg,
@@ -43,7 +44,7 @@ if __name__ == "__main__":
         logger.exception("Exception occurred")
         slack_text = f"Exception occurred from host {socket.gethostname()}\n\n```{traceback.format_exc()}```"
 
-        tb = rich.traceback.Traceback(show_locals=True)
+        tb = rich.traceback.Traceback(show_locals=True, width=CONSOLE_WIDTH)
         tb_text = rich_traceback_to_string(tb)
         # NOTE: slack is stupid and having special characters in the file makes it think it's a binary file.
         # We wrap the text with triple quotes so slack thinks it's a python code and it shows the preview.

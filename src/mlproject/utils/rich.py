@@ -4,6 +4,8 @@ from ansi2html import Ansi2HTMLConverter
 from rich.console import Console
 from rich.traceback import Traceback
 
+CONSOLE_WIDTH = 130
+
 
 def rich_traceback_to_string(tb: Traceback) -> str:
     """
@@ -23,7 +25,7 @@ def rich_traceback_to_string(tb: Traceback) -> str:
         <BLANKLINE>
     """
     console = Console(
-        width=130,
+        width=CONSOLE_WIDTH,
         no_color=True,
         highlight=False,
         record=True,
@@ -48,7 +50,7 @@ def rich_traceback_to_html(tb: Traceback) -> str:
         </html>
         <BLANKLINE>
     """
-    console = Console(width=130, record=True, file=open(os.devnull, "w"))  # noqa: SIM115
+    console = Console(width=CONSOLE_WIDTH, record=True, file=open(os.devnull, "w"))  # noqa: SIM115
     console.print(tb)
 
     # NOTE: We don't use `console.export_html()` for the following reasons:
@@ -75,7 +77,7 @@ def rich_traceback_to_svg(tb: Traceback, title: str) -> str:
         </svg>
         <BLANKLINE>
     """
-    console = Console(width=130, record=True, file=open(os.devnull, "w"))  # noqa: SIM115
+    console = Console(width=CONSOLE_WIDTH, record=True, file=open(os.devnull, "w"))  # noqa: SIM115
     console.print(tb)
 
     return console.export_svg(title=title)
