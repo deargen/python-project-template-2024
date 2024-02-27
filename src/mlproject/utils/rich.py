@@ -44,8 +44,7 @@ def rich_traceback_to_html(tb: Traceback) -> str:
         ...     import rich.traceback
         ...     tb = rich.traceback.Traceback()
         ...     print(rich_traceback_to_html(tb))
-        <!DOCTYPE html>
-        ...
+        <!DOCTYPE HTML ...
         </html>
         <BLANKLINE>
     """

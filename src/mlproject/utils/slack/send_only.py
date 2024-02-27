@@ -206,7 +206,7 @@ def send_svg_as_pdf(
     if isinstance(svg_file, str | bytes):
         cairosvg.svg2pdf(bytestring=svg_file, write_to=pdf_buf)
     elif isinstance(svg_file, IOBase):
-        cairosvg.svg2pdf(file_obj=buf, write_to=pdf_buf)
+        cairosvg.svg2pdf(file_obj=svg_file, write_to=pdf_buf)
     else:
         raise ValueError(f"Unsupported type {type(svg_file)}")
 
