@@ -6,3 +6,4 @@ numpy
 slack-bolt
 clearml
 python-dotenv
+ansi2html

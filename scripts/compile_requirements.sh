@@ -35,6 +35,15 @@ for file in requirements*.in; do
 	echo "Generating lockfile $lockfile from $file"
     uv pip compile "$file" -o "$lockfile"
 	sha256sum "$file" > "$shafile"  # update hash
+
+	if [[ "$file" == "requirements.in" ]]; then
+		# If the main requirements file has changed, we need to update the requirements_dev.txt file as well
+		# This is because the main requirements file is included in the dev file
+		# We don't need to check if the dev file has changed, because it will be recompiled anyway
+		echo "Generating lockfile requirements_dev.txt from requirements_dev.in"
+		uv pip compile requirements_dev.in -o requirements_dev.txt
+		sha256sum requirements_dev.in > .requirements_dev.in.sha256
+	fi
 done
 
 # exit code 2 when all files are up to date

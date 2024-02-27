@@ -1,6 +1,7 @@
 import logging
 from io import BytesIO, IOBase
 
+import cairosvg
 from matplotlib.figure import Figure
 from PIL import Image
 from slack_sdk.web import WebClient
@@ -23,6 +24,7 @@ def warn_once():
 
 def send_text(
     text: str,
+    *,
     channel_id: str | None = None,
     client: WebClient | None = None,
 ):
@@ -38,7 +40,35 @@ def send_text(
     return client.chat_postMessage(channel=channel_id, text=text)
 
 
+def send_text_as_file(
+    *,
+    filename: str,
+    content: str,
+    title: str,
+    initial_comment: str | None = None,
+    channel_id: str | None = None,
+    client: WebClient | None = None,
+):
+    if client is None:
+        client = default_client
+    if client is None:
+        warn_once()
+        return None
+    if channel_id is None:
+        channel_id = default_channel_id
+        assert channel_id is not None
+
+    return client.files_upload_v2(
+        filename=filename,
+        content=content,
+        title=title,
+        channel=channel_id,
+        initial_comment=initial_comment,
+    )
+
+
 def send_divider(
+    *,
     channel_id: str | None = None,
     client: WebClient | None = None,
 ):
@@ -61,9 +91,11 @@ def send_divider(
 
 
 def send_file(
+    *,
     filename: str,
     file: str | bytes | IOBase,
     title: str,
+    snippet_type: str | None = None,
     initial_comment: str | None = None,
     channel_id: str | None = None,
     client: WebClient | None = None,
@@ -82,6 +114,7 @@ def send_file(
         file=file,
         title=title,
         channel=channel_id,
+        snippet_type=snippet_type,
         initial_comment=initial_comment,
     )
 
@@ -143,4 +176,46 @@ def send_pil_image(
         initial_comment=initial_comment,
         channel_id=channel_id,
         client=client,
+    )
+
+
+def send_svg_as_pdf(
+    filename: str,
+    svg_file: str | bytes | IOBase,
+    title: str,
+    initial_comment: str | None = None,
+    channel_id: str | None = None,
+    client: WebClient | None = None,
+):
+    """
+    Send an SVG file as a PDF file.
+
+    Slack does not support previewing SVG files, so we convert it to PDF.
+    """
+    if client is None:
+        client = default_client
+    if client is None:
+        warn_once()
+        return None
+    if channel_id is None:
+        channel_id = default_channel_id
+        assert channel_id is not None
+
+    pdf_buf = BytesIO()
+
+    if isinstance(svg_file, str | bytes):
+        cairosvg.svg2pdf(bytestring=svg_file, write_to=pdf_buf)
+    elif isinstance(svg_file, IOBase):
+        cairosvg.svg2pdf(file_obj=buf, write_to=pdf_buf)
+    else:
+        raise ValueError(f"Unsupported type {type(svg_file)}")
+
+    pdf_buf.seek(0)
+
+    return client.files_upload_v2(
+        filename=filename,
+        file=pdf_buf,
+        title=title,
+        channel=channel_id,
+        initial_comment=initial_comment,
     )
