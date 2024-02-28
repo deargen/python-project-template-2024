@@ -46,9 +46,6 @@ if __name__ == "__main__":
 
         tb = rich.traceback.Traceback(show_locals=True, width=CONSOLE_WIDTH)
         tb_text = rich_traceback_to_string(tb)
-        # NOTE: slack is stupid and having special characters in the file makes it think it's a binary file.
-        # We wrap the text with triple quotes so slack thinks it's a python code and it shows the preview.
-        tb_text = '""""""\n' + tb_text
         tb_html = rich_traceback_to_html(tb)
         tb_svg = rich_traceback_to_svg(
             tb, title=f"Exception occurred from host {socket.gethostname()}"
@@ -58,7 +55,14 @@ if __name__ == "__main__":
             filename="traceback.txt",
             content=tb_text,
             title="traceback.txt",
+            ensure_preview=True,
             initial_comment=slack_text,
+        )
+        send_text_as_file(
+            filename="traceback.html",
+            content=tb_svg,
+            title="traceback.svg (dear-viewer compatible)",
+            ensure_preview=True,
         )
         send_text_as_file(
             filename="traceback.html",

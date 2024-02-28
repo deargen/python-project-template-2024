@@ -45,10 +45,35 @@ def send_text_as_file(
     filename: str,
     content: str,
     title: str,
+    ensure_preview: bool = False,
     initial_comment: str | None = None,
     channel_id: str | None = None,
     client: WebClient | None = None,
 ):
+    """
+    Send a text as a file to the default client and channel (if not specified).
+
+    Slack is stupid and having special characters in the file makes it think it's a binary file.
+    If ensure_preview is True, then we append six double quotes at the beginning of the file so Slack thinks
+    it's a python file and will preview it.
+
+    Note:
+        `ensure_preview` is a hacky workaround and may not work in the future.
+
+    Issues:
+        `ensure_preview` only works with text-ish files (txt, html, etc.) and not with other files (pdf, png, svg).
+        You can set the `filename` to be like "file.html" for svg files with the `ensure_preview` flag.
+
+    Args:
+        filename:
+        content:
+        title:
+        ensure_preview: If True, append six double quotes at the beginning of the file to ensure that
+                        Slack will preview it.
+        initial_comment:
+        channel_id:
+        client:
+    """
     if client is None:
         client = default_client
     if client is None:
@@ -57,6 +82,9 @@ def send_text_as_file(
     if channel_id is None:
         channel_id = default_channel_id
         assert channel_id is not None
+
+    if ensure_preview:
+        content = '""""dear-viewer""""\n' + content
 
     return client.files_upload_v2(
         filename=filename,
