@@ -12,7 +12,7 @@ parentdir_prefix = "mlproject-"                  # CHANGE
 
 [project]
 name = "mlproject" # CHANGE
-dynamic = ["version"]
+dynamic = ["version", "dependencies", "optional-dependencies"]
 description = "Python project template" # OPTIONALLY CHANGE
 authors = [
   { name = "Kiyoon Kim" }, # OPTIONALLY CHANGE
@@ -26,17 +26,12 @@ classifiers = [
   "Programming Language :: Python :: 3.11",
 ]
 keywords = ["development", "template"]
-dependencies = [
-  "rich >= 13.6.0",
-  # ADD MORE LATER (torch, torchvision, ...)
-]
-
-[project.optional-dependencies]
-dev = ["black >= 23.9.0"]
-test = ["pytest >= 7.4.0", "pytest-cov >= 4.1.0"]
 
 [project.urls]
 "Homepage" = "https://github.com/deargen/python-project-template-2024" # OPTIONALLY CHANGE
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["deps/requirements.in"]}
 
 [tool.setuptools.packages.find]
 where = ["src"]

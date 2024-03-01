@@ -52,31 +52,34 @@
 📂 scripts/                 # 프로젝트와 직접 관련 X, but 프로젝트 관리를 위해 필요
 
 📂 deps/
-│ # 직접 수정 X
+│ # 직접 수정 X. scripts/compile_requirements.sh 실행시 생성됨.
 │ 🛡️ .requirements.in.sha256
 │ 🛡️ .requirements_dev.in.sha256
 │ 🛡️ .requirements_docs.in.sha256
 │
-│ # 혹시 모를 dependency 오류를 방지하기 위해 현재 사용중인 static version 작성. `pyproject.toml`과 얼추 비슷해야함.
+│ # 프로그램 사용자에게 필요한 dependencies.
 │ 🖊️ requirements.in
-│ # 프로그램 사용자가 아닌 개발자에게 필요한 dependencies. `pyproject.toml`과 얼추 비슷해야함.
+│ # 프로그램 사용자가 아닌 개발자에게 필요한 dependencies.
 │ 🖊️ requirements_dev.in
 │ # mkdocs로 문서 생성할때 필요한 프로그램들
 │ 🖊️ requirements_docs.in
+│ # NOTE: in 파일은 lock 파일이 아닌 패키지 dependency이므로 전부 dynamic version으로 작성해야함.
 │
 │ # 직접 수정 X. in 파일에서 생성됨
 │ 🔒 requirements.txt
 │ 🔒 requirements_dev.txt
 └ 🔒 requirements_docs.txt
 
-⚙️ pyproject.toml            # 파이썬 프로젝트 일반 정보. `pip install -e .`으로 설치할 때 설치되는 dependencies는 물론, ruff등 외부 툴의 설정도 포함.
+⚙️ pyproject.toml            # 파이썬 프로젝트 통합 정보. ruff등 외부 툴의 설정도 포함.
 ```
 
 ## 템플릿 사용하기
 
 1. `src/mlproject` 폴더 이름 원하는 걸로 바꾸기 (`import mlproject` 할 때 이름)
 2. `pyproject.toml`에 바꿔야하는 부분 주석 되어있음. 바꿔 쓰기
-3. `requirements.txt`에는 fixed version을 적고, `pyproject.toml`의 패키지들은 dynamic version으로 하기
+3. `requirements*.txt`에는 fixed version을 적고, `requirements*.in`의 패키지들은 dynamic version으로 하기
+    - `pyproject.toml`에는 `requirements*.in` 파일을 참조하도록 설정되어 있음.
+    - 패키지의 dependency는 dynamic하지만 연구팀 내에서는 fixed version (`requirements*.txt`)를 사용하는 것이 좋음.
 4. `README.md`에 있는 badge들 URL (python-project-template-2024 -> 새 주소) 바꾸어 주어야 제대로 테스트 결과가 뜸.
 5. `.github` 폴더 복사한 뒤,
     - GitLab에 document 호스팅용 새 repo를 만듦 (예: mlproject-docs)
