@@ -88,6 +88,8 @@ for file in requirements*.in; do
 done
 
 for file in "${files_changed[@]}"; do
+	lockfile="${file%.in}.txt"  # requirements.txt
+	shafile=".$file.sha256"  # .requirements.in.sha256
 	echo "🔒 Generating lockfile $lockfile from $file"
     uv pip compile "$file" -o "$lockfile" > /dev/null
 	sha256sum "$file" > "$shafile"  # update hash
