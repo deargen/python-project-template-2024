@@ -1,7 +1,11 @@
 import os
 from pathlib import Path
 
+from dotenv import load_dotenv
+
 from . import _version
+
+load_dotenv()
 
 __version__ = _version.get_versions()["version"]
 

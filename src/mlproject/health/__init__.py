@@ -1,15 +1,14 @@
 """Check health of the installation."""
 
+import logging
 import os
 
-from rich import print
-from rich.console import Console
-
 from .. import DATA_DIR
+from .font import verify_fonts_bool
 from .slack import check_env as slack_check_env
 from .slack import check_send_text as slack_check_send_text
 
-console = Console()
+logger = logging.getLogger(__name__)
 
 
 def check_binaries():
@@ -19,16 +18,16 @@ def check_binaries():
 
 def check_env():
     """Check environment variables."""
-    data_dir = os.environ.get("MLPROJECT_DATA_DIR")
+    ppmi_data_dir = os.environ.get("MLPROJECT_DATA_DIR")
 
-    if data_dir is None or data_dir == "":
-        print(
-            "🤢 Please set the environment variable MLPROJECT_DATA_DIR to the path of the data directory."
+    if ppmi_data_dir is None:
+        logger.warning(
+            "🤒 Please set the environment variable MLPROJECT_DATA_DIR to the path of the data directory.\n"
+            f"Otherwise, the default {DATA_DIR} will be used."
         )
-        print(f"Otherwise, the default {DATA_DIR} will be used.")
         return False
 
-    print(f"✅ MLPROJECT_DATA_DIR is set to {data_dir}")
+    logger.info(f"✅ MLPROJECT_DATA_DIR is set to {ppmi_data_dir}")
     return True
 
 
@@ -39,9 +38,11 @@ def main():
     successes.append(slack_check_env())
     successes.append(slack_check_send_text())
 
+    successes.append(verify_fonts_bool())
+
     if all(successes):
-        print()
-        print("💪 You are ready to go!")
+        logger.info("")
+        logger.info("💪 You are ready to go!")
 
 
 if __name__ == "__main__":

@@ -22,13 +22,14 @@
 ## 돌려 보기
 
 1. (Optional) `pip3 install --user uv` 해서 pip 대신 `uv pip` 사용하면 더 빠름.
-2. `uv pip install -r deps/requirements.txt`, `uv pip install -e .`으로 dependencies 및 mlproject 패키지 설치
+2. `uv pip install -r deps/requirements.txt`, `uv pip install -e .`, `bash scripts/install_binaries.sh` 으로 dependencies 및 mlproject 패키지 설치
 3. template.env 파일을 .env로 복사한 후 token 등 내용 수정.
-4. `python tools/examples/color_logging_main.py` 실행해보기. 로깅 내용은 `data/logs` 폴더 안에 기록됨.
-5. `uv pip install -r deps/requirements_dev.txt` 으로 pytest 등 개발자용 패키지도 설치가능
-6. `pytest` 커맨드로 테스트 실행해보기.
+4. `python -m mlproject.health` 실행해서 환경 설정이 잘 되었는지 확인.
+5. `python tools/examples/color_logging_main.py` 실행해보기. 로깅 내용은 `data/logs` 폴더 안에 기록됨.
+6. `uv pip install -r deps/requirements_dev.txt` 으로 pytest 등 개발자용 패키지도 설치가능
+7. `pytest` 커맨드로 테스트 실행해보기.
     - `python scripts/run_doctest.py` 커맨드로 doctest 실행해보기.
-7. `import mlproject; print(mlproject.__version__)` 해보면 `0.1.0+4.g75bbed7.dirty` 이런식으로 나옴.  
+8. `import mlproject; print(mlproject.__version__)` 해보면 `0.1.0+4.g75bbed7.dirty` 이런식으로 나옴.  
     - 0.1.0 버전 이후 4개의 커밋이란 뜻. 그리고 커밋되지 않은 수정사항이 있는 상태이면 dirty버전임.
 
 ## 파일 설명
