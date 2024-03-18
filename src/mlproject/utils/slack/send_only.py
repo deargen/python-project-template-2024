@@ -233,24 +233,12 @@ def send_svg_as_pdf(
         channel_id = default_channel_id
         assert channel_id is not None
 
-    # svg_buf = BytesIO()
     pdf_buf = BytesIO()
 
     if isinstance(svg_file, str | bytes):
         cairosvg.svg2pdf(bytestring=svg_file, write_to=pdf_buf)
-        # raise NotImplementedError("cairosvg does not support bytestring")
-        # str to bytes
-        # if isinstance(svg_file, str):
-        #     svg_file = svg_file.encode("utf-8")
-        # svg_buf.write(svg_file)
-        # svg_buf.seek(0)
-        # drawing = svg2rlg(svg_buf)
-        # renderPDF.drawToFile(drawing, pdf_buf)
-
     elif isinstance(svg_file, IOBase):
-        # cairosvg.svg2pdf(file_obj=svg_file, write_to=pdf_buf)
-        drawing = svg2rlg(svg_file)
-        renderPDF.drawToFile(drawing, pdf_buf)
+        cairosvg.svg2pdf(file_obj=svg_file, write_to=pdf_buf)
     else:
         raise ValueError(f"Unsupported type {type(svg_file)}")
 
