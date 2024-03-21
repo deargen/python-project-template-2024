@@ -35,6 +35,9 @@
 ## 파일 설명
 
 ```sh
+📂 .vscode/
+└ 📄 extensions.json        # VSCode에서 사용하는 확장 프로그램 목록.
+
 📂 .github/
 │ 📂 ISSUE_TEMPLATE/
 └ 📂 workflows/             # 깃헙 액션 자동화 배포 파이프라인
