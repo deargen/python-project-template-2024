@@ -28,9 +28,7 @@ def hello_message(body: dict[str, Any], say):
 
 @app.message("cat")
 def cat_photo(body: dict[str, Any], client: WebClient):
-    """
-    Use `client` over `say` if you want to send more complex messages.
-    """
+    """Use `client` over `say` if you want to send more complex messages."""
     logger.info("Received a cat command")
     logger.info(f"body: {pformat(body)}")
 
@@ -50,9 +48,7 @@ def cat_photo(body: dict[str, Any], client: WebClient):
 
 @app.command("/echo")
 def echo_command(ack, body, say):
-    """
-    Command needs `ack()` to be called.
-    """
+    """Command needs `ack()` to be called."""
     logger.info("Received an echo command")
     logger.info(f"body: {pformat(body)}")
     ack()

@@ -58,9 +58,7 @@ def rich_print_to_html(objs: Iterable[Any], backend="ansi2html") -> str:
 
 
 def rich_print_to_svg(objs: Iterable[Any], title: str) -> str:
-    """
-    Convert a rich console print to an svg string.
-    """
+    """Convert a rich console print to an svg string."""
     console = Console(width=CONSOLE_WIDTH, record=True, file=open(os.devnull, "w"))  # noqa: SIM115
 
     if not isinstance(objs, Iterable):
