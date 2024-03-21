@@ -20,15 +20,40 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 # NOTE: sha256sum will put the file path in the hash file.
 # To simplify the directory (using relative paths), we change the working directory.
-cd "$SCRIPT_DIR/../deps" || exit 1
+cd "$SCRIPT_DIR/../deps" || { echo "Failure"; exit 1; }
+
+if [[ $OSTYPE == "darwin"* ]]; then
+	mkdir -p mac
+fi
 
 shopt -s globstar
+
+function get_shafile() {
+	local file=$1
+	if [[ $OSTYPE == "darwin"* ]]; then
+		echo "mac/.$file.sha256"
+	else
+		# .requirements.in.sha256
+		echo ".$file.sha256"
+	fi
+}
+
+function get_lockfile() {
+	local file=$1
+	if [[ $OSTYPE == "darwin"* ]]; then
+		echo "mac/${file%.in}.txt"
+	else
+		# requirements.txt
+		echo "${file%.in}.txt"
+	fi
+}
 
 function file_content_changed() {
 	# Check if the file has changed since the last time it was compiled, using the hash file.
 	# NOTE: returns 0 if the file has changed
 	local file=$1
-	local shafile=".$file.sha256"
+	local shafile
+	shafile=$(get_shafile "$file")
 	if [[ -f "$shafile" ]] && sha256sum -c "$shafile" &> /dev/null; then
 		return 1
 	fi
@@ -74,8 +99,8 @@ for file in requirements*.in; do
 	# $file: requirements.in
 	((num_files++))
 
-	lockfile="${file%.in}.txt"  # requirements.txt
-	shafile=".$file.sha256"  # .requirements.in.sha256
+	lockfile=$(get_lockfile "$file")
+	shafile=$(get_shafile "$file")
 	# Process only changed files by comparing hash
 	if [[ -f "$lockfile" ]]; then
 		if ! deps_changed "$file"; then
@@ -88,8 +113,8 @@ for file in requirements*.in; do
 done
 
 for file in "${files_changed[@]}"; do
-	lockfile="${file%.in}.txt"  # requirements.txt
-	shafile=".$file.sha256"  # .requirements.in.sha256
+	lockfile=$(get_lockfile "$file")
+	shafile=$(get_shafile "$file")
 	echo "🔒 Generating lockfile $lockfile from $file"
     uv pip compile "$file" -o "$lockfile" > /dev/null
 	sha256sum "$file" > "$shafile"  # update hash
