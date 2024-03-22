@@ -60,6 +60,7 @@ main을 보면, 몇 가지 parameter를 argparse에 넣으면 그에 맞게 conf
         --max_train_steps=800 \
         --push_to_hub
     ```
+3. 중간의 command-line argument를 지우면 프로그램이 동작하지 않거나 이후 argument들이 무시되는 경우가 있음.
 
 ### 나쁜 예시 2 (yaml 방식)
 
