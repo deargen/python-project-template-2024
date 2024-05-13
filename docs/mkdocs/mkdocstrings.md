@@ -38,8 +38,19 @@
 ```md
 ::: mlproject.two_numbers.TwoNumbers
     options:
+        show_docstring_attributes: false
+        show_docstring_functions: false
+        show_docstring_classes: false
+        show_docstring_modules: false
         show_docstring_description: false
         show_docstring_examples: false
+        show_docstring_other_parameters: false
+        show_docstring_parameters: false
+        show_docstring_raises: false
+        show_docstring_receives: false
+        show_docstring_returns: false
+        show_docstring_warns: false
+        show_docstring_yields: false
         members: false
         show_bases: false
         show_source: true
@@ -49,8 +60,19 @@
 
 ::: mlproject.two_numbers.TwoNumbers
     options:
+        show_docstring_attributes: false
+        show_docstring_functions: false
+        show_docstring_classes: false
+        show_docstring_modules: false
         show_docstring_description: false
         show_docstring_examples: false
+        show_docstring_other_parameters: false
+        show_docstring_parameters: false
+        show_docstring_raises: false
+        show_docstring_receives: false
+        show_docstring_returns: false
+        show_docstring_warns: false
+        show_docstring_yields: false
         members: false
         show_bases: false
         show_source: true
