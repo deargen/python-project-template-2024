@@ -38,3 +38,14 @@ GitHub repo의 main branch로 push 한 경우, GitHub CI에서 GitLab으로 push
 5. 프로젝트에서 `Settings -> Access Tokens -> Add new token` 에서 expiration 1년 뒤로 설정, `write repository` scope, Maintainer role 설정 후 토큰 생성
     - Maintainer가 아닐 경우, 기본 branch는 protected branch로 설정되어 push하지 못할 수 있음. 아니면 developer로 설정 후 protected branch 해지하기.
 6. 프로젝트에서 `Manage -> Members -> Invite a group -> deargen`을 Guest로 추가하면 디어젠 모든 분들에게 읽기 권한이 주어짐.
+
+
+## GitHub repo 세팅
+
+1. GitHub repo로 가서 `Setting -> Secrets and variables -> Actions` 에서 `New repository secret` 추가
+    - Name: `GL_TOKEN`
+    - Secret: 위에서 생성한 GitLab access token
+2. `Setting -> Secrets and variables -> Actions` 에서 Variables 탭으로 간 뒤 `GL_PROJECT`를 추가
+    - Name: `GL_PROJECT`
+    - Value: GitLab docs repo 이름 (예: deargen-ai/ppmi-docs)
+    - 주의: push할 repo의 이름이고 document URL이 아님.
