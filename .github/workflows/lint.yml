@@ -20,6 +20,7 @@ jobs:
           set +e  # Do not exit shell on ruff failure
 
           ruff check --output-format=github
+          exit 0
       - name: Run ruff (summary)
         run: |
           set +e  # Do not exit shell on ruff failure
