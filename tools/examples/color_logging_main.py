@@ -1,4 +1,5 @@
 """Example main function template."""
+
 import rich.traceback
 from dotenv import load_dotenv
 
