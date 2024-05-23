@@ -33,7 +33,6 @@ def main():
     Raises:
         Exception:
     """
-
     logger.info("This is an info message")
     raise Exception("This is an exception")
 
