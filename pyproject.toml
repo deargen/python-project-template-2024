@@ -95,6 +95,7 @@ ignore = [
   "N812",    # Lowercase `functional` imported as non-lowercase `F` (import torch.nn.functional as F)
   "NPY002",  # legacy numpy random
   "UP017",   # datetime.timezone.utc -> datetime.UTC
+  "SIM108",  # use ternary operator instead of if-else
 ]
 
 [tool.ruff.lint.pydocstyle]
