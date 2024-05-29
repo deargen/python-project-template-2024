@@ -61,7 +61,9 @@ select = [
   "UP",   # pyupgrade
   "SIM",  # simplify
   "RUF",  # ruff-specific
-  "RET",  # return
+  "RET501",  # return
+  "RET502",  # return
+  "RET503",  # return
   "PTH",  # path
   "NPY",  # numpy
   "PYI",  # type stubs for pyright/pylance
@@ -89,7 +91,6 @@ ignore = [
   "D417",    # require documentation for every function parameter.
   "D401",    # require an imperative mood for all docstrings.
   "PTH123",  # Path.open should be used instead of built-in open
-  "RET504",  # Unnecessary assignment before `return` statement
   "PT006",   # Pytest parameterize style
   "N812",    # Lowercase `functional` imported as non-lowercase `F` (import torch.nn.functional as F)
   "NPY002",  # legacy numpy random
