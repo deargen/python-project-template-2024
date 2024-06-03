@@ -1,7 +1,11 @@
 import os
 from pathlib import Path
 
+from dotenv import load_dotenv
+
 from . import _version
+
+load_dotenv()
 
 __version__ = _version.get_versions()["version"]
 
@@ -14,6 +18,8 @@ if default_log_level is None:
 PROJECT_DIR = Path(__file__).parent.parent.parent
 
 DATA_DIR = os.environ.get("MLPROJECT_DATA_DIR")
-DATA_DIR = PROJECT_DIR / "data" if DATA_DIR is None else Path(DATA_DIR)
+DATA_DIR = (
+    PROJECT_DIR / "data" if DATA_DIR is None or DATA_DIR == "" else Path(DATA_DIR)
+)
 
 LOG_DIR = DATA_DIR / "logs"

@@ -12,7 +12,7 @@ parentdir_prefix = "mlproject-"                  # CHANGE
 
 [project]
 name = "mlproject" # CHANGE
-dynamic = ["version"]
+dynamic = ["version", "dependencies", "optional-dependencies"]
 description = "Python project template" # OPTIONALLY CHANGE
 authors = [
   { name = "Kiyoon Kim" }, # OPTIONALLY CHANGE
@@ -26,17 +26,12 @@ classifiers = [
   "Programming Language :: Python :: 3.11",
 ]
 keywords = ["development", "template"]
-dependencies = [
-  "rich >= 13.6.0",
-  # ADD MORE LATER (torch, torchvision, ...)
-]
-
-[project.optional-dependencies]
-dev = ["black >= 23.9.0"]
-test = ["pytest >= 7.4.0", "pytest-cov >= 4.1.0"]
 
 [project.urls]
 "Homepage" = "https://github.com/deargen/python-project-template-2024" # OPTIONALLY CHANGE
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["deps/requirements.in"]}
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -66,7 +61,9 @@ select = [
   "UP",   # pyupgrade
   "SIM",  # simplify
   "RUF",  # ruff-specific
-  "RET",  # return
+  "RET501",  # return
+  "RET502",  # return
+  "RET503",  # return
   "PTH",  # path
   "NPY",  # numpy
   "PYI",  # type stubs for pyright/pylance
@@ -94,8 +91,11 @@ ignore = [
   "D417",    # require documentation for every function parameter.
   "D401",    # require an imperative mood for all docstrings.
   "PTH123",  # Path.open should be used instead of built-in open
-  "RET504",  # Unnecessary assignment before `return` statement
   "PT006",   # Pytest parameterize style
+  "N812",    # Lowercase `functional` imported as non-lowercase `F` (import torch.nn.functional as F)
+  "NPY002",  # legacy numpy random
+  "UP017",   # datetime.timezone.utc -> datetime.UTC
+  "SIM108",  # use ternary operator instead of if-else
 ]
 
 [tool.ruff.lint.pydocstyle]

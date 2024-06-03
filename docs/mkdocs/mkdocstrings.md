@@ -15,8 +15,8 @@
         show_root_heading: true
 
 
-
-## 만약 submodule까지 전부 포함하고 싶으시면 다음과 같이 작성합니다.
+---
+## Submodule까지 전부 포함하고 싶으시면 다음과 같이 작성합니다.
 
 ```md
 ::: mlproject
@@ -32,26 +32,72 @@
         show_submodules: true
 
 
+---
 ## 소스코드만 출력하고 싶으시면 다음과 같이 작성합니다.
 
 ```md
 ::: mlproject.two_numbers.TwoNumbers
     options:
+        show_docstring_attributes: false
+        show_docstring_functions: false
+        show_docstring_classes: false
+        show_docstring_modules: false
+        show_docstring_description: false
+        show_docstring_examples: false
+        show_docstring_other_parameters: false
+        show_docstring_parameters: false
+        show_docstring_raises: false
+        show_docstring_receives: false
+        show_docstring_returns: false
+        show_docstring_warns: false
+        show_docstring_yields: false
         members: false
+        show_bases: false
+        show_source: true
 ```
 
 출력은 아래와 같습니다.
 
 ::: mlproject.two_numbers.TwoNumbers
     options:
+        show_docstring_attributes: false
+        show_docstring_functions: false
+        show_docstring_classes: false
+        show_docstring_modules: false
+        show_docstring_description: false
+        show_docstring_examples: false
+        show_docstring_other_parameters: false
+        show_docstring_parameters: false
+        show_docstring_raises: false
+        show_docstring_receives: false
+        show_docstring_returns: false
+        show_docstring_warns: false
+        show_docstring_yields: false
         members: false
+        show_bases: false
+        show_source: true
 
 
 더 자세한 설명은 [mkdocstrings](https://mkdocstrings.github.io/usage/)를 참고하세요.
 
+---
 
+## 목차에서 Heading level을 바꾸고 싶다면 마크다운처럼 #을 쓰시면 됩니다.
+```md
+### ::: mlproject.two_numbers.TwoNumbers
+    options:
+        show_docstring_description: false
+        show_docstring_examples: false
+        members: false
+        show_bases: false
+        show_source: true
+```
 
-# 문제 사항 해결
+출력은 생략.
+
+---
+
+## 문제 사항 해결
 
 다음과 같은 에러가 날 경우, 파이썬 모듈을 찾지 못하는 것입니다.
 
@@ -64,4 +110,4 @@ ERROR   -  Error reading page 'reference/ppmi/pymol_visulize/pymol_plugin/index.
 ERROR   -  Could not collect 'ppmi.pymol_visulize.pymol_plugin'
 ```
 
-**Solution**: 각 폴더에 `__init__.py` 파일을 만드세요.
+**Solution**: 각 폴더에 `__init__.py` 파일을 만드세요. `scripts/gen_init_py.py` 파일을 실행하면 됩니다.

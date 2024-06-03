@@ -30,7 +30,7 @@ jobs:
       - name: Install ruff
         if: steps.changed-python-files.outputs.any_changed == 'true'
         run: |
-          pip3 install -r <(cat requirements_dev.txt | grep '^ruff==')
+          pip3 install -r <(cat deps/requirements_dev.txt | grep '^ruff==')
       - name: Run ruff
         if: steps.changed-python-files.outputs.any_changed == 'true'
         run: |
@@ -76,7 +76,7 @@ jobs:
       - name: Install ruff
         if: steps.changed-python-files.outputs.any_changed == 'true'
         run: |
-          pip3 install -r <(cat requirements_dev.txt | grep '^ruff==')
+          pip3 install -r <(cat deps/requirements_dev.txt | grep '^ruff==')
       - name: Run ruff isort
         if: steps.changed-python-files.outputs.any_changed == 'true'
         run: |
@@ -122,7 +122,7 @@ jobs:
       - name: Install ruff
         if: steps.changed-python-files.outputs.any_changed == 'true'
         run: |
-          pip3 install -r <(cat requirements_dev.txt | grep '^ruff==')
+          pip3 install -r <(cat deps/requirements_dev.txt | grep '^ruff==')
       - name: Run ruff
         if: steps.changed-python-files.outputs.any_changed == 'true'
         run: |
@@ -130,7 +130,7 @@ jobs:
 
           nonzero_exit=0
           for file in ${{ steps.changed-python-files.outputs.all_changed_files }}; do
-            out=$(ruff check "$file" 2> ruff_stderr.txt)
+            out=$(ruff check --force-exclude "$file" 2> ruff_stderr.txt)
             exit_code=$?
             err=$(<ruff_stderr.txt)
 
@@ -153,7 +153,7 @@ jobs:
               echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
             fi
 
-            out=$(ruff check --diff "$file" 2> ruff_stderr.txt)
+            out=$(ruff check --diff --force-exclude "$file" 2> ruff_stderr.txt)
             err=$(<ruff_stderr.txt)
 
             if [[ -n "$out" ]]; then
