@@ -12,6 +12,7 @@ Examples:
 
     >>> handler.start()  # doctest: +SKIP
 """
+
 import os
 
 from slack_bolt.adapter.socket_mode import SocketModeHandler

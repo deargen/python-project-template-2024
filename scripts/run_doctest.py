@@ -6,6 +6,7 @@ It will run all modules in `src/` directory and print the result of doctest.
 It also has to load all modules in `src/` directory, so it will run all modules and test if they can be imported.
 So if any module doesn't run (e.g. syntax error, import error, etc.), it will also fail.
 """
+
 # flake8: noqa: T201
 import doctest
 import importlib
