@@ -7,6 +7,10 @@ on:
         description: 'Version tag'
         required: true
         default: v0.1.0
+      dry_run:
+        type: boolean
+        description: 'Dry run'
+        default: false
 
 jobs:
   deploy:
@@ -22,7 +26,24 @@ jobs:
           git tag -a ${{ github.event.inputs.version_tag }} -m ${{ github.event.inputs.version_tag }}
           git push --tags
 
+      - name: (dry-run) get CHANGELOG
+        if: ${{ github.event.inputs.dry_run }}
+        id: changelog-dry-run
+        uses: requarks/changelog-action@v1.10.2
+        with:
+          includeInvalidCommits: true
+          excludeTypes: build,docs,style,other
+          token: ${{ github.token }}
+          tag: ${{ github.event.inputs.version_tag }}
+
+      - name: (dry-run) Display CHANGELOG
+        if: ${{ github.event.inputs.dry_run }}
+        run: |
+          echo "${{ steps.changelog-dry-run.outputs.changes }}"
+          echo "${{ steps.changelog-dry-run.outputs.changes }}" > "$GITHUB_STEP_SUMMARY"
+
       - name: Update CHANGELOG
+        if: ${{ !github.event.inputs.dry_run }}
         id: changelog
         uses: requarks/changelog-action@v1.10.2
         with:
@@ -33,6 +54,7 @@ jobs:
           changelogFilePath: docs/CHANGELOG.md
 
       - name: Commit docs/CHANGELOG.md and update tag
+        if: ${{ !github.event.inputs.dry_run }}
         run: |
           git tag -d ${{ github.event.inputs.version_tag }}
           git push origin --delete ${{ github.event.inputs.version_tag }}
@@ -43,6 +65,7 @@ jobs:
           git push --tags
 
       - name: Create Release
+        if: ${{ !github.event.inputs.dry_run }}
         uses: ncipollo/release-action@v1.13.0
         with:
           allowUpdates: true
@@ -53,11 +76,13 @@ jobs:
           body: ${{ steps.changelog.outputs.changes }}
 
       - name: Set up Python
+        if: ${{ !github.event.inputs.dry_run }}
         uses: actions/setup-python@v5
         id: setup-python
         with:
           python-version-file: pyproject.toml
       - name: Run mkdocs
+        if: ${{ !github.event.inputs.dry_run }}
         run: |
           pip3 install uv
           uv venv
@@ -72,21 +97,18 @@ jobs:
           git pull gitlab gl-pages:gl-pages
 
           # Delete the latest page because we're going to make it as an alias to the latest version.
-          mike delete --deploy-prefix public -r $HTTPS_REMOTE -b gl-pages latest
-          out=$(mike deploy --deploy-prefix public -r $HTTPS_REMOTE -p -b gl-pages -u ${{ github.event.inputs.version_tag }} latest 2> stderr.txt)
+          mike delete --deploy-prefix public -r "$HTTPS_REMOTE" -b gl-pages latest
+          out=$(mike deploy --deploy-prefix public -r "$HTTPS_REMOTE" -p -b gl-pages -u ${{ github.event.inputs.version_tag }} latest 2> stderr.txt)
           exit_code=$?
           err=$(<stderr.txt)
 
-          mike set-default --deploy-prefix public -r $HTTPS_REMOTE -p -b gl-pages latest
+          mike set-default --deploy-prefix public -r "$HTTPS_REMOTE" -p -b gl-pages latest
 
           # Display the raw output in the step
           echo "${out}"
           echo "${err}"
 
           # Display the Markdown output in the job summary
-          echo "\`\`\`python" >> $GITHUB_STEP_SUMMARY
-          echo "${out}" >> $GITHUB_STEP_SUMMARY
-          echo "${err}" >> $GITHUB_STEP_SUMMARY
-          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          { echo "\`\`\`python"; echo "${out}"; echo "${err}"; echo "\`\`\`"; } >> "$GITHUB_STEP_SUMMARY"
 
           exit ${exit_code}
