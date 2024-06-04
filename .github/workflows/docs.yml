@@ -24,7 +24,7 @@ jobs:
           pip3 install uv
           uv venv
           source .venv/bin/activate
-          uv pip install -r deps/requirements_docs.txt
+          uv pip install -r deps/x86_64-unknown-linux-gnu/requirements_docs.txt
 
           set +e  # Do not exit shell on failure
           export HTTPS_REMOTE="https://gitlab-ci-token:${{ secrets.GL_TOKEN }}@gitlab.com/${{ vars.GL_PROJECT }}.git"

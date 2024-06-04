@@ -14,7 +14,7 @@ jobs:
           python-version-file: pyproject.toml
       - name: Install ruff and requirements
         run: |
-          pip3 install -r <(grep '^ruff==' deps/requirements_dev.txt)
+          pip3 install -r <(grep '^ruff==' deps/x86_64-unknown-linux-gnu/requirements_dev.txt)
       - name: Run ruff (code annotation)
         run: |
           set +e  # Do not exit shell on ruff failure

@@ -22,7 +22,7 @@ jobs:
           python-version-file: pyproject.toml
       - name: Install ruff
         run: |
-          pip3 install -r <(cat deps/requirements_dev.txt | grep '^ruff==')
+          pip3 install -r <(grep '^ruff==' deps/x86_64-unknown-linux-gnu/requirements_dev.txt)
       - name: Run ruff and push
         run: |
           set +e  # Do not exit shell on ruff failure
