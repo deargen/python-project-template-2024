@@ -27,24 +27,17 @@ jobs:
             # Display the raw output in the step
             echo "${out}"
             # Display the Markdown output in the job summary
-            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
-            echo "${out}" >> $GITHUB_STEP_SUMMARY
-            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+            { echo "\`\`\`"; echo "${out}"; echo "\`\`\`"; } >> "$GITHUB_STEP_SUMMARY"
           fi
           if [[ -n "$err" ]]; then
             echo "${err}"
-            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
-            echo "${err}" >> $GITHUB_STEP_SUMMARY
-            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+            { echo "\`\`\`"; echo "${err}"; echo "\`\`\`"; } >> "$GITHUB_STEP_SUMMARY"
           fi
 
           if [[ $exit_code -eq 0 ]]; then
             # When the script fails, there are changes in requirements that are not compiled yet.
             # Print the suggested changes.
-            echo "\`\`\`diff" >> $GITHUB_STEP_SUMMARY
-            git diff >> $GITHUB_STEP_SUMMARY
-            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
-
+            { echo "\`\`\`diff"; git diff; echo "\`\`\`"; } >> "$GITHUB_STEP_SUMMARY"
             exit 1
           fi
 
