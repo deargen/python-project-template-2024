@@ -5,6 +5,32 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v0.1.5] - 2024-06-28
+### :sparkles: New Features
+- [`929fb46`](https://github.com/deargen/python-project-template-2024/commit/929fb464bd66f910fa59eaceec6e0d4ded84faef) - health check, install binaries, font etc. *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`fab2e06`](https://github.com/deargen/python-project-template-2024/commit/fab2e06f8b5601aa6b8c37cf30e0a3b4bfddf20a) - vscode extensions recommendations *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`3687e2f`](https://github.com/deargen/python-project-template-2024/commit/3687e2f7982a4e8d2b1e6b19c66e55d255733d24) - mac separate dependencies *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`7d22258`](https://github.com/deargen/python-project-template-2024/commit/7d22258e44be06fd9890d5fa0409185740ef70c2) - mac dependencies *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`0390e7a`](https://github.com/deargen/python-project-template-2024/commit/0390e7ae975414fda4e01097d2c67fece62eab8b) - gh action annotation for ruff *(PR [#21](https://github.com/deargen/python-project-template-2024/pull/21) by [@kiyoon](https://github.com/kiyoon))*
+- [`8a20166`](https://github.com/deargen/python-project-template-2024/commit/8a20166f22efb02f221d6a89ed2fbec8119c5e62) - check docs compiling *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`dd09beb`](https://github.com/deargen/python-project-template-2024/commit/dd09beb28ef02e8fc0084127a4ab0d5c58ca7f55) - dry-run changelog generation *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`09672e0`](https://github.com/deargen/python-project-template-2024/commit/09672e03fa0114ea600069377bf22cd70a3c924a) - get_python_version.py without toml dependency, compile reqs with *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`c3fc757`](https://github.com/deargen/python-project-template-2024/commit/c3fc7570ffc16cf55aa3696f323257a6034b3886) - deploy dry run completely separate job *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+### :bug: Bug Fixes
+- [`22f16d5`](https://github.com/deargen/python-project-template-2024/commit/22f16d574be015cdd568487866e44b3d0573aec8) - **slack**: send_only *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`4bd8ae8`](https://github.com/deargen/python-project-template-2024/commit/4bd8ae894d327ee832e8a0825828509427e6fec5) - slack token default being wrong token *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`8a63607`](https://github.com/deargen/python-project-template-2024/commit/8a63607dad7902248c5643c6251cfcb213bccf2a) - dry-run deploy leaving version tag *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`f9adbf7`](https://github.com/deargen/python-project-template-2024/commit/f9adbf71768066b28721822ca73b7b5c03c3e45e) - maybe fix echo evaluating backticks *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`be3b895`](https://github.com/deargen/python-project-template-2024/commit/be3b895f24220658d2d1ba4a08131f11edde1e18) - maybe fix wrong echo *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`cd6f2ee`](https://github.com/deargen/python-project-template-2024/commit/cd6f2ee55699fd70849d528ec022b0f8a5ffd0f4) - ci deploy always dry-run *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`d4d9766`](https://github.com/deargen/python-project-template-2024/commit/d4d9766337f786134c72ec2397dc0244ab80f447) - get python version *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`7bee54b`](https://github.com/deargen/python-project-template-2024/commit/7bee54b3af0af91836ddd515a681887f72c3580d) - use min python version instead of max *(PR [#22](https://github.com/deargen/python-project-template-2024/pull/22) by [@kiyoon](https://github.com/kiyoon))*
+
+### :wrench: Chores
+- [`6ba5a0a`](https://github.com/deargen/python-project-template-2024/commit/6ba5a0ab16eb6d98e19feac3b4f5741c104a2686) - ignore ruff SIM108 *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+
 ## [v0.1.4] - 2024-03-08
 ### :sparkles: New Features
 - [`fa319d1`](https://github.com/deargen/python-project-template-2024/commit/fa319d1efca76f72b08a0a0013da810f426942a8) - dependabot *(commit by [@kiyoon](https://github.com/kiyoon))*
@@ -85,3 +111,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [v0.1.3]: https://github.com/deargen/python-project-template-2024/compare/v0.1.2...v0.1.3
 [v0.1.4]: https://github.com/deargen/python-project-template-2024/compare/v0.1.3...v0.1.4
+[v0.1.5]: https://github.com/deargen/python-project-template-2024/compare/v0.1.4...v0.1.5
