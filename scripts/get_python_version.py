@@ -19,7 +19,7 @@ except ImportError:
     with open(pyproject_toml_path) as f:
         for line in f:
             if line.startswith("requires-python"):
-                version_range = line.replace("requires-python", "").strip(" ='\"")
+                version_range = line.replace("requires-python", "").strip(" ='\"\n")
                 break
         else:
             raise ValueError("requires-python not found in pyproject.toml")
