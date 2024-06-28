@@ -81,12 +81,6 @@ jobs:
           tag: ${{ github.event.inputs.version_tag }}
           body: ${{ steps.changelog.outputs.changes }}
 
-      - name: Set up Python
-        if: ${{ github.event.inputs.dry_run == 'false' }}
-        uses: actions/setup-python@v5
-        id: setup-python
-        with:
-          python-version-file: pyproject.toml
       - name: Run mkdocs
         if: ${{ github.event.inputs.dry_run == 'false' }}
         run: |

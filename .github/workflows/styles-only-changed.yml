@@ -21,12 +21,6 @@ jobs:
           # Avoid using single or double quotes for multiline patterns
           files: |
             **.py
-
-      - name: Set up Python
-        if: steps.changed-python-files.outputs.any_changed == 'true'
-        uses: actions/setup-python@v5
-        with:
-          python-version-file: pyproject.toml
       - name: Install ruff
         if: steps.changed-python-files.outputs.any_changed == 'true'
         run: |
@@ -68,11 +62,6 @@ jobs:
           files: |
             **.py
 
-      - name: Set up Python
-        if: steps.changed-python-files.outputs.any_changed == 'true'
-        uses: actions/setup-python@v5
-        with:
-          python-version-file: pyproject.toml
       - name: Install ruff
         if: steps.changed-python-files.outputs.any_changed == 'true'
         run: |
@@ -113,12 +102,6 @@ jobs:
           # Avoid using single or double quotes for multiline patterns
           files: |
             **.py
-
-      - name: Set up Python
-        if: steps.changed-python-files.outputs.any_changed == 'true'
-        uses: actions/setup-python@v5
-        with:
-          python-version-file: pyproject.toml
       - name: Install ruff
         if: steps.changed-python-files.outputs.any_changed == 'true'
         run: |
