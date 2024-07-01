@@ -1,48 +1,19 @@
-name: Deploy docs
+name: Deploy MkDocs (latest)
 
 on:
   push:
     branches:
-      - master
       - main
+      - master
+      - feat/reusable-workflows
 
 jobs:
-  mkdocs:
-    runs-on: ubuntu-latest
-    environment: mkdocs
-
-    steps:
-      - uses: actions/checkout@v4
-      - name: Run mkdocs
-        run: |
-          # python -m pip install --upgrade pip
-          pip3 install uv
-          uv venv
-          source .venv/bin/activate
-          uv pip install -r deps/x86_64-unknown-linux-gnu/requirements_docs.txt
-
-          set +e  # Do not exit shell on failure
-          export HTTPS_REMOTE="https://gitlab-ci-token:${{ secrets.GL_TOKEN }}@gitlab.com/${{ vars.GL_PROJECT }}.git"
-
-          git config user.name github-actions[bot]
-          git config user.email github-actions[bot]@users.noreply.github.com
-          git remote add gitlab "$HTTPS_REMOTE"
-          git pull gitlab gl-pages:gl-pages
-
-          out=$(mike deploy --deploy-prefix public -r $HTTPS_REMOTE -p -b gl-pages -u latest 2> stderr.txt)
-          exit_code=$?
-          err=$(<stderr.txt)
-
-          mike set-default --deploy-prefix public -r $HTTPS_REMOTE -p -b gl-pages latest
-
-          # Display the raw output in the step
-          echo "${out}"
-          echo "${err}"
-
-          # Display the Markdown output in the job summary
-          echo "\`\`\`python" >> $GITHUB_STEP_SUMMARY
-          echo "${out}" >> $GITHUB_STEP_SUMMARY
-          echo "${err}" >> $GITHUB_STEP_SUMMARY
-          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
-
-          exit ${exit_code}
+  deploy-mkdocs:
+    uses: deargen/workflows/.github/workflows/deploy-mkdocs.yml@master
+    with:
+      deploy-type: latest
+      requirements-file: deps/x86_64-unknown-linux-gnu/requirements_docs.txt
+      gitlab-project: deargen-ai/my-project-docs
+      gitlab-branch: gl-pages
+    secrets:
+      GITLAB_TOKEN: ${{ secrets.GL_TOKEN }}
