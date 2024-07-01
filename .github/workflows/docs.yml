@@ -1,4 +1,4 @@
-name: Deploy MkDocs (latest)
+name: Deploy MkDocs on latest commit
 
 on:
   push:
@@ -13,7 +13,7 @@ jobs:
     with:
       deploy-type: latest
       requirements-file: deps/x86_64-unknown-linux-gnu/requirements_docs.txt
-      gitlab-project: deargen-ai/my-project-docs
+      gitlab-project: deargen-ai/python-project-template-docs
       gitlab-branch: gl-pages
     secrets:
       GITLAB_TOKEN: ${{ secrets.GL_TOKEN }}
