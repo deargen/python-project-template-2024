@@ -14,7 +14,7 @@ jobs:
           pip3 install uv
           uv venv
           source .venv/bin/activate
-          uv pip install -r deps/x86_64-unknown-linux-gnu/requirements_docs.txt
+          uv pip install -r deps/lock/x86_64-unknown-linux-gnu/requirements_docs.txt
 
           set +e  # Do not exit shell on failure
 
