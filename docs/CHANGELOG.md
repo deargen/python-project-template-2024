@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v0.2.0] - 2024-07-02
+### :sparkles: New Features
+- [`6892dcc`](https://github.com/deargen/python-project-template-2024/commit/6892dcc2763fd96d9d0b86d691132ab0c02ca0cd) - reusable workflows *(PR [#23](https://github.com/deargen/python-project-template-2024/pull/23) by [@kiyoon](https://github.com/kiyoon))*
+
+
 ## [v0.1.5] - 2024-06-28
 ### :sparkles: New Features
 - [`929fb46`](https://github.com/deargen/python-project-template-2024/commit/929fb464bd66f910fa59eaceec6e0d4ded84faef) - health check, install binaries, font etc. *(commit by [@kiyoon](https://github.com/kiyoon))*
@@ -112,3 +117,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.1.3]: https://github.com/deargen/python-project-template-2024/compare/v0.1.2...v0.1.3
 [v0.1.4]: https://github.com/deargen/python-project-template-2024/compare/v0.1.3...v0.1.4
 [v0.1.5]: https://github.com/deargen/python-project-template-2024/compare/v0.1.4...v0.1.5
+[v0.2.0]: https://github.com/deargen/python-project-template-2024/compare/v0.1.6...v0.2.0
