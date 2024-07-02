@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       version-tag:
-        description: New version tag that starts with 'v' (e.g. v0.1.0)
+        description: Version tag
         required: true
         default: v0.1.0
       dry-run:
-        description: Show a sample changelog in Summary without committing or creating a release
+        description: Dry run
         type: boolean
         default: false
 
@@ -17,7 +17,7 @@ jobs:
     uses: deargen/workflows/.github/workflows/commit-changelog-and-release.yml@master
     with:
       version-tag: ${{ github.event.inputs.version-tag }}
-      dry-run: ${{ github.event.inputs.dry-run }}
+      dry-run: ${{ github.event.inputs.dry-run == true }}
       changelog-path: docs/CHANGELOG.md
       exclude-types: build,docs,style,other
 
