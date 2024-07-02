@@ -5,7 +5,10 @@
 # Plus, it checks if the requirements.in file has changed since the last time it was compiled
 # If not, it skips the file rather than recompiling it (which may change version unnecessarily often)
 
-TARGET_PLATFORMS=(x86_64-unknown-linux-gnu aarch64-apple-darwin x86_64-apple-darwin x86_64-pc-windows-msvc)
+if [[ $# -lt 2 ]]; then
+    echo "Usage: $0 <requirements_in_dir> <requirements_out_dir> <target_platforms_comma_separated>" >&2
+    exit 1
+fi
 
 if ! command -v uv &> /dev/null; then
 	echo "uv is not installed. Please run 'pip3 install --user uv'" >&2
@@ -18,16 +21,29 @@ if ! command -v sha256sum &> /dev/null; then
 	exit 1
 fi
 
+if [[ $# -lt 3 ]]; then
+    TARGET_PLATFORMS=(x86_64-unknown-linux-gnu aarch64-apple-darwin x86_64-apple-darwin x86_64-pc-windows-msvc)
+else
+    TARGET_PLATFORMS=("${3//,/ }")
+fi
+
+REQUIREMENTS_IN_DIR="$1"
+# realpath alternative
+# shellcheck disable=SC2164
+REQUIREMENTS_OUT_DIR="$(cd "$(dirname -- "$2")" >/dev/null; pwd -P)/$(basename -- "$2")"
+
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+# REQUIREMENTS_IN_DIR="$SCRIPT_DIR/../deps"
+# REQUIREMENTS_OUT_DIR="$SCRIPT_DIR/../deps"
 
 # NOTE: sha256sum will put the file path in the hash file.
 # To simplify the directory (using relative paths), we change the working directory.
-cd "$SCRIPT_DIR/../deps" || { echo "Failure"; exit 1; }
+cd "$REQUIREMENTS_IN_DIR" || { echo "Failure"; exit 1; }
 
 PYTHON_VERSION=$(python3 "$SCRIPT_DIR/get_python_version.py")
 
 for platform in "${TARGET_PLATFORMS[@]}"; do
-    mkdir -p "$platform"
+    mkdir -p "$REQUIREMENTS_OUT_DIR/$platform"
 done
 
 shopt -s globstar
@@ -36,14 +52,14 @@ function get_shafile() {
 	local file=$1
     local target_platform=$2
     # .requirements.in.sha256
-    echo "$target_platform/.$file.sha256"
+    echo "$REQUIREMENTS_OUT_DIR/$target_platform/.$file.sha256"
 }
 
 function get_lockfile() {
 	local file=$1
     local target_platform=$2
     # requirements.txt
-    echo "$target_platform/${file%.in}.txt"
+    echo "$REQUIREMENTS_OUT_DIR/$target_platform/${file%.in}.txt"
 }
 
 function file_content_changed() {
