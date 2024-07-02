@@ -18,7 +18,7 @@
     - GitLab Pages 이용 (GitHub Pages는 Private repo일 경우 유료인 문제가 있음)
 4. 프로젝트 versioning하고 changelog 자동 생성.
     - Actions에서 새 버전 release 가능
-    - (https://github.com/deargen/workflows) 참고
+    - <https://github.com/deargen/workflows> 참고
 
 ## 돌려 보기
 
