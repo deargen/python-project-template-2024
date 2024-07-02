@@ -44,29 +44,7 @@ jobs:
           uv pip install -e .
           bash scripts/install_binaries.sh
       - name: Run pytest
-        run: |
-          set +e  # Do not exit shell on pytest failure
-          out=$(pytest 2> stderr.txt)
-          exit_code=$?
-          err=$(<stderr.txt)
-
-          # Display the raw output in the step
-          echo "${out}"
-          echo "${err}"
-
-          # Display the Markdown output in the job summary
-          { echo "\`\`\`python"; echo "${out}"; echo "${err}"; echo "\`\`\`"; } >> "$GITHUB_STEP_SUMMARY"
-          if [[ $exit_code -eq 5 ]]
-          then
-            echo
-            echo 'WARNING: No tests were run and it is considered as success' >> "$GITHUB_STEP_SUMMARY"
-            echo "\`\`\`" >> "$GITHUB_STEP_SUMMARY"
-            exit 0
-          else
-            echo "\`\`\`" >> "$GITHUB_STEP_SUMMARY"
-            # Exit with the exit-code returned by pytest
-            exit ${exit_code}
-          fi
+        uses: deargen/workflows/actions/run-pytest@master
 
   doctest:
     runs-on: ubuntu-latest
