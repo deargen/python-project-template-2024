@@ -70,9 +70,10 @@
 │ # NOTE: in 파일은 lock 파일이 아닌 패키지 dependency이므로 전부 dynamic version으로 작성해야함.
 │
 │ # 직접 수정 X. in 파일에서 생성됨
-│ 🔒 requirements.txt
-│ 🔒 requirements_dev.txt
-└ 🔒 requirements_docs.txt
+└ 📂 lock/
+  │ 🔒 requirements.txt
+  │ 🔒 requirements_dev.txt
+  └ 🔒 requirements_docs.txt
 
 ⚙️ pyproject.toml            # 파이썬 프로젝트 통합 정보. ruff등 외부 툴의 설정도 포함.
 ```
