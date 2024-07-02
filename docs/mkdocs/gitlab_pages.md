@@ -43,9 +43,9 @@ GitHub repo의 main branch로 push 한 경우, GitHub CI에서 GitLab으로 push
 ## GitHub repo 세팅
 
 1. GitHub repo로 가서 `Setting -> Secrets and variables -> Actions` 에서 `New repository secret` 추가
-    - Name: `GL_TOKEN`
+    - Name: `GITLAB_TOKEN`
     - Secret: 위에서 생성한 GitLab access token
-2. `Setting -> Secrets and variables -> Actions` 에서 Variables 탭으로 간 뒤 `GL_PROJECT`를 추가
-    - Name: `GL_PROJECT`
+2. `Setting -> Secrets and variables -> Actions` 에서 Variables 탭으로 간 뒤 `GITLAB_PROJECT`를 추가
+    - Name: `GITLAB_PROJECT`
     - Value: GitLab docs repo 이름 (예: deargen-ai/ppmi-docs)
     - 주의: push할 repo의 이름이고 document URL이 아님.

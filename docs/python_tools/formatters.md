@@ -165,6 +165,7 @@ pip3 install --user ruff
               -- IGNORED:
               -- ruff:[D212]: multi-line docstring summary should start at the first line (in favor of D213, second line)
               prepend_args = {
+                "check",
                 "--select",
                 "I,D20,D21,UP00,UP032,UP034",
                 "--ignore",
