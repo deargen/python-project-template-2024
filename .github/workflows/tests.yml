@@ -28,7 +28,7 @@ jobs:
           cache-name: cache-conda
         with:
           path: ~/miniconda3/envs/test
-          key: ${{ runner.os }}-conda-${{ env.cache-name }}-${{ hashFiles('deps/lock/x86_64-unknown-linux-gnu/requirements_dev.txt') }}
+          key: ${{ runner.os }}-conda-${{ env.cache-name }}-${{ hashFiles('deps/lock/x86_64-manylinux_2_28/requirements_dev.txt') }}
           # restore-keys: |
           #   ${{ runner.os }}-conda-${{ env.cache-name }}-
           #   ${{ runner.os }}-conda-
@@ -39,7 +39,7 @@ jobs:
         if: steps.cache-conda.outputs.cache-hit != 'true'
         run: |
           # python -m pip install --upgrade pip
-          uv pip install -r deps/lock/x86_64-unknown-linux-gnu/requirements_dev.txt
+          uv pip install -r deps/lock/x86_64-manylinux_2_28/requirements_dev.txt
           uv pip install -e .
           bash scripts/install_binaries.sh
       - name: Run pytest
@@ -61,7 +61,7 @@ jobs:
           cache-name: cache-conda
         with:
           path: ~/miniconda3/envs/test
-          key: ${{ runner.os }}-conda-${{ env.cache-name }}-${{ hashFiles('deps/lock/x86_64-unknown-linux-gnu/requirements_dev.txt') }}
+          key: ${{ runner.os }}-conda-${{ env.cache-name }}-${{ hashFiles('deps/lock/x86_64-manylinux_2_28/requirements_dev.txt') }}
           # restore-keys: |
           #   ${{ runner.os }}-conda-${{ env.cache-name }}-
           #   ${{ runner.os }}-conda-
@@ -72,7 +72,7 @@ jobs:
         if: steps.cache-conda.outputs.cache-hit != 'true'
         run: |
           # python -m pip install --upgrade pip
-          uv pip install -r deps/lock/x86_64-unknown-linux-gnu/requirements_dev.txt
+          uv pip install -r deps/lock/x86_64-manylinux_2_28/requirements_dev.txt
           uv pip install -e .
           bash scripts/install_binaries.sh
       - name: Run doctest

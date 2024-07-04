@@ -11,7 +11,7 @@ jobs:
     uses: deargen/workflows/.github/workflows/deploy-mkdocs.yml@master
     with:
       deploy-type: latest
-      requirements-file: deps/lock/x86_64-unknown-linux-gnu/requirements_docs.txt
+      requirements-file: deps/lock/x86_64-manylinux_2_28/requirements_docs.txt
       gitlab-project: ${{ vars.GITLAB_PROJECT }}
       gitlab-branch: gl-pages
     secrets:
