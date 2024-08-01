@@ -4,6 +4,9 @@ from pathlib import Path
 
 import mkdocs_gen_files
 
+IGNORE_MODULES_EXACT = {}
+IGNORE_MODULES_STARTSWITH = {}
+
 nav = mkdocs_gen_files.Nav()
 mod_symbol = '<code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>'
 
@@ -15,7 +18,13 @@ for path in sorted(src.rglob("*.py")):
     full_doc_path = Path("reference", doc_path)
 
     parts = tuple(module_path.parts)
+    module_str = ".".join(parts)
 
+    if module_str in IGNORE_MODULES_EXACT or any(
+        module_str.startswith(prefix) for prefix in IGNORE_MODULES_STARTSWITH
+    ):
+        print(f"Skipping module: {module_str}")  # noqa: T201
+        continue
     if parts[-1] == "__init__":
         parts = parts[:-1]
         doc_path = doc_path.with_name("index.md")

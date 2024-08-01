@@ -87,6 +87,7 @@ plugins:
           options:
             show_symbol_type_heading: true
             show_symbol_type_toc: true
+            members_order: source
           paths: [src] # search packages in the src folder
 
 extra:
