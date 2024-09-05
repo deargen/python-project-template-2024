@@ -2,20 +2,24 @@
 
 |  |  |
 |--|--|
-|[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)|[![Actions status](https://github.com/deargen/python-project-template-2024/workflows/Style%20checking/badge.svg)](https://github.com/deargen/python-project-template-2024/actions)|
-| [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff) | [![Actions status](https://github.com/deargen/python-project-template-2024/workflows/Linting/badge.svg)](https://github.com/deargen/python-project-template-2024/actions) |
-| [![pytest](https://img.shields.io/badge/pytest-black)](https://github.com/pytest-dev/pytest) [![doctest](https://img.shields.io/badge/doctest-black)](https://docs.python.org/3/library/doctest.html) | [![Actions status](https://github.com/deargen/python-project-template-2024/workflows/Tests/badge.svg)](https://github.com/deargen/python-project-template-2024/actions) |
-| [![mkdocs-material](https://img.shields.io/badge/docs-mkdocs_material-blue)](https://github.com/squidfunk/mkdocs-material) | [![Actions status](https://github.com/deargen/python-project-template-2024/workflows/Deploy%20docs/badge.svg)](https://github.com/deargen/python-project-template-2024/actions) |
+|[![Ruff](https://img.shields.io/badge/Ruff-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)](https://github.com/astral-sh/ruff) |[![Actions status](https://github.com/deargen/python-project-template-2024/workflows/Style%20checking/badge.svg)](https://github.com/deargen/python-project-template-2024/actions)|
+| [![Ruff](https://img.shields.io/badge/Ruff-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)](https://github.com/astral-sh/ruff) | [![Actions status](https://github.com/deargen/python-project-template-2024/workflows/Linting/badge.svg)](https://github.com/deargen/python-project-template-2024/actions) |
+| [![pytest](https://img.shields.io/badge/pytest-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)](https://github.com/pytest-dev/pytest) [![doctest](https://img.shields.io/badge/doctest-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)](https://docs.python.org/3/library/doctest.html) | [![Actions status](https://github.com/deargen/python-project-template-2024/workflows/Tests/badge.svg)](https://github.com/deargen/python-project-template-2024/actions) |
+| [![uv](https://img.shields.io/badge/uv-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)](https://github.com/astral-sh/uv) | [![Actions status](https://github.com/deargen/python-project-template-2024/workflows/Check%20pip%20compile%20sync/badge.svg)](https://github.com/deargen/python-project-template-2024/actions) |
+|[![Built with Material for MkDocs](https://img.shields.io/badge/Material_for_MkDocs-526CFE?style=for-the-badge&logo=MaterialForMkDocs&logoColor=white)](https://squidfunk.github.io/mkdocs-material/)|[![Actions status](https://github.com/deargen/python-project-template-2024/workflows/Deploy%20MkDocs%20on%20latest%20commit/badge.svg)](https://github.com/deargen/python-project-template-2024/actions)|
+
 
 새 파이썬 프로젝트 시작할 때 사용하실 템플릿입니다.
 
 **주요 기능**
 
-1. Github Actions로 ruff formatter (black+isort), ruff linter, pytest (unit test) 통과 여부 확인
+1. Github Actions로 ruff formatter, ruff linter, pytest (unit test) 통과 여부 확인
     - Actions에서 포매팅 적용 가능 
-2. pytest 커맨드로 유닛 테스트 사용 가능
-3. MkDocs 이용해 자동 document 생성  
-    - GitLab Pages 이용 (GitHub Pages는 Private repo일 경우 유료인 문제가 있음)
+2. GitHub Actions로 uv pip-compile 적용 여부 확인 (`deps/requirements.in`의 dynamic version을 `deps/lock` 안에 lock file로 변환)
+    - Actions에서 lock file compile 가능
+3. MkDocs 이용해 자동 document 생성
+    - Public repo는 GitHub Pages 이용
+    - Private repo는 GitLab Pages 이용
 4. 프로젝트 versioning하고 changelog 자동 생성.
     - Actions에서 새 버전 release 가능
     - <https://github.com/deargen/workflows> 참고
@@ -23,11 +27,11 @@
 ## 돌려 보기
 
 1. (Optional) `pip3 install --user uv` 해서 pip 대신 `uv pip` 사용하면 더 빠름.
-2. `uv pip install -r deps/lock/x86_64-unknown-linux-gnu/requirements.txt`, `uv pip install -e .`, `bash scripts/install_binaries.sh` 으로 dependencies 및 mlproject 패키지 설치
+2. `uv pip install -r deps/lock/x86_64-manylinux_2_28/requirements.txt`, `uv pip install -e .`, `bash scripts/install_binaries.sh` 으로 dependencies 및 mlproject 패키지 설치
 3. template.env 파일을 .env로 복사한 후 token 등 내용 수정.
 4. `python -m mlproject.health` 실행해서 환경 설정이 잘 되었는지 확인.
 5. `python tools/examples/color_logging_main.py` 실행해보기. 로깅 내용은 `data/logs` 폴더 안에 기록됨.
-6. `uv pip install -r deps/lock/x86_64-unknown-linux-gnu/requirements_dev.txt` 으로 pytest 등 개발자용 패키지도 설치가능
+6. `uv pip install -r deps/lock/x86_64-manylinux_2_28/requirements_dev.txt` 으로 pytest 등 개발자용 패키지도 설치가능
 7. `pytest` 커맨드로 테스트 실행해보기.
     - doctest는 Actions에서 자동으로 실행됨.
 8. `import mlproject; print(mlproject.__version__)` 해보면 `0.1.0+4.g75bbed7.dirty` 이런식으로 나옴.  
@@ -57,7 +61,7 @@
 📂 scripts/                 # 프로젝트와 직접 관련 X, but 프로젝트 관리를 위해 필요
 
 📂 deps/
-│ # 직접 수정 X. scripts/compile_requirements.sh 실행시 생성됨.
+│ # 직접 수정 X. .github/workflows/apply-pip-compile.yml 실행시 생성됨.
 │ 🛡️ .requirements.in.sha256
 │ 🛡️ .requirements_dev.in.sha256
 │ 🛡️ .requirements_docs.in.sha256
