@@ -23,13 +23,16 @@
 4. 프로젝트 versioning하고 changelog 자동 생성.
     - Actions에서 새 버전 release 가능
     - <https://github.com/deargen/workflows> 참고
+5. 편의 기능 CLI로 제공
+    - `mlproject health`로 환경 설정 확인
+    - `mlproject version`으로 현재 버전 확인
 
 ## 돌려 보기
 
 1. (Optional) `pip3 install --user uv` 해서 pip 대신 `uv pip` 사용하면 더 빠름.
 2. `uv pip install -r deps/lock/x86_64-manylinux_2_28/requirements.txt`, `uv pip install -e .`, `bash scripts/install_binaries.sh` 으로 dependencies 및 mlproject 패키지 설치
 3. template.env 파일을 .env로 복사한 후 token 등 내용 수정.
-4. `python -m mlproject.health` 실행해서 환경 설정이 잘 되었는지 확인.
+4. `mlproject health` 실행해서 환경 설정이 잘 되었는지 확인.
 5. `python tools/examples/color_logging_main.py` 실행해보기. 로깅 내용은 `data/logs` 폴더 안에 기록됨.
 6. `uv pip install -r deps/lock/x86_64-manylinux_2_28/requirements_dev.txt` 으로 pytest 등 개발자용 패키지도 설치가능
 7. `pytest` 커맨드로 테스트 실행해보기.

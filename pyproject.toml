@@ -30,6 +30,9 @@ keywords = ["development", "template"]
 [project.urls]
 "Homepage" = "https://github.com/deargen/python-project-template-2024" # OPTIONALLY CHANGE
 
+[project.scripts]
+mlproject = "mlproject.cli:main"
+
 [tool.setuptools.dynamic]
 dependencies = {file = ["deps/requirements.in"]}
 
