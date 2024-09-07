@@ -60,7 +60,7 @@ if __name__ == "__main__":
             initial_comment=slack_text,
         )
         send_text_as_file(
-            filename="traceback.html",
+            filename="traceback.svg",
             content=tb_svg,
             title="traceback.svg (dear-viewer compatible)",
             ensure_preview=True,

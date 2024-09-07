@@ -1,13 +1,27 @@
+# ruff: noqa: T201
 import typer
 
-app = typer.Typer(no_args_is_help=True)
+app = typer.Typer(
+    no_args_is_help=True, context_settings={"help_option_names": ["-h", "--help"]}
+)
 
 
-@app.command()
-def version():
-    from .. import __version__
+def version_callback(value: bool):
+    if value:
+        from .. import __version__
 
-    print(__version__)  # noqa: T201
+        print(__version__)
+        raise typer.Exit()
+
+
+@app.callback()
+def common(
+    ctx: typer.Context,
+    version: bool = typer.Option(
+        None, "-v", "--version", callback=version_callback, help="Show version"
+    ),
+):
+    pass
 
 
 @app.command()
