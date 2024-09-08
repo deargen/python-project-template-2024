@@ -4,9 +4,6 @@ import logging
 import os
 
 from .. import DATA_DIR
-from .font import verify_fonts_bool
-from .slack import check_env as slack_check_env
-from .slack import check_send_text as slack_check_send_text
 
 logger = logging.getLogger(__name__)
 
@@ -34,11 +31,6 @@ def check_env():
 def main():
     successes = [check_env()]
     successes.append(check_binaries())
-
-    successes.append(slack_check_env())
-    successes.append(slack_check_send_text())
-
-    successes.append(verify_fonts_bool())
 
     if all(successes):
         logger.info("")

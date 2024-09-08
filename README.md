@@ -30,7 +30,7 @@
 ## 돌려 보기
 
 1. (Optional) `pip3 install --user uv` 해서 pip 대신 `uv pip` 사용하면 더 빠름.
-2. `uv pip install -r deps/lock/x86_64-manylinux_2_28/requirements.txt`, `uv pip install -e .`, `bash scripts/install_binaries.sh` 으로 dependencies 및 mlproject 패키지 설치
+2. `uv pip install -r deps/lock/x86_64-manylinux_2_28/requirements.txt`, `uv pip install -e .` 으로 dependencies 및 mlproject 패키지 설치
 3. template.env 파일을 .env로 복사한 후 token 등 내용 수정.
 4. `mlproject health` 실행해서 환경 설정이 잘 되었는지 확인.
 5. `python tools/examples/color_logging_main.py` 실행해보기. 로깅 내용은 `data/logs` 폴더 안에 기록됨.

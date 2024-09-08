@@ -41,7 +41,6 @@ jobs:
           # python -m pip install --upgrade pip
           uv pip install -r deps/lock/x86_64-manylinux_2_28/requirements_dev.txt
           uv pip install -e .
-          bash scripts/install_binaries.sh
       - name: Run pytest
         uses: deargen/workflows/actions/run-pytest@master
 
@@ -74,6 +73,5 @@ jobs:
           # python -m pip install --upgrade pip
           uv pip install -r deps/lock/x86_64-manylinux_2_28/requirements_dev.txt
           uv pip install -e .
-          bash scripts/install_binaries.sh
       - name: Run doctest
         uses: deargen/workflows/actions/run-doctest@master
