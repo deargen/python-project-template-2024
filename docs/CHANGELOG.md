@@ -5,6 +5,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v0.2.1] - 2024-09-08
+### :boom: BREAKING CHANGES
+- due to [`3674e0a`](https://github.com/deargen/python-project-template-2024/commit/3674e0a52b3d37f0a065fdc3c9d6f051eb5910c6) - remove slack *(PR [#25](https://github.com/deargen/python-project-template-2024/pull/25) by [@kiyoon](https://github.com/kiyoon))*:
+
+  remove slack (#25)
+
+
+### :sparkles: New Features
+- [`3f623d8`](https://github.com/deargen/python-project-template-2024/commit/3f623d86cdff079a7727ad5f4289122d568cbdd2) - mkdocs sort source order and ignore some modules in API reference *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`d19eaa1`](https://github.com/deargen/python-project-template-2024/commit/d19eaa122edf7aed9faa0bb8fded999da0b5b0d5) - typer cli *(PR [#24](https://github.com/deargen/python-project-template-2024/pull/24) by [@kiyoon](https://github.com/kiyoon))*
+
+### :bug: Bug Fixes
+- [`2890b02`](https://github.com/deargen/python-project-template-2024/commit/2890b02ea698b298fea354616b48760a6e83563d) - enable some pyright diagnostics *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`7cc5642`](https://github.com/deargen/python-project-template-2024/commit/7cc56420aaa9cce11424c381b06305b89141ce14) - change unknown linux to manylinux *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`5d098dc`](https://github.com/deargen/python-project-template-2024/commit/5d098dca7d95dfcaff290f6e979a52336a114516) - support more platform than Linux for basedpyright *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`2bb1cf3`](https://github.com/deargen/python-project-template-2024/commit/2bb1cf3cd841a6a81503b431de72c6d2f737fba0) - stub file in mkdocstrings *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+### :recycle: Refactors
+- [`3674e0a`](https://github.com/deargen/python-project-template-2024/commit/3674e0a52b3d37f0a065fdc3c9d6f051eb5910c6) - remove slack *(PR [#25](https://github.com/deargen/python-project-template-2024/pull/25) by [@kiyoon](https://github.com/kiyoon))*
+
+
 ## [v0.2.0] - 2024-07-02
 ### :sparkles: New Features
 - [`6892dcc`](https://github.com/deargen/python-project-template-2024/commit/6892dcc2763fd96d9d0b86d691132ab0c02ca0cd) - reusable workflows *(PR [#23](https://github.com/deargen/python-project-template-2024/pull/23) by [@kiyoon](https://github.com/kiyoon))*
@@ -118,3 +139,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.1.4]: https://github.com/deargen/python-project-template-2024/compare/v0.1.3...v0.1.4
 [v0.1.5]: https://github.com/deargen/python-project-template-2024/compare/v0.1.4...v0.1.5
 [v0.2.0]: https://github.com/deargen/python-project-template-2024/compare/v0.1.6...v0.2.0
+[v0.2.1]: https://github.com/deargen/python-project-template-2024/compare/v0.2.0...v0.2.1
