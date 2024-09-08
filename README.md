@@ -25,7 +25,7 @@
     - <https://github.com/deargen/workflows> 참고
 5. 편의 기능 CLI로 제공
     - `mlproject health`로 환경 설정 확인
-    - `mlproject version`으로 현재 버전 확인
+    - `mlproject --version`으로 현재 버전 확인
 
 ## 돌려 보기
 
