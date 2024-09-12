@@ -24,3 +24,5 @@ rg --files-with-matches -l ml-project | xargs sed -i "s/ml-project/$package_name
 rg --files-with-matches -l ML_PROJECT | xargs sed -i "s/ML_PROJECT/$envvar_name/g"
 rg --files-with-matches -l "Python Project Template" | xargs sed -i "s/Python Project Template/$doc_title/g"
 rg --files-with-matches -l 'https://deargen-ai.gitlab.io/python-project-template-docs' | xargs sed -i "s|https://deargen-ai.gitlab.io/python-project-template-docs|$doc_url|g"
+
+mv src/ml_project src/$module_name
