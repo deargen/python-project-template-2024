@@ -1,4 +1,5 @@
 import pytest
+
 from ml_project.two_numbers import TwoNumbers
 
 

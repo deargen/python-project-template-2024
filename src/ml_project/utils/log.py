@@ -4,8 +4,9 @@ import os
 from datetime import datetime, timezone
 from pathlib import Path
 
-from ml_project import LOG_DIR, PROJECT_DIR, __version__, default_log_level
 from rich.logging import RichHandler
+
+from ml_project import LOG_DIR, PROJECT_DIR, __version__, default_log_level
 
 # 옵션으로 `from accelerate.logging import get_logger`
 # 사용하시면 로깅할 때 main_process_only=False, in_order=True 등 옵션 사용 가능합니다
