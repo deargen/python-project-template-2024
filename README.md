@@ -88,14 +88,20 @@
 
 ## 템플릿 사용하기
 
+프로젝트 이름 바꾸기 위해 `./replace_project_name.sh` 내용을 수정 후 실행합니다. 스크립트에서 아래 내용을 해결해줍니다.
+
 1. `src/ml_project` 폴더 이름 원하는 걸로 바꾸기 (`import ml_project` 할 때 이름)
 2. `pyproject.toml`에 바꿔야하는 부분 주석 되어있음. 바꿔 쓰기
-3. `deps/requirements*.in`을 수정하면 `deps/lock` 폴더에 lock 파일이 생성됨. (Actions)
-4. `README.md`에 있는 badge들 URL (python-project-template-2024 -> 새 주소) 바꾸어 주어야 제대로 테스트 결과가 뜸.
-5. `.github` 폴더 복사한 뒤,
-    - GitLab에 document 호스팅용 새 repo를 만듦 (예: ml-project-docs)
-        - [GitLab Pages 설정](https://deargen-ai.gitlab.io/python-project-template-docs/latest/mkdocs/gitlab_pages) 문서 참고.
+3. `README.md`에 있는 badge들 URL (python-project-template-2024 -> 새 주소) 바꾸어 주어야 제대로 테스트 결과가 뜸.
+
+그 외 알아두면 좋은 것들:
+
+1. `deps/requirements*.in`을 수정하면 `deps/lock` 폴더에 lock 파일이 생성됨. (Actions)
+2. GitLab에 document 호스팅용 새 repo 만들기 (예: ml-project-docs)
+    - [GitLab Pages 설정](https://deargen-ai.gitlab.io/python-project-template-docs/latest/mkdocs/gitlab_pages) 문서 참고.
     - docs, deploy 할 때 필요한 gitlab 주소와 토큰은 Github 프로젝트 설정에서 Environment secrets / variable을 바꾸어야 함.
-6. `setup.py`는 그대로 복사해 두면 됨
-7. 테스트를 작성하지 않은 경우, `tests/` 폴더 안의 파일 전부 삭제하면 GitHub Actions에서 테스트 통과됨.
-8. ⭐ VSCode에 [Python Tools](https://deargen-ai.gitlab.io/python-project-template-docs/latest/python_tools/formatters) 내용 전부 (formatter, linter, LSP 등) 적용하기.
+    - 오픈소스의 경우 github page를 이용하도록 `.github/workflows/deploy.yml` 및 `.github/workflows/deploy-mkdocs-on-latest.yml` 파일에서 gitlab 관련 parameter 제거.
+3. `setup.py`는 그대로 두면 됨
+4. 테스트를 작성하지 않은 경우, `tests/` 폴더 안의 파일 전부 삭제하면 GitHub Actions에서 테스트 통과됨.
+5. ⭐ VSCode에 [Python Tools](https://deargen-ai.gitlab.io/python-project-template-docs/latest/python_tools/formatters) 내용 전부 (formatter, linter, LSP 등) 적용하기.
+6. `docs/CHANGELOG.md` 는 맨 위 문단 빼고 수정내용 다 삭제.
