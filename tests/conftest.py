@@ -1,6 +1,5 @@
 import pytest
-
-from mlproject.two_numbers import TwoNumbers
+from ml_project.two_numbers import TwoNumbers
 
 
 @pytest.fixture(scope="session")

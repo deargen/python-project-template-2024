@@ -53,7 +53,7 @@
     import os
     from my_other_lib import run
     import sys
-    import mlproject
+    import ml_project
     from third_lib import Widget
     ```
 
@@ -67,7 +67,7 @@
     from my_other_lib import run
     from third_lib import Widget
 
-    import mlproject
+    import ml_project
     ```
 
 ### [ruff](https://github.com/astral-sh/ruff): Rust로 구현한 매우 빠른 black, isort (+ flake8 linter까지)

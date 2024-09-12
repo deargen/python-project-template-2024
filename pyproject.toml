@@ -5,13 +5,13 @@ build-backend = "setuptools.build_meta"
 [tool.versioneer]
 VCS = "git"
 style = "pep440"
-versionfile_source = "src/mlproject/_version.py" # CHANGE
-versionfile_build = "mlproject/_version.py"      # CHANGE
+versionfile_source = "src/ml_project/_version.py" # CHANGE
+versionfile_build = "ml_project/_version.py"      # CHANGE
 tag_prefix = "v"
-parentdir_prefix = "mlproject-"                  # CHANGE
+parentdir_prefix = "ml-project-"                  # CHANGE
 
 [project]
-name = "mlproject" # CHANGE
+name = "ml-project" # CHANGE
 dynamic = ["version", "dependencies", "optional-dependencies"]
 description = "Python project template" # OPTIONALLY CHANGE
 authors = [
@@ -35,7 +35,7 @@ keywords = ["development", "template"]
 "Homepage" = "https://github.com/deargen/python-project-template-2024" # OPTIONALLY CHANGE
 
 [project.scripts]
-mlproject = "mlproject.cli:main"
+ml-project = "ml_project.cli:main"
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["deps/requirements.in"]}
@@ -44,13 +44,13 @@ dependencies = {file = ["deps/requirements.in"]}
 where = ["src"]
 
 [tool.pytest.ini_options]
-addopts = "--cov=mlproject" # CHANGE (name of the importing module name)
+addopts = "--cov=ml_project" # CHANGE (name of the importing module name)
 testpaths = ["tests"]
 
 [tool.ruff]
 src = ["src"]  # for ruff isort
 extend-exclude = [
-  "src/mlproject/_version.py",  # CHANGE
+  "src/ml_project/_version.py",  # CHANGE
 ]
 
 [tool.ruff.lint]
@@ -146,6 +146,6 @@ pythonVersion = "3.11"
 
 [tool.coverage.report]
 omit = [
-  "src/mlproject/_version.py", # CHANGE
+  "src/ml_project/_version.py", # CHANGE
   # OPTIONALLY ADD MORE LATER
 ]

@@ -24,20 +24,20 @@
     - Actions에서 새 버전 release 가능
     - <https://github.com/deargen/workflows> 참고
 5. 편의 기능 CLI로 제공
-    - `mlproject health`로 환경 설정 확인
-    - `mlproject --version`으로 현재 버전 확인
+    - `ml-project health`로 환경 설정 확인
+    - `ml-project --version`으로 현재 버전 확인
 
 ## 돌려 보기
 
 1. (Optional) `pip3 install --user uv` 해서 pip 대신 `uv pip` 사용하면 더 빠름.
-2. `uv pip install -r deps/lock/x86_64-manylinux_2_28/requirements.txt`, `uv pip install -e .` 으로 dependencies 및 mlproject 패키지 설치
+2. `uv pip install -r deps/lock/x86_64-manylinux_2_28/requirements.txt`, `uv pip install -e .` 으로 dependencies 및 ml-project 패키지 설치
 3. template.env 파일을 .env로 복사한 후 token 등 내용 수정.
-4. `mlproject health` 실행해서 환경 설정이 잘 되었는지 확인.
+4. `ml-project health` 실행해서 환경 설정이 잘 되었는지 확인.
 5. `python tools/examples/color_logging_main.py` 실행해보기. 로깅 내용은 `data/logs` 폴더 안에 기록됨.
 6. `uv pip install -r deps/lock/x86_64-manylinux_2_28/requirements_dev.txt` 으로 pytest 등 개발자용 패키지도 설치가능
 7. `pytest` 커맨드로 테스트 실행해보기.
     - doctest는 Actions에서 자동으로 실행됨.
-8. `import mlproject; print(mlproject.__version__)` 해보면 `0.1.0+4.g75bbed7.dirty` 이런식으로 나옴.  
+8. `import ml_project; print(ml_project.__version__)` 해보면 `0.1.0+4.g75bbed7.dirty` 이런식으로 나옴.  
     - 0.1.0 버전 이후 4개의 커밋이란 뜻. 그리고 커밋되지 않은 수정사항이 있는 상태이면 dirty버전임.
 
 ## 파일 설명
@@ -52,7 +52,7 @@
   └ 📄 *.yml
 
 📂 src/
-└ 📂 mlproject/             # `import mlproject`해서 사용하는 함수나 클래스 등 정의하는 곳
+└ 📂 ml_project/             # `import ml_project`해서 사용하는 함수나 클래스 등 정의하는 곳
   │ 🐍 __init__.py
   │ 🐍 _version.py          # git tag로 버전 정보를 읽는 versioneer 파일 (수정X)
   └ 🐍 ...
@@ -88,12 +88,12 @@
 
 ## 템플릿 사용하기
 
-1. `src/mlproject` 폴더 이름 원하는 걸로 바꾸기 (`import mlproject` 할 때 이름)
+1. `src/ml_project` 폴더 이름 원하는 걸로 바꾸기 (`import ml_project` 할 때 이름)
 2. `pyproject.toml`에 바꿔야하는 부분 주석 되어있음. 바꿔 쓰기
 3. `deps/requirements*.in`을 수정하면 `deps/lock` 폴더에 lock 파일이 생성됨. (Actions)
 4. `README.md`에 있는 badge들 URL (python-project-template-2024 -> 새 주소) 바꾸어 주어야 제대로 테스트 결과가 뜸.
 5. `.github` 폴더 복사한 뒤,
-    - GitLab에 document 호스팅용 새 repo를 만듦 (예: mlproject-docs)
+    - GitLab에 document 호스팅용 새 repo를 만듦 (예: ml-project-docs)
         - [GitLab Pages 설정](https://deargen-ai.gitlab.io/python-project-template-docs/latest/mkdocs/gitlab_pages) 문서 참고.
     - docs, deploy 할 때 필요한 gitlab 주소와 토큰은 Github 프로젝트 설정에서 Environment secrets / variable을 바꾸어야 함.
 6. `setup.py`는 그대로 복사해 두면 됨

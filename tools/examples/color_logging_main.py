@@ -9,7 +9,7 @@ load_dotenv()
 
 import logging
 
-from mlproject.utils import setup_logging
+from ml_project.utils import setup_logging
 
 logger = logging.getLogger(__name__)
 

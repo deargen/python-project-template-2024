@@ -28,7 +28,7 @@ Linting 결과를 무시하고 싶은 경우:
 [tool.ruff]
 src = ["src"]  # for ruff isort
 extend-exclude = [
-  "src/mlproject/_version.py",  # CHANGE
+  "src/ml_project/_version.py",  # CHANGE
 ]
 
 [tool.ruff.lint]
