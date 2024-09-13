@@ -40,16 +40,16 @@ Settings 페이지에서 다음과 같이 수정:
 
 mkdocs 자동 빌드를 후 GitLab으로 호스팅하기 위해서 환경변수 설정이 필요함.  
 
-1. Settings -> Environments 에서 mkdocs라는 이름의 환경 만들기
+1. Settings -> Secrets and Variables -> Actions
 
-    ![image](https://github.com/kiyoon/jupynium.nvim/assets/12980409/b997c3b1-4b5a-49cb-a02d-b1e043f9d517)
+    <img width="1077" alt="image" src="https://github.com/user-attachments/assets/d5174388-827a-414f-8d90-7396656a5d9f">
 
 2. Repository secrets에 `GITLAB_TOKEN`이라는 이름으로 GitLab token값 넣어두기.
 
     !!! danger
         Token같은 민감한 데이터는 CI 코드에 넣지 말고 repositry secrets을 사용합니다.  
 
-3. Environment variables에 `GITLAB_PROJECT` 이름으로 GitLab project 주소 넣어두기. (예: deargen-ai/python-project-template-docs)
+3. Repository variables에 `GITLAB_PROJECT` 이름으로 GitLab project 주소 넣어두기. (예: deargen-ai/python-project-template-docs)
 
 !!! info
     Environment secrets은 CI 파일에서 `${{ secrets.GITLAB_TOKEN }}`과 같이 접근합니다.  
