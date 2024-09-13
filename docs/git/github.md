@@ -36,7 +36,7 @@ Settings 페이지에서 다음과 같이 수정:
 웬만하면 PR은 squash하기.
 
 
-### Environments
+### Repository Secrets and Variables
 
 mkdocs 자동 빌드를 후 GitLab으로 호스팅하기 위해서 환경변수 설정이 필요함.  
 
