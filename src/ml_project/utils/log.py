@@ -21,6 +21,7 @@ console = Console(
             "logging.level.error": "bold red blink",
             "logging.level.critical": "red blink",
             "logging.level.warning": "yellow",
+            "logging.level.success": "green",
         }
     )
 )
