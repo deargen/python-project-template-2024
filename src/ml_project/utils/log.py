@@ -4,7 +4,9 @@ import os
 from datetime import datetime, timezone
 from pathlib import Path
 
+from rich.console import Console
 from rich.logging import RichHandler
+from rich.theme import Theme
 
 from ml_project import LOG_DIR, PROJECT_DIR, __version__, default_log_level
 
@@ -12,6 +14,16 @@ from ml_project import LOG_DIR, PROJECT_DIR, __version__, default_log_level
 # 사용하시면 로깅할 때 main_process_only=False, in_order=True 등 옵션 사용 가능합니다
 # https://huggingface.co/docs/accelerate/package_reference/logging
 logger = logging.getLogger(__name__)
+
+console = Console(
+    theme=Theme(
+        {
+            "logging.level.error": "bold red blink",
+            "logging.level.critical": "red blink",
+            "logging.level.warning": "yellow",
+        }
+    )
+)
 
 
 def setup_logging(
@@ -58,6 +70,7 @@ def setup_logging(
         show_path=True,
         rich_tracebacks=True,
         tracebacks_show_locals=True,
+        console=console,
     )
     console_format = logging.Formatter(
         fmt="%(name)s - %(message)s",
