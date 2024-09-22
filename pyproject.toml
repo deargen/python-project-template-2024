@@ -49,6 +49,7 @@ testpaths = ["tests"]
 
 [tool.ruff]
 src = ["src"]  # for ruff isort
+namespace-packages = ["tools", "scripts"]  # for INP rule, suppress on these directories
 extend-exclude = [
   "src/ml_project/_version.py",  # CHANGE
 ]
@@ -121,6 +122,7 @@ ignore = [
   "NPY002",  # legacy numpy random
   "UP017",   # datetime.timezone.utc -> datetime.UTC
   "SIM108",  # use ternary operator instead of if-else
+  "TRY003",  # long message in except
 ]
 
 [tool.ruff.lint.pydocstyle]

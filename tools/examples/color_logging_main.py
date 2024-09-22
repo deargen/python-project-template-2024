@@ -22,7 +22,7 @@ def main():
         Exception:
     """
     logger.info("This is an info message")
-    raise Exception("This is an exception")
+    raise Exception("This is an exception")  # noqa: TRY002
 
 
 if __name__ == "__main__":
