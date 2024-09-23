@@ -94,7 +94,6 @@ select = [
   "Q",    # Quotes
   "RSE",  # raise
   "SLOT", # __slots__
-  "ARG",  # Argument
   "PL",   # Pylint
   "TRY",  # try
   "FAST", # FastAPI
