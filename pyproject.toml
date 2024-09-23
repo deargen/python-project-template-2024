@@ -148,6 +148,10 @@ known-third-party = ["wandb"]
 # NOTE: Ruff code TID is currently disabled, so this settings doesn't do anything.
 banned-module-level-imports = ["torch", "tensorflow"]
 
+[tool.ruff.lint.pylint]
+max-args = 10
+max-bool-expr = 10
+
 [tool.pyright]
 include = ["src"]
 
