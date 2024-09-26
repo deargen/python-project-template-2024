@@ -47,11 +47,6 @@ class BaseConfig:
                 else:
                     self._set_value_as_type(key, env_var, vartype)
 
-        # Handle the local rank.
-        env_local_rank = int(os.environ.get("LOCAL_RANK", -1))
-        if env_local_rank not in (-1, self.local_rank):
-            self.local_rank = env_local_rank
-
     def _set_value_as_type(self, key, value: str, vartype):
         """Set the string value as the given type."""
         import ast
