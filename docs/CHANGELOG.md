@@ -5,6 +5,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v0.2.2] - 2024-09-26
+### :sparkles: New Features
+- [`d0f1d71`](https://github.com/deargen/python-project-template-2024/commit/d0f1d7167626b9f723cff19da251af322abd1806) - replace string script to use template instantly *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`5d07c12`](https://github.com/deargen/python-project-template-2024/commit/5d07c12e76ca8615288c77638fb3b524eb76c38a) - log console theme *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`e4d2b12`](https://github.com/deargen/python-project-template-2024/commit/e4d2b124d95052828d50179396a32b40fad3f347) - success level color *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`6837b01`](https://github.com/deargen/python-project-template-2024/commit/6837b014076dcbaaf570f4430d647c07e4b572e5) - **ruff**: more lint rules *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`63db4d0`](https://github.com/deargen/python-project-template-2024/commit/63db4d0f44b14fe895e7b53c8dbf9e9ea0a973f9) - better pylint tolerance *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`13cc21d`](https://github.com/deargen/python-project-template-2024/commit/13cc21d28ae3de5cb5d0dc20d0da938d2f4c61ef) - **ruff**: remove ARG lint *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`60ae13a`](https://github.com/deargen/python-project-template-2024/commit/60ae13a21c12266ee77ea95eeb619ad873e0a6c1) - **ci**: micromamba *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+### :bug: Bug Fixes
+- [`008df63`](https://github.com/deargen/python-project-template-2024/commit/008df630c357578b8c651507405e47841e44cc0a) - change module name with script *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`5e03af9`](https://github.com/deargen/python-project-template-2024/commit/5e03af98111d2e884f690cc449a8f4018060ca88) - rename module actually *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+
 ## [v0.2.1] - 2024-09-08
 ### :boom: BREAKING CHANGES
 - due to [`3674e0a`](https://github.com/deargen/python-project-template-2024/commit/3674e0a52b3d37f0a065fdc3c9d6f051eb5910c6) - remove slack *(PR [#25](https://github.com/deargen/python-project-template-2024/pull/25) by [@kiyoon](https://github.com/kiyoon))*:
@@ -140,3 +155,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.1.5]: https://github.com/deargen/python-project-template-2024/compare/v0.1.4...v0.1.5
 [v0.2.0]: https://github.com/deargen/python-project-template-2024/compare/v0.1.6...v0.2.0
 [v0.2.1]: https://github.com/deargen/python-project-template-2024/compare/v0.2.0...v0.2.1
+[v0.2.2]: https://github.com/deargen/python-project-template-2024/compare/v0.2.1...v0.2.2
