@@ -28,7 +28,7 @@ jobs:
           cache-name: cache-micromamba
         with:
           path: ~/micromamba/envs/test
-          key: ${{ runner.os }}-micromamba-${{ env.cache-name }}-${{ hashFiles('deps/lock/x86_64-manylinux_2_28/requirements_dev.txt') }}-${{ hashFiles('.github/workflows/tests.yml') }}
+          key: ${{ runner.os }}-micromamba-${{ env.cache-name }}-${{ hashFiles('deps/lock/x86_64-manylinux_2_28/requirements_dev.txt', '.github/workflows/tests.yml', 'pyproject.toml') }}
           # restore-keys: |
           #   ${{ runner.os }}-micromamba-${{ env.cache-name }}-
           #   ${{ runner.os }}-micromamba-
@@ -59,7 +59,7 @@ jobs:
           cache-name: cache-micromamba
         with:
           path: ~/micromamba/envs/test
-          key: ${{ runner.os }}-micromamba-${{ env.cache-name }}-${{ hashFiles('deps/lock/x86_64-manylinux_2_28/requirements_dev.txt') }}-${{ hashFiles('.github/workflows/tests.yml') }}
+          key: ${{ runner.os }}-micromamba-${{ env.cache-name }}-${{ hashFiles('deps/lock/x86_64-manylinux_2_28/requirements_dev.txt', '.github/workflows/tests.yml', 'pyproject.toml') }}
           # restore-keys: |
           #   ${{ runner.os }}-micromamba-${{ env.cache-name }}-
           #   ${{ runner.os }}-micromamba-
