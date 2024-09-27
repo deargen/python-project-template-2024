@@ -150,6 +150,7 @@ banned-module-level-imports = ["torch", "tensorflow"]
 [tool.ruff.lint.pylint]
 max-args = 10
 max-bool-expr = 10
+max-statements = 100
 
 [tool.pyright]
 include = ["src"]
