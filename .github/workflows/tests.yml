@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   pytest:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     defaults:
       run:
         shell: bash -leo pipefail {0} # required by setup-micromamba
@@ -44,7 +44,7 @@ jobs:
         uses: deargen/workflows/actions/run-pytest@master
 
   doctest:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     defaults:
       run:
         shell: bash -leo pipefail {0} # required by setup-micromamba
