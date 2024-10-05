@@ -5,6 +5,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v0.2.3] - 2024-10-05
+### :sparkles: New Features
+- [`2261a27`](https://github.com/deargen/python-project-template-2024/commit/2261a27b084e7f06947d6f5d8454fbccc89b4803) - micromamba cache better key *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+### :bug: Bug Fixes
+- [`bebe843`](https://github.com/deargen/python-project-template-2024/commit/bebe843bd6fc714142ff1c92d6c7ebcc67bdac7f) - **config**: undefined variable *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`becff68`](https://github.com/deargen/python-project-template-2024/commit/becff68b9080c65b27f85e98a0a786c3e3bddf75) - relax pylint max statements *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`580b4ee`](https://github.com/deargen/python-project-template-2024/commit/580b4eee572bbc1a30a9bd9be03a8a205c65e6f6) - **ci**: ubuntu-24.04 *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`54f0cae`](https://github.com/deargen/python-project-template-2024/commit/54f0cae043b77fd95c7eb06f1035dcfb70a2a9b1) - **ci**: deploy dry run *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+
 ## [v0.2.2] - 2024-09-26
 ### :sparkles: New Features
 - [`d0f1d71`](https://github.com/deargen/python-project-template-2024/commit/d0f1d7167626b9f723cff19da251af322abd1806) - replace string script to use template instantly *(commit by [@kiyoon](https://github.com/kiyoon))*
@@ -156,3 +167,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.2.0]: https://github.com/deargen/python-project-template-2024/compare/v0.1.6...v0.2.0
 [v0.2.1]: https://github.com/deargen/python-project-template-2024/compare/v0.2.0...v0.2.1
 [v0.2.2]: https://github.com/deargen/python-project-template-2024/compare/v0.2.1...v0.2.2
+[v0.2.3]: https://github.com/deargen/python-project-template-2024/compare/v0.2.2...v0.2.3
