@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v0.2.4] - 2024-10-10
+### :sparkles: New Features
+- [`b6360ab`](https://github.com/deargen/python-project-template-2024/commit/b6360ab906197ca9fe59c5478b3528b474d9b8a7) - **ci**: add exclude-types input to deploy.yml, fix(ci): check-docs.yml *(PR [#26](https://github.com/deargen/python-project-template-2024/pull/26) by [@kiyoon](https://github.com/kiyoon))*
+
+
 ## [v0.2.3] - 2024-10-05
 ### :sparkles: New Features
 - [`2261a27`](https://github.com/deargen/python-project-template-2024/commit/2261a27b084e7f06947d6f5d8454fbccc89b4803) - micromamba cache better key *(commit by [@kiyoon](https://github.com/kiyoon))*
@@ -168,3 +173,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.2.1]: https://github.com/deargen/python-project-template-2024/compare/v0.2.0...v0.2.1
 [v0.2.2]: https://github.com/deargen/python-project-template-2024/compare/v0.2.1...v0.2.2
 [v0.2.3]: https://github.com/deargen/python-project-template-2024/compare/v0.2.2...v0.2.3
+[v0.2.4]: https://github.com/deargen/python-project-template-2024/compare/v0.2.3...v0.2.4
