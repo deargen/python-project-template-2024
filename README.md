@@ -34,10 +34,11 @@
 3. template.env 파일을 .env로 복사한 후 token 등 내용 수정.
 4. `ml-project health` 실행해서 환경 설정이 잘 되었는지 확인.
 5. `python tools/examples/color_logging_main.py` 실행해보기. 로깅 내용은 `data/logs` 폴더 안에 기록됨.
-6. `uv pip install -r deps/lock/x86_64-manylinux_2_28/requirements_dev.txt` 으로 pytest 등 개발자용 패키지도 설치가능
-7. `pytest` 커맨드로 테스트 실행해보기.
+    - `ML_PROJECT_LOG_LEVEL=WARNING python tools/examples/color_logging_main.py`라고 실행하면 출력 내용중 INFO 인것이 빠지고 출력됨.
+7. `uv pip install -r deps/lock/x86_64-manylinux_2_28/requirements_dev.txt` 으로 pytest 등 개발자용 패키지도 설치가능
+8. `pytest` 커맨드로 테스트 실행해보기.
     - doctest는 Actions에서 자동으로 실행됨.
-8. `import ml_project; print(ml_project.__version__)` 해보면 `0.1.0+4.g75bbed7.dirty` 이런식으로 나옴.  
+9. `import ml_project; print(ml_project.__version__)` 해보면 `0.1.0+4.g75bbed7.dirty` 이런식으로 나옴.  
     - 0.1.0 버전 이후 4개의 커밋이란 뜻. 그리고 커밋되지 않은 수정사항이 있는 상태이면 dirty버전임.
 
 ## 파일 설명
