@@ -18,11 +18,11 @@ doc_title="New Project"
 doc_url='https://deargen-ai.gitlab.io/new-project-docs'
 
 
-rg --files-with-matches -l python-project-template-2024 | xargs sed -i "s/python-project-template-2024/$github_repo_name/g"
-rg --files-with-matches -l ml_project | xargs sed -i "s/ml_project/$module_name/g"
-rg --files-with-matches -l ml-project | xargs sed -i "s/ml-project/$package_name/g"
-rg --files-with-matches -l ML_PROJECT | xargs sed -i "s/ML_PROJECT/$envvar_name/g"
-rg --files-with-matches -l "Python Project Template" | xargs sed -i "s/Python Project Template/$doc_title/g"
-rg --files-with-matches -l 'https://deargen-ai.gitlab.io/python-project-template-docs' | xargs sed -i "s|https://deargen-ai.gitlab.io/python-project-template-docs|$doc_url|g"
+rg --files-with-matches -l python-project-template-2024 | xargs sed -i -e "s/python-project-template-2024/$github_repo_name/g"
+rg --files-with-matches -l ml_project | xargs sed -i -e "s/ml_project/$module_name/g"
+rg --files-with-matches -l ml-project | xargs sed -i -e "s/ml-project/$package_name/g"
+rg --files-with-matches -l ML_PROJECT | xargs sed -i -e "s/ML_PROJECT/$envvar_name/g"
+rg --files-with-matches -l "Python Project Template" | xargs sed -i -e "s/Python Project Template/$doc_title/g"
+rg --files-with-matches -l 'https://deargen-ai.gitlab.io/python-project-template-docs' | xargs sed -i -e "s|https://deargen-ai.gitlab.io/python-project-template-docs|$doc_url|g"
 
 mv src/ml_project src/$module_name
