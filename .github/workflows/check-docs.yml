@@ -8,11 +8,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      # Pillow installation requires some system packages
-      - uses: awalsh128/cache-apt-pkgs-action@latest
-        with:
-          packages: libjpeg-dev zlib1g-dev
-          version: 1.0
       - name: Check mkdocs
         uses: deargen/workflows/actions/check-mkdocs@master
         with:
