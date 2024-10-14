@@ -123,10 +123,16 @@ BaseConfig 소스코드:
     done
     ```
 
-## argparse 쓰는게 좋은 경우
+## typer를 이용한 방법
 
-그럼에도 불구하고, argparse를 쓰는것이 나은 상황도 많습니다.
+Typer는 argparse보다 장점이 많습니다.
 
-1. 변수 개수가 몇 개 없고 typing도 이름만으로 명확하게 알 수 있어서 큰 걱정이 안되는 경우
+1. typing을 이용해 명확하게 parameter를 정의할 수 있음.
+2. command line 프로그램이 쉽게 API로 노출됨.
+    - 예: `my-program run --batch-size 32` 를 `import my_program; my_program.run(batch_size=32)`로 사용 가능
+3. shell completion도 쉽게 설치해 사용 가능.
 
+복잡한 config 대신 typer를 이용해 command line argument로 사용하는 것도 좋은 방법입니다. 특히 다음과 같은 경우에 유용합니다.
+
+1. 변수 개수가 몇 개 없는 경우
 
