@@ -5,6 +5,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v0.2.5] - 2024-10-14
+### :boom: BREAKING CHANGES
+- due to [`0ee9ddb`](https://github.com/deargen/python-project-template-2024/commit/0ee9ddb5093e671ec077a5fc00ae5f68ec744ce6) - easier gitlab page setup guide (but defaults to master branch *(commit by [@kiyoon](https://github.com/kiyoon))*:
+
+  easier gitlab page setup guide (but defaults to master branch
+
+
+### :sparkles: New Features
+- [`0ee9ddb`](https://github.com/deargen/python-project-template-2024/commit/0ee9ddb5093e671ec077a5fc00ae5f68ec744ce6) - easier gitlab page setup guide (but defaults to master branch *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+### :bug: Bug Fixes
+- [`872bbf9`](https://github.com/deargen/python-project-template-2024/commit/872bbf9023fea5701980b8daef4767fbd97664df) - **replace-name**: mac compatible sed *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`3f0aae4`](https://github.com/deargen/python-project-template-2024/commit/3f0aae42ece6eaedaa661ba202a1ee3586945eaf) - **ci**: check mkdocs *(PR [#27](https://github.com/deargen/python-project-template-2024/pull/27) by [@kiyoon](https://github.com/kiyoon))*
+- [`e3a4041`](https://github.com/deargen/python-project-template-2024/commit/e3a40419987e9b3b7b4398c3c70dfe2efc25775c) - **replace_project_name.sh**: sed issue with mac *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+
 ## [v0.2.4] - 2024-10-10
 ### :sparkles: New Features
 - [`b6360ab`](https://github.com/deargen/python-project-template-2024/commit/b6360ab906197ca9fe59c5478b3528b474d9b8a7) - **ci**: add exclude-types input to deploy.yml, fix(ci): check-docs.yml *(PR [#26](https://github.com/deargen/python-project-template-2024/pull/26) by [@kiyoon](https://github.com/kiyoon))*
@@ -174,3 +190,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.2.2]: https://github.com/deargen/python-project-template-2024/compare/v0.2.1...v0.2.2
 [v0.2.3]: https://github.com/deargen/python-project-template-2024/compare/v0.2.2...v0.2.3
 [v0.2.4]: https://github.com/deargen/python-project-template-2024/compare/v0.2.3...v0.2.4
+[v0.2.5]: https://github.com/deargen/python-project-template-2024/compare/v0.2.4...v0.2.5
