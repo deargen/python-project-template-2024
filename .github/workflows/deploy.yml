@@ -32,7 +32,7 @@ jobs:
     with:
       requirements-file: deps/lock/x86_64-manylinux_2_28/requirements_docs.txt
       gitlab-project: ${{ vars.GITLAB_PROJECT }}
-      gitlab-branch: gl-pages
+      gitlab-branch: master
       version-tag: ${{ github.event.inputs.version-tag }}
       deploy-type: tag
     secrets:

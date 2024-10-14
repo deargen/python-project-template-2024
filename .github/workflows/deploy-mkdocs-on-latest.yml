@@ -13,6 +13,6 @@ jobs:
       deploy-type: latest
       requirements-file: deps/lock/x86_64-manylinux_2_28/requirements_docs.txt
       gitlab-project: ${{ vars.GITLAB_PROJECT }}
-      gitlab-branch: gl-pages
+      gitlab-branch: master
     secrets:
       GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
