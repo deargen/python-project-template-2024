@@ -98,6 +98,8 @@
 2. `pyproject.toml`에 바꿔야하는 부분 주석 되어있음. 바꿔 쓰기
 3. `README.md`에 있는 badge들 URL (python-project-template-2024 -> 새 주소) 바꾸어 주어야 제대로 테스트 결과가 뜸.
 
+❗ 해당 스크립트는 단순 치환이기에 두번 작동하지 않습니다. 한 번 쓰고 지우세요.
+
 그 외 알아두면 좋은 것들:
 
 1. `deps/requirements*.in`을 수정하면 `deps/lock` 폴더에 lock 파일이 생성됨. (Actions)
