@@ -73,13 +73,6 @@
 ### [ruff](https://github.com/astral-sh/ruff): Rust로 구현한 매우 빠른 black, isort (+ flake8 linter까지)
 
 - Black, isort와 99% 호환성
-- isort가 잘 되려면 `pyproject.toml`에 다음과 같이 추가해야 함
-
-```toml
-[tool.ruff]
-src = ["src"]  # first party 모듈을 찾는 위치
-```
-
 - 추가로 모든 파일에 required import 추가하는 기능이 있음
 
 ```toml

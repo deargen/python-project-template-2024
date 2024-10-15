@@ -22,11 +22,10 @@ Linting 결과를 무시하고 싶은 경우:
 2. File 비활성화: 수정하는 파일 맨 위에 `# flake8: noqa: D401 D402`와 같은 주석을 남기면 파일 전체에서 비활성화합니다.
 3. Project 단위 비활성화: `pyproject.toml`에서 `[tools.ruff.lint]` 항목에 `ignore`를 추가합니다.
 
-`pyproject.toml` 예시:
+`pyproject.toml` 예시 (가장 최신 세팅은 pyproject.toml을 직접 참고하세요):
 
 ```toml
 [tool.ruff]
-src = ["src"]  # for ruff isort
 extend-exclude = [
   "src/ml_project/_version.py",  # CHANGE
 ]
