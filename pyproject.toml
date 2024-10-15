@@ -123,6 +123,11 @@ ignore = [
   "TRY003",  # long message in except
 ]
 
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = [
+    "F401", # Ignore seemingly unused imports (they're meant for re-export)
+]
+
 [tool.ruff.lint.pydocstyle]
 convention = "google"
 
@@ -145,7 +150,12 @@ known-first-party = ["rust_graph", "bio_data_to_db", "reduce_binary", "slack_hel
 # Ban certain modules from being imported at module level, instead requiring
 # that they're imported lazily (e.g., within a function definition, if TYPE_CHECKING, etc.)
 # NOTE: Ruff code TID is currently disabled, so this settings doesn't do anything.
-banned-module-level-imports = ["torch", "tensorflow"]
+banned-module-level-imports = ["torch"]
+
+# [tool.ruff.lint.flake8-tidy-imports.banned-api]
+# "os.getenv".msg = "Use os.environ instead"
+# "os.putenv".msg = "Use os.environ instead"
+# "os.unsetenv".msg = "Use os.environ instead"
 
 [tool.ruff.lint.pylint]
 max-args = 10
