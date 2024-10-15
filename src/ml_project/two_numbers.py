@@ -1,7 +1,5 @@
 from dataclasses import dataclass
 
-import ml_project
-
 
 @dataclass
 class TwoNumbers:
