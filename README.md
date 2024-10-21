@@ -111,3 +111,6 @@
 4. 테스트를 작성하지 않은 경우, `tests/` 폴더 안의 파일 전부 삭제하면 GitHub Actions에서 테스트 통과됨.
 5. ⭐ VSCode에 [Python Tools](https://deargen-ai.gitlab.io/python-project-template-docs/latest/python_tools/formatters) 내용 전부 (formatter, linter, LSP 등) 적용하기.
 6. `docs/CHANGELOG.md` 는 맨 위 문단 빼고 수정내용 다 삭제.
+7. 첫 commit을 v0.0.0 으로 pre-release 하기 (github release에서 가능)
+    - 새로운 버전을 CI로 배포할 때, [이전 버전과 비교하는 action](https://github.com/requarks/changelog-action)이 있는데 첫 버전이 없으면 그게 실패함.
+    - 어느 정도 stable한 상태에서 버전을 배포해 주세요. 첫 stable 버전은 v0.1.0이며 그 이전 v0.0.1, v0.0.2 등은 릴리즈 동작 잘하는지 테스트 하기 위해 사용할 수 있습니다.
