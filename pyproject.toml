@@ -145,7 +145,8 @@ known-first-party = [
   "reduce_binary",
   "apbs_binary",
   "msms_binary",
-  "slack_helpers"
+  "slack_helpers",
+  "biotest",
 ]
 
 ## Uncomment this if you want to use Python < 3.10
