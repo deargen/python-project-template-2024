@@ -48,7 +48,7 @@ addopts = "--cov=ml_project" # CHANGE (name of the importing module name)
 testpaths = ["tests"]
 
 [tool.ruff]
-namespace-packages = ["tools", "scripts"]  # for INP rule, suppress on these directories
+namespace-packages = ["tools", "scripts", "tests"]  # for INP rule, suppress on these directories
 extend-exclude = [
   "src/ml_project/_version.py",  # CHANGE
 ]
