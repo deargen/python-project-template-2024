@@ -98,6 +98,7 @@ select = [
   "FAST", # FastAPI
   "AIR",  # airflow
   "DOC",  # docstring
+  "TID",  # tidy-imports
 
   # Not important
   "T10",  # debug statements
@@ -154,16 +155,18 @@ known-first-party = [
 #   "from __future__ import annotations",
 # ]
 
-[tool.ruff.lint.flake8-tidy-imports]
+# [tool.ruff.lint.flake8-tidy-imports]
 # Ban certain modules from being imported at module level, instead requiring
 # that they're imported lazily (e.g., within a function definition, if TYPE_CHECKING, etc.)
-# NOTE: Ruff code TID is currently disabled, so this settings doesn't do anything.
-banned-module-level-imports = ["torch"]
+# banned-module-level-imports = ["torch"]
 
-# [tool.ruff.lint.flake8-tidy-imports.banned-api]
+[tool.ruff.lint.flake8-tidy-imports.banned-api]
 # "os.getenv".msg = "Use os.environ instead"
 # "os.putenv".msg = "Use os.environ instead"
 # "os.unsetenv".msg = "Use os.environ instead"
+"pytorch_lightning".msg = "Use lightning.fabric instead"
+"lightning.pytorch".msg = "Use lightning.fabric instead"
+"accelerate".msg = "Use lightning.fabric instead"
 
 [tool.ruff.lint.pylint]
 max-args = 10
