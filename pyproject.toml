@@ -166,6 +166,7 @@ known-first-party = [
 # "os.unsetenv".msg = "Use os.environ instead"
 "pytorch_lightning".msg = "Use lightning.fabric instead"
 "lightning.pytorch".msg = "Use lightning.fabric instead"
+"lightning_fabric".msg = "Use lightning.fabric instead"
 "accelerate".msg = "Use lightning.fabric instead"
 
 [tool.ruff.lint.pylint]
