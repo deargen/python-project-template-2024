@@ -173,6 +173,11 @@ known-first-party = [
 max-args = 10
 max-bool-expr = 10
 max-statements = 100
+max-returns = 10
+max-public-methods = 30
+max-nested-blocks = 10
+max-locals = 30
+max-branches = 24
 
 [tool.pyright]
 include = ["src"]
