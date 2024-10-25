@@ -1,4 +1,7 @@
-# ruff: noqa: T201
+# Allow print
+# Allow many arguments
+# Allow relative import from parent
+# ruff: noqa: T201 PLR0913 TID252
 import typer
 
 app = typer.Typer(
