@@ -3,7 +3,7 @@
 import logging
 import os
 
-from .. import DATA_DIR
+from ml_project import DATA_DIR
 
 logger = logging.getLogger(__name__)
 
@@ -17,7 +17,7 @@ def check_env():
     """Check environment variables."""
     ml_project_data_dir = os.environ.get("ML_PROJECT_DATA_DIR")
 
-    if ml_project_data_dir is None:
+    if ml_project_data_dir is None or ml_project_data_dir == "":
         logger.warning(
             "🤒 Please set the environment variable ML_PROJECT_DATA_DIR to the path of the data directory.\n"
             f"Otherwise, the default {DATA_DIR} will be used."
