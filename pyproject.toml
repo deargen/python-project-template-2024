@@ -161,13 +161,11 @@ known-first-party = [
 # banned-module-level-imports = ["torch"]
 
 [tool.ruff.lint.flake8-tidy-imports.banned-api]
-# "os.getenv".msg = "Use os.environ instead"
-# "os.putenv".msg = "Use os.environ instead"
-# "os.unsetenv".msg = "Use os.environ instead"
 "pytorch_lightning".msg = "Use lightning.fabric instead"
 "lightning.pytorch".msg = "Use lightning.fabric instead"
 "lightning_fabric".msg = "Use lightning.fabric instead"
 "accelerate".msg = "Use lightning.fabric instead"
+"os.system".msg = "Use subprocess.run or subprocess.Popen instead"
 
 [tool.ruff.lint.pylint]
 max-args = 10
