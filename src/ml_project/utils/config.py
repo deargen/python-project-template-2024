@@ -1,10 +1,19 @@
-# flake8: noqa: D100 D101 D102 D105 T201
-from dataclasses import dataclass
+import ast
+import os
+from abc import ABC, abstractmethod
+from dataclasses import asdict, dataclass, fields
+from types import NoneType, UnionType
+from typing import get_args, get_origin
+
+import rich
+from rich.console import Console
+from typing_extensions import override
 
 
 @dataclass
-class BaseConfig:
+class BaseConfig(ABC):
     @property
+    @abstractmethod
     def envvar_prefix(self) -> str:
         return "MLCONFIG_"
 
@@ -14,15 +23,13 @@ class BaseConfig:
         self.confirm_validity()
 
     def update_based_on_env_vars(self):
-        import os
-        from dataclasses import fields
-        from types import NoneType, UnionType
-        from typing import get_args, get_origin
-
-        from rich.console import Console
-
-        # NOTE: without soft wrapping, it will line break depending on the width of the terminal.
+        # NOTE: without soft wrapping, rich will line break depending on the width of the terminal.
         # Which may cause the failure of the doctest.
+        # We want to use rich and doctest together
+        # NOTE: also, we have to initialize Console within the class, otherwise, the doctest will fail.
+        # I think it's because rich detects if doctest is running and changes the behavior.
+        # but if we initialize Console outside of the class, it will not detect it
+        # because it's before importing doctest.
         console = Console(soft_wrap=True)
 
         # for key, value in asdict(self).items():
@@ -49,11 +56,6 @@ class BaseConfig:
 
     def _set_value_as_type(self, key, value: str, vartype):
         """Set the string value as the given type."""
-        import ast
-        from typing import get_origin
-
-        from rich.console import Console
-
         if get_origin(vartype) is list:
             setattr(self, key, ast.literal_eval(value))
             assert isinstance(
@@ -78,10 +80,6 @@ class BaseConfig:
         )
 
     def print_fields(self):
-        from dataclasses import fields
-
-        from rich.console import Console
-
         console = Console(soft_wrap=True)
 
         console.print(f"{type(self).__name__}: Fields:")
@@ -89,9 +87,6 @@ class BaseConfig:
             console.print(f"{fld.name}: {fld.type} = {fld.default!r}")
 
     def verify_unknown_env_vars(self):
-        import os
-        from dataclasses import asdict
-
         # os.environ.keys() is always uppercase
         for name, value in os.environ.items():
             keys_lower = [k.lower() for k in asdict(self)]
@@ -99,18 +94,20 @@ class BaseConfig:
                 name.startswith(self.envvar_prefix)
                 and name[len(self.envvar_prefix) :].lower() not in keys_lower
             ):
-                print(f"ERROR while updating from env var {name}")
-                print("Possible values are:")
-                print()
+                console = Console(soft_wrap=True)
+                console.print(f"ERROR while updating from env var {name}")
+                console.print("Possible values are:")
+                console.print()
                 self.print_fields()
                 raise ValueError(f"Unknown environment variable {name}={value}")
 
+    @abstractmethod
     def confirm_validity(self):
         pass
 
 
 @dataclass
-class ExampleConfig(BaseConfig):
+class _ExampleConfig(BaseConfig):
     """
     BaseConfig 사용법 예: BaseConfig를 inherit해서 변수, 타입, default값을 적으면 됩니다.
 
@@ -118,51 +115,77 @@ class ExampleConfig(BaseConfig):
     환경변수를 이용해 모든 값을 수정할 수 있습니다.
 
     Examples:
-        >>> cfg = ExampleConfig()
+        >>> cfg = _ExampleConfig()
         >>> cfg
-        ExampleConfig(train_batch_size=1, alpha=None)
+        _ExampleConfig(train_batch_size=1, alpha=None)
 
         >>> import os
-        >>> os.environ['MLCONFIG_train_batch_size'] = '2'
-        >>> ExampleConfig()
-        ExampleConfig: Updating train_batch_size from env var MLCONFIG_train_batch_size=2 as type <class 'int'>
-        ExampleConfig(train_batch_size=2, alpha=None)
+        >>> os.environ['EXMLCONFIG_train_batch_size'] = '2'
+        >>> _ExampleConfig()
+        _ExampleConfig: Updating train_batch_size from env var EXMLCONFIG_train_batch_size=2 as type <class 'int'>
+        _ExampleConfig(train_batch_size=2, alpha=None)
 
-        >>> os.environ['MLCONFIG_alpha'] = '0.5'
-        >>> ExampleConfig()
-        ExampleConfig: Updating train_batch_size from env var MLCONFIG_train_batch_size=2 as type <class 'int'>
-        ExampleConfig: Updating alpha from env var MLCONFIG_alpha=0.5 as type <class 'float'>
-        ExampleConfig(train_batch_size=2, alpha=0.5)
+        >>> os.environ['EXMLCONFIG_alpha'] = '0.5'
+        >>> _ExampleConfig()
+        _ExampleConfig: Updating train_batch_size from env var EXMLCONFIG_train_batch_size=2 as type <class 'int'>
+        _ExampleConfig: Updating alpha from env var EXMLCONFIG_alpha=0.5 as type <class 'float'>
+        _ExampleConfig(train_batch_size=2, alpha=0.5)
 
         >>> # Setting alpha to None with the string "None"
-        >>> os.environ['MLCONFIG_alpha'] = 'None'
-        >>> ExampleConfig()
-        ExampleConfig: Updating train_batch_size from env var MLCONFIG_train_batch_size=2 as type <class 'int'>
-        ExampleConfig: Updating alpha from env var MLCONFIG_alpha=None as NoneType
-        ExampleConfig(train_batch_size=2, alpha=None)
+        >>> os.environ['EXMLCONFIG_alpha'] = 'None'
+        >>> cfg = _ExampleConfig()
+        _ExampleConfig: Updating train_batch_size from env var EXMLCONFIG_train_batch_size=2 as type <class 'int'>
+        _ExampleConfig: Updating alpha from env var EXMLCONFIG_alpha=None as NoneType
 
-        >>> # Undefined name in environment variable. Maybe a typo?
-        >>> os.environ['MLCONFIG_unknown'] = '1'
-        >>> ExampleConfig()
+        >>> cfg
+        _ExampleConfig(train_batch_size=2, alpha=None)
+
+        >>> cfg.print_fields()
+        _ExampleConfig: Fields:
+        train_batch_size: <class 'int'> = 1
+        alpha: float | None = None
+
+        >>> os.environ['EXMLCONFIG_train_batch_size'] = '0'
+        >>> _ExampleConfig()
         Traceback (most recent call last):
          ...
-        ValueError: Unknown environment variable MLCONFIG_unknown=1
+        AssertionError: train_batch_size has to be positive
+
+        >>> os.environ['EXMLCONFIG_train_batch_size'] = '-2'
+        >>> _ExampleConfig()
+        Traceback (most recent call last):
+         ...
+        AssertionError: train_batch_size has to be positive
+
+        >>> # Undefined name in environment variable. Maybe a typo?
+        >>> os.environ['EXMLCONFIG_train_batch_size'] = '1'
+        >>> os.environ['EXMLCONFIG_unknown'] = '1'
+        >>> _ExampleConfig()
+        Traceback (most recent call last):
+         ...
+        ValueError: Unknown environment variable EXMLCONFIG_unknown=1
     """
 
     train_batch_size: int = 1
     alpha: float | None = None
 
     @property
+    @override
     def envvar_prefix(self) -> str:
-        return "MLCONFIG_"
+        return "EXMLCONFIG_"
+
+    @override
+    def confirm_validity(self):
+        assert self.train_batch_size > 0, "train_batch_size has to be positive"
 
 
 def example():
-    import rich
-
-    cfg = ExampleConfig()
+    cfg = _ExampleConfig()
     rich.print(cfg)
 
 
 if __name__ == "__main__":
     example()
+    import doctest
+
+    doctest.testmod()
