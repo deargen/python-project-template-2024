@@ -137,7 +137,7 @@ Typer는 argparse보다 장점이 많습니다.
 
 사용법을 먼저 보여드리자면, 
 
-### ::: ml_project.utils.config.ExampleConfig
+### ::: ml_project.utils.config._ExampleConfig
     options:
         show_docstring_description: true
         show_docstring_examples: false
@@ -145,7 +145,7 @@ Typer는 argparse보다 장점이 많습니다.
         show_bases: false
         show_source: true
 
-### ::: ml_project.utils.config.ExampleConfig
+### ::: ml_project.utils.config._ExampleConfig
     options:
         show_docstring_description: false
         show_docstring_examples: true
