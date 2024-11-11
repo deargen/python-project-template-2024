@@ -1,18 +1,23 @@
 import inspect
 import logging
 import os
+from collections.abc import Sequence
 from datetime import datetime, timezone
+from os import PathLike
 from pathlib import Path
 
 from rich.console import Console
 from rich.logging import RichHandler
 from rich.theme import Theme
 
-from ml_project import LOG_DIR, PROJECT_DIR, __version__, default_log_level
+from ml_project import (
+    PROJECT_DIR,
+    __version__,
+    default_log_level,
+    env_deferred_logger,
+    package_name,
+)
 
-# 옵션으로 `from accelerate.logging import get_logger`
-# 사용하시면 로깅할 때 main_process_only=False, in_order=True 등 옵션 사용 가능합니다
-# https://huggingface.co/docs/accelerate/package_reference/logging
 logger = logging.getLogger(__name__)
 
 console = Console(
@@ -29,27 +34,37 @@ console = Console(
 
 def setup_logging(
     console_level: int | str = default_log_level,
-    output_files: list[str] | None = None,
-    file_levels: list[int] | None = None,
+    log_dir: str | PathLike | None = None,
+    output_files: Sequence[str] = (
+        "{date:%Y%m%d-%H%M%S}-{name}-{levelname}-{version}.log",
+    ),
+    file_levels: Sequence[int] = (logging.INFO,),
+    *,
+    log_init_messages: bool = True,
+    console_formatter: logging.Formatter | None = None,
+    file_formatter: logging.Formatter | None = None,
 ):
-    """
+    r"""
     Setup logging with RichHandler and FileHandler.
 
     You should call this function at the beginning of your script.
 
     Args:
-        console_level: Logging level for console. Defaults to INFO or env var ML_PROJECT_LOG_LEVEL.
-        output_files: List of output file paths, relative to LOG_DIR. If None, use default.
-        file_levels: List of logging levels for each output file. If None, use default.
+        console_level: Logging level for console. Defaults to INFO or env var {app_name_upper}_LOG_LEVEL.
+        log_dir: Directory to save log files. If None, only console logging is enabled. Usually set to LOG_DIR.
+        output_files: List of output file paths, relative to log_dir. Only applies if log_dir is not None.
+        file_levels: List of logging levels for each output file. Only applies if log_dir is not None.
+        log_init_messages: Whether to log the initialisation messages.
     """
-    if output_files is None:
-        output_files = ["{date:%Y%m%d-%H%M%S}-{name}-{levelname}-{version}.log"]
-    if file_levels is None:
-        file_levels = [logging.INFO]
-
     assert len(output_files) == len(
         file_levels
     ), "output_files and file_levels must have the same length"
+
+    if log_dir is None:
+        output_files = []
+        file_levels = []
+    else:
+        log_dir = Path(log_dir)
 
     # NOTE: Initialise with NOTSET level and null device, and add stream handler separately.
     # This way, the root logging level is NOTSET (log all), and we can customise each handler's behaviour.
@@ -73,16 +88,23 @@ def setup_logging(
         tracebacks_show_locals=True,
         console=console,
     )
-    console_format = logging.Formatter(
-        fmt="%(name)s - %(message)s",
-        datefmt="%m/%d %H:%M:%S",
-    )
+
+    if console_formatter is None:
+        console_format = logging.Formatter(
+            fmt="%(name)s - %(message)s",
+            datefmt="%H:%M:%S",
+        )
+    else:
+        console_format = console_formatter
     console_handler.setFormatter(console_format)
 
-    f_format = logging.Formatter(
-        fmt="%(asctime)s - %(name)s: %(lineno)4d - %(levelname)s - %(message)s",
-        datefmt="%y/%m/%d %H:%M:%S",
-    )
+    if file_formatter is None:
+        f_format = logging.Formatter(
+            fmt="%(asctime)s - %(name)s: %(lineno)4d - %(levelname)s - %(message)s",
+            datefmt="%y/%m/%d %H:%M:%S",
+        )
+    else:
+        f_format = file_formatter
 
     function_caller_module = inspect.getmodule(inspect.stack()[1][0])
     if function_caller_module is None:
@@ -90,13 +112,18 @@ def setup_logging(
     elif function_caller_module.__name__ == "__main__":
         if function_caller_module.__file__ is None:
             name_or_path = function_caller_module.__name__
-        else:
+        elif PROJECT_DIR is not None:
+            # Called from files in the project directory.
+            # Instead of using the __name__ == "__main__", infer the module name from the file path.
             name_or_path = function_caller_module.__file__.replace(
                 str(PROJECT_DIR) + "/", ""
             ).replace("/", ".")
             # Remove .py extension
             name_or_path = Path(name_or_path).with_suffix("")
-
+        else:
+            # Called from somewhere outside the project directory.
+            # Use the script name, like "script.py"
+            name_or_path = Path(function_caller_module.__file__).name
     else:
         name_or_path = function_caller_module.__name__
 
@@ -109,23 +136,27 @@ def setup_logging(
     root_logger = logging.getLogger()
     root_logger.addHandler(console_handler)
 
-    log_paths = []
-    for output_file, file_level in zip(output_files, file_levels, strict=True):
-        log_path_map["levelname"] = logging.getLevelName(file_level)
-        log_path = LOG_DIR / output_file.format_map(log_path_map)
-        log_path.parent.mkdir(parents=True, exist_ok=True)
+    if log_init_messages:
+        logger.info(f"{package_name} {__version__}")
+        env_deferred_logger.flush(logger)
 
-        f_handler = logging.FileHandler(log_path)
-        f_handler.setLevel(file_level)
-        f_handler.setFormatter(f_format)
+    if log_dir is not None:
+        log_paths = []
+        for output_file, file_level in zip(output_files, file_levels, strict=True):
+            log_path_map["levelname"] = logging._levelToName[file_level]
+            log_path = log_dir / output_file.format_map(log_path_map)
+            log_path.parent.mkdir(parents=True, exist_ok=True)
 
-        # Add handlers to the logger
-        root_logger.addHandler(f_handler)
+            f_handler = logging.FileHandler(log_path)
+            f_handler.setLevel(file_level)
+            f_handler.setFormatter(f_format)
 
-    logger.info(f"ml-project {__version__}")
+            # Add handlers to the logger
+            root_logger.addHandler(f_handler)
 
-    for log_path in log_paths:
-        logger.info(f"Logging to {log_path}")
+        if log_init_messages:
+            for log_path in log_paths:
+                logger.info(f"Logging to {log_path}")
 
 
 def main():
@@ -135,7 +166,7 @@ def main():
 
 if __name__ == "__main__":
     try:
-        setup_logging()
+        setup_logging(log_dir=None)
         main()
     except Exception:
         logger.exception("Exception occurred")

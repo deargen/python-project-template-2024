@@ -31,7 +31,7 @@
 
 1. (Optional) `pip3 install --user uv` 해서 pip 대신 `uv pip` 사용하면 더 빠름.
 2. `uv pip install -r deps/lock/x86_64-manylinux_2_28/requirements.txt`, `uv pip install -e .` 으로 dependencies 및 ml-project 패키지 설치
-3. template.env 파일을 .env로 복사한 후 token 등 내용 수정.
+3. `ml-project config` 실행해서 `.env` 파일 생성. (필요한 경우 수정)
 4. `ml-project health` 실행해서 환경 설정이 잘 되었는지 확인.
 5. `python tools/examples/color_logging_main.py` 실행해보기. 로깅 내용은 `data/logs` 폴더 안에 기록됨.
     - `ML_PROJECT_LOG_LEVEL=WARNING python tools/examples/color_logging_main.py`라고 실행하면 출력 내용중 INFO 인것이 빠지고 출력됨.
@@ -56,6 +56,7 @@
 └ 📂 ml_project/             # `import ml_project`해서 사용하는 함수나 클래스 등 정의하는 곳
   │ 🐍 __init__.py
   │ 🐍 _version.py          # git tag로 버전 정보를 읽는 versioneer 파일 (수정X)
+  │ 📜 template.env         # `ml-project config` 실행시 `.env`로 복사되는 환경설정 파일
   └ 🐍 ...
 
 📂 tools/                   # import 하지 않고 바로 실행 가능한 파일들. (예: train.py)

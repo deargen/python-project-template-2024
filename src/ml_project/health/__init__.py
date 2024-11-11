@@ -3,7 +3,7 @@
 import logging
 import os
 
-from ml_project import DATA_DIR
+from ml_project import DATA_DIR, app_name_upper
 
 logger = logging.getLogger(__name__)
 
@@ -15,16 +15,16 @@ def check_binaries():
 
 def check_env():
     """Check environment variables."""
-    ml_project_data_dir = os.environ.get("ML_PROJECT_DATA_DIR")
+    data_dir_env = os.environ.get(f"{app_name_upper}_DATA_DIR")
 
-    if ml_project_data_dir is None or ml_project_data_dir == "":
+    if data_dir_env is None or data_dir_env == "":
         logger.warning(
-            "🤒 Please set the environment variable ML_PROJECT_DATA_DIR to the path of the data directory.\n"
+            f"🤒 Please set the environment variable {app_name_upper}_DATA_DIR to the path of the data directory.\n"
             f"Otherwise, the default {DATA_DIR} will be used."
         )
         return False
 
-    logger.info(f"✅ ML_PROJECT_DATA_DIR is set to {ml_project_data_dir}")
+    logger.info(f"✅ {app_name_upper}_DATA_DIR is set to {data_dir_env}")
     return True
 
 

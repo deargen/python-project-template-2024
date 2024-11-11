@@ -35,10 +35,13 @@ keywords = ["development", "template"]
 "Homepage" = "https://github.com/deargen/python-project-template-2024" # OPTIONALLY CHANGE
 
 [project.scripts]
-ml-project = "ml_project.cli:main"
+ml-project = "ml_project.cli:main"  # CHANGE
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["deps/requirements.in"]}
+
+[tool.setuptools.package-data]
+ml_project = ["template.env"]  # CHANGE (name of the importing module name)
 
 [tool.setuptools.packages.find]
 where = ["src"]

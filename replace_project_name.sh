@@ -10,13 +10,14 @@ module_name=new_project
 # ml-project -> new-package-name
 package_name=new-project
 
-# ML_PROJECT -> NEW_PROJECT
-# e.g. ML_PROJECT_DATA_DIR -> NEW_PROJECT_DATA_DIR
-envvar_name=NEW_PROJECT
-
 # Python Project Template -> New Project
 doc_title="New Project"
 doc_url='https://deargen-ai.gitlab.io/new-project-docs'
+
+# ML_PROJECT -> NEW_PROJECT
+# e.g. ML_PROJECT_DATA_DIR -> NEW_PROJECT_DATA_DIR
+# no need to change this.
+envvar_name=$(echo $module_name | tr '[:lower:]' '[:upper:]')
 
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
