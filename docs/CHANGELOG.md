@@ -5,6 +5,48 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v0.3.0] - 2024-11-11
+### :boom: BREAKING CHANGES
+- due to [`ed5d8ed`](https://github.com/deargen/python-project-template-2024/commit/ed5d8edf870c75d8044e9d3000d99f079d4619b7) - drop windows (not in default) *(commit by [@kiyoon](https://github.com/kiyoon))*:
+
+  drop windows (not in default)
+
+- due to [`b2fa2e9`](https://github.com/deargen/python-project-template-2024/commit/b2fa2e917cded278670bfedfd50a7655c2003c59) - prevent circular import *(commit by [@kiyoon](https://github.com/kiyoon))*:
+
+  prevent circular import
+
+- due to [`6b0e335`](https://github.com/deargen/python-project-template-2024/commit/6b0e33510649dd21b363843b0f66d921279583dd) - non-development installation support *(PR [#28](https://github.com/deargen/python-project-template-2024/pull/28) by [@kiyoon](https://github.com/kiyoon))*:
+
+  non-development installation support (#28)
+
+
+### :sparkles: New Features
+- [`088ac67`](https://github.com/deargen/python-project-template-2024/commit/088ac671deda79021c65dad85fc3ca31a3a62f46) - update requirements_docs.in to support python 3.12 *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`01ede09`](https://github.com/deargen/python-project-template-2024/commit/01ede0949b732393bf19a37e4d4385e9c199ca56) - vscode default settings *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`9772d0e`](https://github.com/deargen/python-project-template-2024/commit/9772d0ef31487cd9f9fea400e0ec001ce95f7799) - **ruff**: ignore unused imports in __init__.py *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`ed5d8ed`](https://github.com/deargen/python-project-template-2024/commit/ed5d8edf870c75d8044e9d3000d99f079d4619b7) - **pip-compile**: drop windows (not in default) *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`3ced2e3`](https://github.com/deargen/python-project-template-2024/commit/3ced2e3ec5336b1d7b087414f6f55de2f56bf732) - biotest *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`d216290`](https://github.com/deargen/python-project-template-2024/commit/d21629045d56f409057dc87c0ebc93d8883e403f) - ban lightning *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`d14c903`](https://github.com/deargen/python-project-template-2024/commit/d14c90310b2d195f989cc06793aeca34d2b5c5e2) - add banned api *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`051e2e6`](https://github.com/deargen/python-project-template-2024/commit/051e2e645d8022fa685518191b42df5aa829ff91) - make pylinter less strict *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`4a24cc5`](https://github.com/deargen/python-project-template-2024/commit/4a24cc5bfaaae4544e600b563d352178898047a4) - ruff ban os.system *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`3120164`](https://github.com/deargen/python-project-template-2024/commit/31201648b00569ba261662605ac8af344a76ec62) - **ruff**: ban easydict *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`6b0e335`](https://github.com/deargen/python-project-template-2024/commit/6b0e33510649dd21b363843b0f66d921279583dd) - non-development installation support *(PR [#28](https://github.com/deargen/python-project-template-2024/pull/28) by [@kiyoon](https://github.com/kiyoon))*
+
+### :bug: Bug Fixes
+- [`53fc9f5`](https://github.com/deargen/python-project-template-2024/commit/53fc9f554b9c18a65a1faf8e9402ca389c3fcca8) - tests directory doesn't need namespace *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`5b2ee15`](https://github.com/deargen/python-project-template-2024/commit/5b2ee15ca89373a279dc25759f259731af15de7e) - disable some ruff rules for CLI *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`99972df`](https://github.com/deargen/python-project-template-2024/commit/99972df1f954592f0c802dde2b2fce808f96971c) - ruff and health check logic *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`b2fa2e9`](https://github.com/deargen/python-project-template-2024/commit/b2fa2e917cded278670bfedfd50a7655c2003c59) - prevent circular import *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`6c3e3dc`](https://github.com/deargen/python-project-template-2024/commit/6c3e3dcb482b747ad4a0e3c75ff62fa41278a9d8) - **config**: improve abstraction, doctest *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+### :recycle: Refactors
+- [`fb23283`](https://github.com/deargen/python-project-template-2024/commit/fb23283dd2b379c97b8ef88a3861573e62801c0f) - remove clearml dependency and example *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+### :wrench: Chores
+- [`ac88a3e`](https://github.com/deargen/python-project-template-2024/commit/ac88a3e6feb4944669bfd0cc9229b73a79e4b650) - update first party *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+
 ## [v0.2.5] - 2024-10-14
 ### :boom: BREAKING CHANGES
 - due to [`0ee9ddb`](https://github.com/deargen/python-project-template-2024/commit/0ee9ddb5093e671ec077a5fc00ae5f68ec744ce6) - easier gitlab page setup guide (but defaults to master branch *(commit by [@kiyoon](https://github.com/kiyoon))*:
@@ -191,3 +233,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.2.3]: https://github.com/deargen/python-project-template-2024/compare/v0.2.2...v0.2.3
 [v0.2.4]: https://github.com/deargen/python-project-template-2024/compare/v0.2.3...v0.2.4
 [v0.2.5]: https://github.com/deargen/python-project-template-2024/compare/v0.2.4...v0.2.5
+[v0.3.0]: https://github.com/deargen/python-project-template-2024/compare/v0.2.5...v0.3.0
