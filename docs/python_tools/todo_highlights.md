@@ -2,6 +2,7 @@
 
 - 주석에 있는 `# TODO: ` 등을 하이라이팅해주는 플러그인입니다.
 - 다른 collaborator가 꼭 알아야 할 중요한 정보는 쉽게 알아 볼 수 있게 키워드를 통일시켜 하이라이팅해야 합니다.
+- `# TODO(kiyoon):` 과 같이 작성자 이름을 추가해도 좋습니다.
 
 ## VSCode에서 설치
 
@@ -40,5 +41,20 @@
         cmd = { "TodoTrouble", "TodoTelescope" },
         event = { "BufReadPost", "BufNewFile" },
         dependencies = "nvim-lua/plenary.nvim",
+        config = function()
+          local todo_comments = require "todo-comments"
+          todo_comments.setup {
+            -- match TODO(scope):
+            -- See https://github.com/folke/todo-comments.nvim/pull/255
+            highlight = {
+              -- vimgrep regex, supporting the pattern TODO(name):
+              pattern = [[.*<((KEYWORDS)%(\(.{-1,}\))?):]],
+            },
+            search = {
+              -- ripgrep regex, supporting the pattern TODO(name):
+              pattern = [[\b(KEYWORDS)(\(\w*\))*:]],
+            },
+          }
+        end,
       },
     ```

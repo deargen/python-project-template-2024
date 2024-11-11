@@ -27,6 +27,7 @@ classifiers = [
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
   "License :: OSI Approved :: Apache Software License",
 ]
 keywords = ["development", "template"]
@@ -35,10 +36,13 @@ keywords = ["development", "template"]
 "Homepage" = "https://github.com/deargen/python-project-template-2024" # OPTIONALLY CHANGE
 
 [project.scripts]
-ml-project = "ml_project.cli:main"
+ml-project = "ml_project.cli:main"  # CHANGE
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["deps/requirements.in"]}
+
+[tool.setuptools.package-data]
+ml_project = ["template.env"]  # CHANGE (name of the importing module name)
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -46,6 +50,22 @@ where = ["src"]
 [tool.pytest.ini_options]
 addopts = "--cov=ml_project" # CHANGE (name of the importing module name)
 testpaths = ["tests"]
+
+[tool.coverage.report]
+omit = [
+  "src/ml_project/_version.py", # CHANGE
+  # OPTIONALLY ADD MORE LATER
+]
+
+[tool.pyright]
+include = ["src"]
+
+typeCheckingMode = "standard"
+useLibraryCodeForTypes = true
+autoImportCompletions = true
+
+pythonVersion = "3.10"
+# pythonPlatform = "Linux"
 
 [tool.ruff]
 namespace-packages = ["tools", "scripts", "tests"]  # for INP rule, suppress on these directories
@@ -178,18 +198,3 @@ max-nested-blocks = 10
 max-locals = 30
 max-branches = 24
 
-[tool.pyright]
-include = ["src"]
-
-typeCheckingMode = "standard"
-useLibraryCodeForTypes = true
-autoImportCompletions = true
-
-pythonVersion = "3.10"
-# pythonPlatform = "Linux"
-
-[tool.coverage.report]
-omit = [
-  "src/ml_project/_version.py", # CHANGE
-  # OPTIONALLY ADD MORE LATER
-]

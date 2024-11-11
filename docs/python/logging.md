@@ -40,7 +40,8 @@ rich.traceback.install(show_locals=True)
 
 import logging
 
-from ml_project.utils import setup_logging
+from ml_project import LOG_DIR
+from ml_project.utils.log import setup_logging
 
 logger = logging.getLogger(__name__)
 
@@ -52,7 +53,7 @@ def main():
 
 if __name__ == "__main__":
     try:
-        setup_logging()
+        setup_logging(log_dir=LOG_DIR)
         main()
     except Exception:
         logger.exception("Exception occurred")
@@ -63,7 +64,7 @@ if __name__ == "__main__":
 
 본 template에서는 logging을 쉽게 설정할 수 있는 함수를 제공합니다.
 
-### ::: ml_project.utils.setup_logging
+### ::: ml_project.utils.log.setup_logging
     options:
         show_root_heading: true
 
