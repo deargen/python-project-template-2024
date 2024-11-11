@@ -1,20 +1,16 @@
 # 복잡한 프로젝트 configuration 명확하게 하기
 
-Configuration은 일반적으로 다음과 같은 방식이 널리 사용됩니다.
+Configuration은 다음과 같은 방식이 널리 사용됩니다 (common bad practices):
 
 1. argparse
-2. yaml
+2. yaml 작성해 dictionary로 읽어들이기
 
 그러나, **두 방법 모두 단점**이 있으며 해당 문서에서는 단점과 개인적인 workflow를 해결책으로써 제시합니다.
 
 
-## TL;DR
-
-[dataclass 솔루션](#dataclass)
-
 ## 좋은 config 시스템
 
-Configuration style은 프로젝트마다 다르고 방식은 다양합니다. 하지만 빠르게 다양한 hyperparameter로 실험을 해봐야 하는 연구 코드에서 좋은 configuration 시스템은 다음과 같다고 생각합니다. (필자의 정의)
+Configuration style은 프로젝트마다 다르고 방식은 다양합니다. 하지만 빠르게 다양한 hyperparameter로 실험을 해봐야 하는 연구 코드에서 좋은 configuration 시스템은 다음과 같다고 생각합니다.
 
 1. typing과 default 값을 쉽게 추적이 가능함
 2. 사용법과 parameter 종류, 값 등이 예측하기 쉬워야 함.
@@ -71,7 +67,73 @@ main을 보면, 몇 가지 parameter를 argparse에 넣으면 그에 맞게 conf
 1. hard-coding 된 값이 많아서 어떻게 사용하는건지 이해하기 어려움 (긴 리스트가 있는데 무슨 값을 의미하는지?)
 2. 값들이 dependency가 많아서 제대로 이해하지 않으면 오류나기 쉬움 (예: LOCATION, GROUP, POOL은 list 길이가 같아야 함.)
 
-## 저 만의 솔루션 (dataclass)
+
+## yaml -> dict -> "Pydantic" (추천)
+
+데이터 구조를 명확히 정의하고 validation까지 넣는 방법.
+
+```python
+import rich
+from pydantic import BaseModel
+from pydantic.types import PositiveInt, PositiveFloat
+
+class TrainConfig(BaseModel):
+    batch_size: PositiveInt = 32
+    lr: PositiveFloat = 1e-3
+    iter: PositiveInt = 100
+
+
+dict_config_error = {
+    "batch_size": -1,
+    "lr": 1e-3,
+    "iter": 100
+}
+config = TrainConfig(**dict_config_error)  # 에러
+
+dict_config = {
+    "batch_size": 32,
+    "lr": "1e-3",
+    "iter": 100
+}
+config = TrainConfig(**dict_config)  # lr가 string이라도 자동으로 float으로 바꿔줌. 에러 없음.
+
+rich.print(config)
+logger.info(rich.pretty.pretty_repr(config))
+```
+
+**장점**
+
+1. python typing을 지켜 type checker를 사용할 수 있음.
+2. yaml을 이용해 parameter를 쉽게 정의할 수 있음.
+3. validation을 넣어 실수를 방지할 수 있음.
+4. dataclass처럼 데이터 구조와 값의 범위, default 등을 쉽게 인지할 수 있음.
+5. Multiple inheritance 가능.
+6. 잘못된 type은 자동으로 수정해줌. ("1"을 int에 넣으면 1로 바꿔줌)
+
+**단점**
+
+1. Instance 생성하는데 dataclass에 비해 validation 시간이 조금 더 걸림. 무분별하게 많은 config 만들때 주의.
+2. `model_`로 시작하는 변수명은 사용할 수 없음. (pydantic의 제약) `mlmodel_` 등으로 바꿔야 함.
+
+
+pydantic 사용법은 공식 문서를 참고하세요.
+
+
+## typer를 이용한 방법
+
+Typer는 argparse보다 장점이 많습니다.
+
+1. typing을 이용해 명확하게 parameter를 정의할 수 있음.
+2. command line 프로그램이 쉽게 API로 노출됨.
+    - 예: `my-program run --batch-size 32` 를 `import my_program; my_program.run(batch_size=32)`로 사용 가능
+3. shell completion도 쉽게 설치해 사용 가능.
+
+복잡한 config 대신 typer를 이용해 command line argument로 사용하는 것도 좋은 방법입니다. 특히 다음과 같은 경우에 유용합니다.
+
+1. 변수 개수가 몇 개 없는 경우
+
+
+## dataclass과 환경변수를 이용한 방법
 
 사용법을 먼저 보여드리자면, 
 
@@ -122,17 +184,3 @@ BaseConfig 소스코드:
         done
     done
     ```
-
-## typer를 이용한 방법
-
-Typer는 argparse보다 장점이 많습니다.
-
-1. typing을 이용해 명확하게 parameter를 정의할 수 있음.
-2. command line 프로그램이 쉽게 API로 노출됨.
-    - 예: `my-program run --batch-size 32` 를 `import my_program; my_program.run(batch_size=32)`로 사용 가능
-3. shell completion도 쉽게 설치해 사용 가능.
-
-복잡한 config 대신 typer를 이용해 command line argument로 사용하는 것도 좋은 방법입니다. 특히 다음과 같은 경우에 유용합니다.
-
-1. 변수 개수가 몇 개 없는 경우
-

@@ -1,7 +1,7 @@
 # API Reference 페이지
 
 본 template에서는 다음과 같은 방식으로 API Reference 페이지를 생성합니다.  
-추가 설정이 필요하지는 않습니다.
+추가 설정이 필요하지는 않습니다만, 혹시 reference 페이지에 포함되기 원하지 않는 파일이 있다면 `scripts/gen_ref_nav.py` 파일을 수정하시면 됩니다.
     
 ```yaml title="mkdocs.yml 예시" hl_lines="15-17"
 nav:
