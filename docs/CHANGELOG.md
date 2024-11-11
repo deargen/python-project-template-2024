@@ -6,6 +6,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ## [v0.3.0] - 2024-11-11
+
+### 🔆  Highlights
+기존 템플릿은 `pip install -e .` 처럼 development mode로 설치하는 것을 기본 전제로 했다. 하지만,
+
+**기존 방법의 단점:**
+
+- 이렇게 하면 무조건 repository clone을 해야 사용할 수 있으므로 간단히 설치해 CLI를 사용하기 어려워진다.
+
+**변경 방법의 장점: 설치가 훨씬 수월해진다.**
+- `pip install .` (-e 없이) 해도 사용 가능. (PROJECT_DIR만 사용 못함)
+- `pipx install .`, `uv tool install .`처럼 API없이 CLI만 사용하도록 설치도 가능.
+
+#### Breaking Changes (주의 사항)
+- PROJECT_DIR type이 `Path` -> `Path | None`으로 변경. Non-development mode install (pip install -e 안했을때) None으로 설정.
+    - 웬만하면 사용 자제하고 개발/테스트할 때만 사용 권장.
+- `setup_logging()` default로 file logging 안하도록 변경. `setup_logging(log_dir=LOG_DIR)` 사용.
+
+#### New Features
+- `ml-project config` CLI로 template.env를 가장 적합한 디렉토리에 복사함.
+
+
 ### :boom: BREAKING CHANGES
 - due to [`ed5d8ed`](https://github.com/deargen/python-project-template-2024/commit/ed5d8edf870c75d8044e9d3000d99f079d4619b7) - drop windows (not in default) *(commit by [@kiyoon](https://github.com/kiyoon))*:
 
