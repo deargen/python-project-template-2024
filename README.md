@@ -9,7 +9,24 @@
 |[![Built with Material for MkDocs](https://img.shields.io/badge/Material_for_MkDocs-526CFE?style=for-the-badge&logo=MaterialForMkDocs&logoColor=white)](https://squidfunk.github.io/mkdocs-material/)|[![Actions status](https://github.com/deargen/python-project-template-2024/workflows/Deploy%20MkDocs%20on%20latest%20commit/badge.svg)](https://github.com/deargen/python-project-template-2024/actions)|
 
 
-새 파이썬 프로젝트 시작할 때 사용하실 템플릿입니다.
+ruff, uv, basedpyright, pytest, doctest, MkDocs, versioneer, GitHub Actions, conventional commit, changelog, typer CLI, rich logging 등 좋은 것 다 쓰는 파이썬 프로젝트 템플릿입니다.
+
+본 템플릿으로 만든 패키지는 다음과 같이 쉽게 설치할 수 있도록 고안되었습니다.
+
+```sh
+# 개발자는
+pip install -e .
+
+# API, CLI 둘 다 사용하고 싶다면
+pip install .
+pip install 'git+https://github.com/deargen/python-project-template-2024'
+
+# CLI만 사용하고 싶다면
+pipx install .
+pipx install 'git+https://github.com/deargen/python-project-template-2024'
+uv tool install .
+uv tool install 'git+https://github.com/deargen/python-project-template-2024'
+```
 
 **주요 기능**
 
