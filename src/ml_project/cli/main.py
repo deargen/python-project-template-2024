@@ -35,8 +35,8 @@ def common(
 
 @app.command()
 def health():
+    from .. import setup_logging
     from ..health import main as health_main
-    from ..utils.log import setup_logging
 
     setup_logging(log_dir=None)
     health_main()

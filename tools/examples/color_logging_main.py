@@ -7,8 +7,7 @@ rich.traceback.install(show_locals=True)
 
 import logging
 
-from ml_project import LOG_DIR
-from ml_project.utils.log import setup_logging
+from ml_project import LOG_DIR, setup_logging
 
 logger = logging.getLogger(__name__)
 
