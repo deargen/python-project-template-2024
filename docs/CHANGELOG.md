@@ -5,6 +5,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v0.3.1] - 2024-11-12
+### :boom: BREAKING CHANGES
+- due to [`cf178a5`](https://github.com/deargen/python-project-template-2024/commit/cf178a531806fe99a76e1e0ae5fdd9d1715e841c) - ml_project.utils.log.setup_logging -> ml_project.setup_logging *(commit by [@kiyoon](https://github.com/kiyoon))*:
+
+  ml_project.utils.log.setup_logging -> ml_project.setup_logging
+
+
+### :recycle: Refactors
+- [`cf178a5`](https://github.com/deargen/python-project-template-2024/commit/cf178a531806fe99a76e1e0ae5fdd9d1715e841c) - ml_project.utils.log.setup_logging -> ml_project.setup_logging *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+
 ## [v0.3.0] - 2024-11-11
 
 ### 🔆  Highlights
@@ -255,3 +266,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.2.4]: https://github.com/deargen/python-project-template-2024/compare/v0.2.3...v0.2.4
 [v0.2.5]: https://github.com/deargen/python-project-template-2024/compare/v0.2.4...v0.2.5
 [v0.3.0]: https://github.com/deargen/python-project-template-2024/compare/v0.2.5...v0.3.0
+[v0.3.1]: https://github.com/deargen/python-project-template-2024/compare/v0.3.0...v0.3.1
