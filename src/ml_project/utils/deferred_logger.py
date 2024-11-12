@@ -9,7 +9,7 @@ class DeferredLogger:
 
     Useful when you want to log something before the logger is configured.
 
-    Example:
+    Examples:
         >>> deferred_logger = DeferredLogger()
         >>> deferred_logger.debug("Hello, debug!")
         >>> deferred_logger.info("Hello, info!")

@@ -4,32 +4,32 @@ Initialize dotenv configuration and common directories.
 The package could be installed as develop mode (`pip install -e .`) or normally (`pip install .`),
 so this module tries to support both cases.
 
-Public variables:
-- `default_log_level`: The default log level. (defaults to INFO)
-    Can be configured with the environment variable `{app_name_upper}_LOG_LEVEL`.
-- `PROJECT_DIR`: The project directory, or None.
-    It is set to `None` if the package is NOT installed in development mode. (i.e., `pip install .`)
-    We make it None to discourage the use of this path. Only use for development.
-- `DATA_DIR`: The data directory, defaults to `{PROJECT_DIR}/data` or `~/.local/share/{app_name}`.
-- `LOG_DIR`: `{DATA_DIR}/logs`.
-- `APP_CONFIG_DIR`: The directory where the `.env` file is loaded from, or None.
-- `__version__`: The version of the package.
-- `app_name`: The name of the module. (alias of `__name__`) (e.g., `ml_project`)
-- `app_name_upper`: The name of the module in uppercase. (e.g., `ML_PROJECT`)
-- `package_name`: The name of the package. (replaces `_` with `-`) (e.g., `ml-project`)
+Public variables:  
+- `default_log_level`: The default log level. (defaults to INFO)  
+    Can be configured with the environment variable `{app_name_upper}_LOG_LEVEL`.  
+- `PROJECT_DIR`: The project directory, or None.  
+    It is set to `None` if the package is NOT installed in development mode. (i.e., `pip install .`)  
+    We make it None to discourage the use of this path. Only use for development.  
+- `DATA_DIR`: The data directory, defaults to `{PROJECT_DIR}/data` or `~/.local/share/{app_name}`.  
+- `LOG_DIR`: `{DATA_DIR}/logs`.  
+- `APP_CONFIG_DIR`: The directory where the `.env` file is loaded from, or None.  
+- `__version__`: The version of the package.  
+- `app_name`: The name of the module. (alias of `__name__`) (e.g., `ml_project`)  
+- `app_name_upper`: The name of the module in uppercase. (e.g., `ML_PROJECT`)  
+- `package_name`: The name of the package. (replaces `_` with `-`) (e.g., `ml-project`)  
 
-Public functions:
-- `update_data_dirs(data_dir)`: Update the data directories after the package is loaded.
+Public functions:  
+- `update_data_dirs(data_dir)`: Update the data directories after the package is loaded.  
 
-You can configure the app with the following environment variables:
-- `{app_name_upper}_CONFIG_DIR`: The directory to search for the `.env` file.
-- `{app_name_upper}_DATA_DIR`: The data directory.
-- `{app_name_upper}_LOG_LEVEL`: The default log level.
+You can configure the app with the following environment variables:  
+- `{app_name_upper}_CONFIG_DIR`: The directory to search for the `.env` file.  
+- `{app_name_upper}_DATA_DIR`: The data directory.  
+- `{app_name_upper}_LOG_LEVEL`: The default log level.  
 
-Private variables:
-- `_env_deferred_logger`: A logger that can be used before the logging system is configured.
-    It is later used in `setup_logging()`
-"""
+Private variables:  
+- `_env_deferred_logger`: A logger that can be used before the logging system is configured.  
+    It is later used in `setup_logging()`  
+"""  # fmt: skip
 
 # ruff: noqa: PLW0603
 import os
