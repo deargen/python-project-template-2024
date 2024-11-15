@@ -6,25 +6,25 @@ so this module tries to support both cases.
 
 Public variables:  
 - `default_log_level`: The default log level. (defaults to INFO)  
-    Can be configured with the environment variable `{app_name_upper}_LOG_LEVEL`.  
+    Can be configured with the environment variable `{APP_NAME_UPPER}_LOG_LEVEL`.  
 - `PROJECT_DIR`: The project directory, or None.  
     It is set to `None` if the package is NOT installed in development mode. (i.e., `pip install .`)  
     We make it None to discourage the use of this path. Only use for development.  
-- `DATA_DIR`: The data directory, defaults to `{PROJECT_DIR}/data` or `~/.local/share/{app_name}`.  
+- `DATA_DIR`: The data directory, defaults to `{PROJECT_DIR}/data` or `~/.local/share/{APP_NAME}`.  
 - `LOG_DIR`: `{DATA_DIR}/logs`.  
 - `APP_CONFIG_DIR`: The directory where the `.env` file is loaded from, or None.  
 - `__version__`: The version of the package.  
-- `app_name`: The name of the module. (alias of `__name__`) (e.g., `ml_project`)  
-- `app_name_upper`: The name of the module in uppercase. (e.g., `ML_PROJECT`)  
-- `package_name`: The name of the package. (replaces `_` with `-`) (e.g., `ml-project`)  
+- `APP_NAME`: The name of the module. (alias of `__name__`) (e.g., `ml_project`)  
+- `APP_NAME_UPPER`: The name of the module in uppercase. (e.g., `ML_PROJECT`)  
+- `PACKAGE_NAME`: The name of the package. (replaces `_` with `-`) (e.g., `ml-project`)  
 
 Public functions:  
 - `update_data_dirs(data_dir)`: Update the data directories after the package is loaded.  
 
 You can configure the app with the following environment variables:  
-- `{app_name_upper}_CONFIG_DIR`: The directory to search for the `.env` file.  
-- `{app_name_upper}_DATA_DIR`: The data directory.  
-- `{app_name_upper}_LOG_LEVEL`: The default log level.  
+- `{APP_NAME_UPPER}_CONFIG_DIR`: The directory to search for the `.env` file.  
+- `{APP_NAME_UPPER}_DATA_DIR`: The data directory.  
+- `{APP_NAME_UPPER}_LOG_LEVEL`: The default log level.  
 
 Private variables:  
 - `_env_deferred_logger`: A logger that can be used before the logging system is configured.  
@@ -44,9 +44,9 @@ from . import _version
 from .utils.deferred_logger import DeferredLogger
 
 __version__ = _version.get_versions()["version"]
-app_name = __name__
-app_name_upper = app_name.upper()
-package_name = app_name.replace("_", "-")
+APP_NAME = __name__
+APP_NAME_UPPER = APP_NAME.upper()
+PACKAGE_NAME = APP_NAME.replace("_", "-")
 
 # ┌──────────────────────────────────────────────────────────────────────────────────┐
 # │          directory definitions and environment variables / dotenv                │
@@ -62,12 +62,12 @@ _env_deferred_logger = DeferredLogger()
 
 
 def load_dotenv_project_dir_or_config_dir(
-    app_name: str = app_name, config_dir_env: str = f"{app_name_upper}_CONFIG_DIR"
+    config_dir_env: str = f"{APP_NAME_UPPER}_CONFIG_DIR",
 ) -> Path | None:
     """
-    Load .env file from the project directory or ~/.config/$app_name/.
+    Load .env file from the project directory or ~/.config/$APP_NAME/.
     """
-    # if {app_name_upper}_CONFIG_DIR is set, then search .env file in the directory
+    # if {APP_NAME_UPPER}_CONFIG_DIR is set, then search .env file in the directory
     config_dir = os.environ.get(config_dir_env, "")
     if config_dir != "":
         dotenv_file = Path(config_dir).resolve() / ".env"
@@ -89,10 +89,10 @@ def load_dotenv_project_dir_or_config_dir(
             )
             return dotenv_file
 
-    # if not found so far, use the default config directory (~/.config/$package_name/)
+    # if not found so far, use the default config directory (~/.config/$PACKAGE_NAME/)
     from platformdirs import user_config_path
 
-    config_dir = user_config_path(app_name)
+    config_dir = user_config_path(APP_NAME)
     dotenv_file = Path(config_dir) / ".env"
     if dotenv_file.exists():
         load_dotenv(dotenv_file, verbose=True)
@@ -100,8 +100,8 @@ def load_dotenv_project_dir_or_config_dir(
         return dotenv_file
     else:
         _env_deferred_logger.warning(
-            f"⚠️ No .env file found. We recommend you to configure the program with ~/.config/{app_name}/.env.\n"
-            "⚠️ You can create a template with `ml-project config`."
+            f"⚠️ No .env file found. We recommend you to configure the program with ~/.config/{APP_NAME}/.env.\n"
+            f"⚠️ You can create a template with `{PACKAGE_NAME} config`."
         )
         return None
 
@@ -121,7 +121,7 @@ else:
     APP_CONFIG_DIR = None
 
 
-data_dir = os.environ.get(f"{app_name_upper}_DATA_DIR")
+data_dir = os.environ.get(f"{APP_NAME_UPPER}_DATA_DIR")
 if data_dir is None or data_dir == "":
     if PROJECT_DIR is not None:
         data_dir = PROJECT_DIR / "data"
@@ -130,7 +130,7 @@ if data_dir is None or data_dir == "":
 
         _env_deferred_logger.warning(
             "⚠️ No data directory is set. "
-            f"We recommend you to set the data directory with the environment variable {app_name_upper}_DATA_DIR."
+            f"We recommend you to set the data directory with the environment variable {APP_NAME_UPPER}_DATA_DIR."
         )
         data_dir = user_data_path(__name__)
         _env_deferred_logger.warning(f"⚠️ Using {data_dir} as the data directory.")
@@ -149,7 +149,7 @@ else:
 
 update_data_dirs(data_dir)
 
-default_log_level = os.environ.get(f"{app_name_upper}_LOG_LEVEL")
+default_log_level = os.environ.get(f"{APP_NAME_UPPER}_LOG_LEVEL")
 if default_log_level is None:
     default_log_level = "INFO"
 
@@ -200,7 +200,7 @@ def setup_logging(
     You should call this function at the beginning of your script.
 
     Args:
-        console_level: Logging level for console. Defaults to INFO or env var {app_name_upper}_LOG_LEVEL.
+        console_level: Logging level for console. Defaults to INFO or env var {APP_NAME_UPPER}_LOG_LEVEL.
         log_dir: Directory to save log files. If None, only console logging is enabled. Usually set to LOG_DIR.
         output_files: List of output file paths, relative to log_dir. Only applies if log_dir is not None.
         file_levels: List of logging levels for each output file. Only applies if log_dir is not None.
@@ -287,7 +287,7 @@ def setup_logging(
     root_logger.addHandler(console_handler)
 
     if log_init_messages:
-        logger.info(f"{package_name} {__version__}")
+        logger.info(f"{PACKAGE_NAME} {__version__}")
         _env_deferred_logger.flush(logger)
 
     if log_dir is not None:

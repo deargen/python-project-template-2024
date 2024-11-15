@@ -50,7 +50,7 @@ def config(config_dir: Path | None = None):
     from dotenv import dotenv_values, set_key
     from platformdirs import user_config_path
 
-    from ml_project import PROJECT_DIR, app_name
+    from ml_project import APP_NAME, PROJECT_DIR
     from ml_project import __file__ as package_root_file
 
     template_file = Path(package_root_file).parent / "template.env"
@@ -66,11 +66,11 @@ def config(config_dir: Path | None = None):
     if config_dir is None:
         if PROJECT_DIR is None:
             # if installed properly without -e flag, use the default config directory.
-            config_dir = user_config_path(app_name)
+            config_dir = user_config_path(APP_NAME)
         else:
             # if installed as a development package with pip install -e,
             # ask the user to choose which config directory to use.
-            user_config_dir = user_config_path(app_name)
+            user_config_dir = user_config_path(APP_NAME)
             rich.print()
             rich.print("Choose where to store the configuration file:")
             rich.print(f"[bold]1.[/bold] {PROJECT_DIR}/.env -> easy development")
