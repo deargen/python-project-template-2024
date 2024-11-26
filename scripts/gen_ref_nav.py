@@ -3,11 +3,12 @@
 from pathlib import Path
 
 import mkdocs_gen_files
+from mkdocs_gen_files.nav import Nav
 
 IGNORE_MODULES_EXACT = {}
 IGNORE_MODULES_STARTSWITH = {}
 
-nav = mkdocs_gen_files.Nav()
+nav = Nav()
 mod_symbol = '<code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>'
 
 src = Path(__file__).parent.parent / "src"
