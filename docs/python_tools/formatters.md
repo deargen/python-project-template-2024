@@ -177,7 +177,7 @@ pip3 install --user ruff
 ## CLI로 포매팅 하기
 
 ```bash
-ruff --select I --fix [파일.py]  # isort 적용
+ruff check --select I --fix [파일.py]  # isort 적용
 ruff format [파일.py]  # black 적용
 ```
 
