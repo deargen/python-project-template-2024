@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 @dataclass
 class TwoNumbers:
-    """정수 두 개 더하는 클래스."""
+    """Example class that adds two numbers."""
 
     num_1: int
     num_2: int
