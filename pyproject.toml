@@ -51,6 +51,9 @@ where = ["src"]
 addopts = "--cov=ml_project" # CHANGE (name of the importing module name)
 testpaths = ["tests"]
 
+log_cli = true
+log_cli_level = INFO
+
 [tool.coverage.report]
 omit = [
   "src/ml_project/_version.py", # CHANGE
