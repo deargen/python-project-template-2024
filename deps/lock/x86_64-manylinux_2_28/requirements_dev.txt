@@ -189,7 +189,7 @@ rich==13.7.1
     # via
     #   -r requirements.in
     #   typer
-ruff==0.6.9
+ruff==0.8.0
     # via -r requirements_dev.in
 shellingham==1.5.4
     # via typer
