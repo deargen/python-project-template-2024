@@ -5,6 +5,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v0.3.2] - 2024-11-27
+### :sparkles: New Features
+- [`44e1aa5`](https://github.com/deargen/python-project-template-2024/commit/44e1aa52f1e4b78aab2680d51b180d1a6f99eff2) - essential lint as test *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+### :bug: Bug Fixes
+- [`5ccd478`](https://github.com/deargen/python-project-template-2024/commit/5ccd4789c728deff012ef13fa66f104cb3d201bd) - pyproject toml *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+### :recycle: Refactors
+- [`792dba3`](https://github.com/deargen/python-project-template-2024/commit/792dba398738090c0678359cbb588da8813616a9) - rename some variables (app_name -> APP_NAME etc.) *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+### :white_check_mark: Tests
+- [`7e3eed0`](https://github.com/deargen/python-project-template-2024/commit/7e3eed00c3fcd36555edfc406874d9559acdb619) - log_cli *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+### :wrench: Chores
+- [`6d46488`](https://github.com/deargen/python-project-template-2024/commit/6d46488d099a51050a7ea84b5bac49581b83ff15) - type *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`f18dda3`](https://github.com/deargen/python-project-template-2024/commit/f18dda3acfa3d277d293f983d9f59eb372b929a6) - english docs *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+
 ## [v0.3.1] - 2024-11-12
 ### :boom: BREAKING CHANGES
 - due to [`cf178a5`](https://github.com/deargen/python-project-template-2024/commit/cf178a531806fe99a76e1e0ae5fdd9d1715e841c) - ml_project.utils.log.setup_logging -> ml_project.setup_logging *(commit by [@kiyoon](https://github.com/kiyoon))*:
@@ -267,3 +285,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.2.5]: https://github.com/deargen/python-project-template-2024/compare/v0.2.4...v0.2.5
 [v0.3.0]: https://github.com/deargen/python-project-template-2024/compare/v0.2.5...v0.3.0
 [v0.3.1]: https://github.com/deargen/python-project-template-2024/compare/v0.3.0...v0.3.1
+[v0.3.2]: https://github.com/deargen/python-project-template-2024/compare/v0.3.1...v0.3.2
