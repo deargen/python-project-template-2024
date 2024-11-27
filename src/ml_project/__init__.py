@@ -61,6 +61,14 @@ if PROJECT_DIR.name.startswith("python3."):
 _env_deferred_logger = DeferredLogger()
 
 
+def update_data_dirs(data_dir: str | PathLike):
+    """This function is exposed to allow changing the data directories after the package is loaded."""
+    global DATA_DIR, LOG_DIR
+
+    DATA_DIR = Path(data_dir)
+    LOG_DIR = DATA_DIR / "logs"
+
+
 def load_dotenv_project_dir_or_config_dir(
     config_dir_env: str = f"{APP_NAME_UPPER}_CONFIG_DIR",
 ) -> Path | None:
@@ -104,14 +112,6 @@ def load_dotenv_project_dir_or_config_dir(
             f"⚠️ You can create a template with `{PACKAGE_NAME} config`."
         )
         return None
-
-
-def update_data_dirs(data_dir: str | PathLike):
-    """This function is exposed to allow changing the data directories after the package is loaded."""
-    global DATA_DIR, LOG_DIR
-
-    DATA_DIR = Path(data_dir)
-    LOG_DIR = DATA_DIR / "logs"
 
 
 dotenv_file = load_dotenv_project_dir_or_config_dir()
