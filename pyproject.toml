@@ -70,6 +70,8 @@ autoImportCompletions = true
 pythonVersion = "3.10"
 # pythonPlatform = "Linux"
 
+reportDuplicateImport = true
+
 [tool.ruff]
 namespace-packages = ["tools", "scripts", "tests"]  # for INP rule, suppress on these directories
 extend-exclude = [

@@ -158,11 +158,8 @@ if default_log_level is None:
 # └───────────────────────────────────────────────┘
 import inspect
 import logging
-import os
 from collections.abc import Sequence
 from datetime import datetime, timezone
-from os import PathLike
-from pathlib import Path
 
 from rich.console import Console
 from rich.logging import RichHandler
@@ -291,11 +288,12 @@ def setup_logging(
         _env_deferred_logger.flush(logger)
 
     if log_dir is not None:
-        log_paths = []
+        log_paths: list[Path] = []
         for output_file, file_level in zip(output_files, file_levels, strict=True):
             log_path_map["levelname"] = logging._levelToName[file_level]
             log_path = log_dir / output_file.format_map(log_path_map)
             log_path.parent.mkdir(parents=True, exist_ok=True)
+            log_paths.append(log_path)
 
             f_handler = logging.FileHandler(log_path)
             f_handler.setLevel(file_level)
