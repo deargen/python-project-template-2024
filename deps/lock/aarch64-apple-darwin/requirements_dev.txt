@@ -85,6 +85,7 @@ mkdocs==1.6.1
     #   -r requirements_docs.in
     #   mike
     #   mkdocs-autorefs
+    #   mkdocs-callouts
     #   mkdocs-coverage
     #   mkdocs-gen-files
     #   mkdocs-literate-nav
@@ -95,6 +96,8 @@ mkdocs-autorefs==1.2.0
     #   -r requirements_docs.in
     #   mkdocstrings
     #   mkdocstrings-python
+mkdocs-callouts==1.14.1
+    # via -r requirements_docs.in
 mkdocs-coverage==1.1.0
     # via -r requirements_docs.in
 mkdocs-gen-files==0.5.0

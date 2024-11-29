@@ -181,6 +181,6 @@ ruff check --select I --fix [파일.py]  # isort 적용
 ruff format [파일.py]  # black 적용
 ```
 
-!!! info
-    isort는 엄밀히 말하면 프로그램 실행 순서를 변경하기 때문에 formatter가 아님.  
-    따라서 ruff에서는 isort linting (I) 코드가 있고 그에 대한 fix가 존재함.
+> [!NOTE]
+> isort는 엄밀히 말하면 프로그램 실행 순서를 변경하기 때문에 formatter가 아님.  
+> 따라서 ruff에서는 isort linting (I) 코드가 있고 그에 대한 fix가 존재함.

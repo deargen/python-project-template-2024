@@ -76,6 +76,7 @@ theme:
 
 plugins:
   - search
+  - callouts
   - gen-files:
       scripts:
         - scripts/gen_ref_nav.py
