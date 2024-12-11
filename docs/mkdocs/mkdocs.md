@@ -77,3 +77,15 @@ graph LR
   D --> B;
   B ---->|No| E[Yay!];
 ```
+
+### Math Equations with LaTeX syntax
+
+$a^2 + b^2 = c^2$
+
+$$
+\begin{align*}
+\dot{x} & = \sigma(y-x) \\
+\dot{y} & = \rho x - y - xz \\
+\dot{z} & = -\beta z + xy
+\end{align*}
+$$

@@ -123,3 +123,10 @@ markdown_extensions:
   - pymdownx.tilde # strikethrough with ~~ ~~
   - toc:
       permalink: true
+  # MathJax
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
