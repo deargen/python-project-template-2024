@@ -46,12 +46,12 @@ mkdocs 자동 빌드를 후 GitLab으로 호스팅하기 위해서 환경변수 
 
 2. Repository secrets에 `GITLAB_TOKEN`이라는 이름으로 GitLab token값 넣어두기.
 
-    > [!WARNING]
+    > [!CAUTION]
     > Token같은 민감한 데이터는 CI 코드에 넣지 말고 repositry secrets을 사용합니다.  
 
 3. Repository variables에 `GITLAB_PROJECT` 이름으로 GitLab project 주소 넣어두기. (예: deargen-ai/python-project-template-docs)
 
-    > [!NOTE]
+    > [!TIP]
     > Environment secrets은 CI 파일에서 `${{ secrets.GITLAB_TOKEN }}`과 같이 접근합니다.  
     > Environment variable은 `${{ vars.GITLAB_PROJECT }}`과 같이 접근합니다.
 

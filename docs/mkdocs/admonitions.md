@@ -12,6 +12,12 @@
 
 > [!WARNING]
 > 경고를 적습니다.
+
+> [!CAUTION]
+> 주의사항을 적습니다.
+
+> [!IMPORTANT]
+> 중요한 정보를 적습니다.
 ```
 
 출력은 아래와 같습니다.
@@ -24,6 +30,12 @@
 
 > [!WARNING]
 > 경고를 적습니다.
+
+> [!CAUTION]
+> 주의사항을 적습니다.
+
+> [!IMPORTANT]
+> 중요한 정보를 적습니다.
 
 ## Implementation Details
 
@@ -41,10 +53,9 @@
 > This is a note
 ```
 
-[mkdocs-callouts](https://github.com/sondregronas/mkdocs-callouts) 플러그인을 사용하면 mkdocs에서도 GitHub과 동일한 문법을 사용할 수 있습니다. (템플릿에 이미 설치되어 있습니다.)
+[mkdocs-github-admonitions-plugin](https://github.com/PGijsbers/admonitions) 플러그인을 사용하면 mkdocs에서도 GitHub과 동일한 문법을 사용할 수 있습니다. (템플릿에 이미 설치되어 있습니다.)
 
 동일한 문법을 사용하면 mkdocs 뿐 아니라 GitHub에서 docs를 미리보기 할 때도 동일한 결과를 얻을 수 있습니다.  
-하지만 중복된 type으로는 NOTE, TIP, WARNING 밖에 없고 추가적인 mkdocs type (danger 등)은 웬만하면 사용하지 않는 것이 좋습니다.
 
 ### References
 

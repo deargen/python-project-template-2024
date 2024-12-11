@@ -114,7 +114,7 @@ def __getattr__(name: str) -> Incomplete: ...
 
 모든 Bio 모듈의 변수들은 Incomplete (동적) 타입으로 되어 타입 체크를 건너뜀.
 
-> [!NOTE]
+> [!TIP]
 > Incomplete type은 Any type과 기능은 동일(alias)  
 > 하지만, Any는 타입을 전혀 모르는 경우에 사용하고 Incomplete는 타이핑을 하다가 말았을 때 사용함.
 
