@@ -14,11 +14,11 @@ PYPI_API_TOKEN 쓰지 마세요. 보안상 좋지 않습니다. 대신, trusted 
 
 <https://docs.pypi.org/trusted-publishers/adding-a-publisher/>
 
-```yml hl_lines="6-8 15-18" title=".github/workflows/deploy.yml"
+```yml hl_lines="6-8 14-17" title=".github/workflows/deploy.yml"
 jobs:
   publish-to-pypi:
-    if: ${{ github.event.inputs.dry-run == 'false' }}
-    needs: commit-changelog-and-release
+    # if: ${{ github.event.inputs.dry-run == 'false' }}
+    # needs: commit-changelog-and-release
     runs-on: ubuntu-24.04
     permissions:
       contents: read
@@ -27,12 +27,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.inputs.version-tag }}
-      - name: Install uv
-        uses: astral-sh/setup-uv@v4
+      - uses: deargen/workflows/actions/setup-python-and-uv@master
       - name: Build and upload to PyPI
         run: |
           uv build --sdist
           uv publish
 ```
-
-dry-run input과 needs는 옵션입니다. 필요한 경우 사용하세요.
