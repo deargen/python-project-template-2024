@@ -30,11 +30,11 @@ nav:
       - LSP (pylance): python_tools/lsp.md
       - TODO highlights: python_tools/todo_highlights.md
       - 기타 플러그인: python_tools/other_vscode_extensions.md
-      - PyPI 등록: python_tools/publish_to_pypi.md
   - Python:
       - logging: python/logging.md
       - Version from Git Tag: python/versioneer.md
       - Configuration: python/configuration.md
+      - PyPI 등록: python/publish_to_pypi.md
   # defer to gen-files + literate-nav
   - API reference:
       - mkdocstrings-python: reference/

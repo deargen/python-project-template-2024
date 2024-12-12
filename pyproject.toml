@@ -38,6 +38,9 @@ keywords = ["development", "template"]
 [project.scripts]
 ml-project = "ml_project.cli:main"  # CHANGE
 
+[tool.setuptools]
+license-files = []
+
 [tool.setuptools.dynamic]
 dependencies = {file = ["deps/requirements.in"]}
 
