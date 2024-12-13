@@ -35,6 +35,7 @@ uv tool install 'git+https://github.com/deargen/python-project-template-2024'
     - Actions can apply formatting
 2. Use GitHub Actions to check uv pip-compile is applied or not (Convert dynamic version in `deps/requirements.in` to lock file in `deps/lock`)
     - Actions can compile lock file
+    - Or use `projector pip-compile` to compile lock file locally. (Requires [`projector`](https://github.com/deargen/workflows/blob/master/python-projector))
 3. Use MkDocs to automatically generate documents
     - Use GitHub Pages for public repo
     - Use GitLab Pages for private repo
@@ -163,6 +164,7 @@ uv tool install 'git+https://github.com/deargen/python-project-template-2024'
     - Actions에서 포매팅 적용 가능 
 2. GitHub Actions로 uv pip-compile 적용 여부 확인 (`deps/requirements.in`의 dynamic version을 `deps/lock` 안에 lock file로 변환)
     - Actions에서 lock file compile 가능
+    - 혹은 로컬에서 `projector pip-compile`로 lock file compile 가능. (Requires [`projector`](https://github.com/deargen/workflows/blob/master/python-projector))
 3. MkDocs 이용해 자동 document 생성
     - Public repo는 GitHub Pages 이용
     - Private repo는 GitLab Pages 이용
