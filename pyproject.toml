@@ -82,7 +82,9 @@ pythonVersion = "3.10"
 reportDuplicateImport = true
 
 [tool.ruff]
-namespace-packages = []  # for INP rule, suppress on these directories
+# Ignore INP001 on these directories
+# The directories that do not contain s, r, and c are already ignored.
+namespace-packages = ["scripts"]
 extend-exclude = [
   "src/ml_project/_version.py",  # CHANGE
 ]
@@ -163,7 +165,8 @@ ignore = [
 "__init__.py" = [
     "F401", # Ignore seemingly unused imports (they're meant for re-export)
 ]
-"[!s][!r][!c]*/**" = ["INP001"] # Implicit namespace package (no __init__.py) ignored not under src/
+# Directories that do not contain s, r, and c
+"[!s][!r][!c]*/**" = ["INP001"] # Implicit namespace package (no __init__.py)
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
