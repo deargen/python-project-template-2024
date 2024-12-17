@@ -5,6 +5,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v0.3.3] - 2024-12-17
+### :sparkles: New Features
+- [`8a87e9a`](https://github.com/deargen/python-project-template-2024/commit/8a87e9a085a9f580f2396e671fd57b5d6a0828df) - **mkdocs**: use github flavoured callouts *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`40fd8c5`](https://github.com/deargen/python-project-template-2024/commit/40fd8c5a2ea5489c9f0d7f9973d64e700e1adae4) - **mkdocs**: github admonitions *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`94fc67e`](https://github.com/deargen/python-project-template-2024/commit/94fc67e8803a7ce1ad09581f3794ea5d989bd54c) - **mkdocs**: math equations *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`c6c9616`](https://github.com/deargen/python-project-template-2024/commit/c6c961676df333dc0a7b831ecdf1284ae0ae6be6) - **mkdocs**: github style *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`35b30ed`](https://github.com/deargen/python-project-template-2024/commit/35b30ed2c3e6ccd0499267f028c522119eaaec44) - **ruff**: remove magic-value-comparison (PLR2004) rule *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`7232d17`](https://github.com/deargen/python-project-template-2024/commit/7232d17ceb0c254b93be99f055fceafaaac225ca) - move pip-compile configuration to `pyproject.toml` *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`23a08c1`](https://github.com/deargen/python-project-template-2024/commit/23a08c1428182b03dc9b3230c48ec710aef6a005) - remove dependabot *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`11c5f50`](https://github.com/deargen/python-project-template-2024/commit/11c5f50a6640b2671d3ecdffcb4a0121fa3995cf) - use lint-essential (central managed rulesets) *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`ae7cb50`](https://github.com/deargen/python-project-template-2024/commit/ae7cb503342d551e2503dc0a90be656946342743) - INP only in src/ *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+### :bug: Bug Fixes
+- [`2c374f1`](https://github.com/deargen/python-project-template-2024/commit/2c374f1441da07dda815cfcf454e47f452e7e122) - log path logging *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`a94b965`](https://github.com/deargen/python-project-template-2024/commit/a94b9656ebac12f3e9fde21e23d16e7a98a614ed) - setuptools pypi publish bug *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`2127fd3`](https://github.com/deargen/python-project-template-2024/commit/2127fd373d14ed5ded497fc18ac1c1b667f93a7d) - INP001 directories *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+### :recycle: Refactors
+- [`d47ce9e`](https://github.com/deargen/python-project-template-2024/commit/d47ce9ec2286d4118f80786d55fc728fba320afb) - move update_data_dirs() up *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+
 ## [v0.3.2] - 2024-11-27
 ### :sparkles: New Features
 - [`44e1aa5`](https://github.com/deargen/python-project-template-2024/commit/44e1aa52f1e4b78aab2680d51b180d1a6f99eff2) - essential lint as test *(commit by [@kiyoon](https://github.com/kiyoon))*
@@ -286,3 +307,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.3.0]: https://github.com/deargen/python-project-template-2024/compare/v0.2.5...v0.3.0
 [v0.3.1]: https://github.com/deargen/python-project-template-2024/compare/v0.3.0...v0.3.1
 [v0.3.2]: https://github.com/deargen/python-project-template-2024/compare/v0.3.1...v0.3.2
+[v0.3.3]: https://github.com/deargen/python-project-template-2024/compare/v0.3.2...v0.3.3
