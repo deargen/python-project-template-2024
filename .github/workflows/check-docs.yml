@@ -11,5 +11,4 @@ jobs:
       - name: Check mkdocs
         uses: deargen/workflows/actions/check-mkdocs@master
         with:
-          src-dir: src
           requirements-docs-file: deps/lock/x86_64-manylinux_2_28/requirements_docs.txt

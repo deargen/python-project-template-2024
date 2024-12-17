@@ -1,12 +1,6 @@
 name: Generate __init__.py files
 
-on:
-  workflow_dispatch:
-    inputs:
-      src-dir:
-        description: src directory
-        required: true
-        default: src
+on: workflow_dispatch
 
 jobs:
   generate-init-py:
@@ -15,5 +9,3 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: deargen/workflows/actions/gen-init-py@master
-        with:
-          src-dir: ${{ github.event.inputs.src-dir }}
