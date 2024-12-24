@@ -32,8 +32,11 @@ Private variables:
 """  # fmt: skip
 
 # ruff: noqa: PLW0603
+import json
 import os
 import sys
+from functools import cache
+from importlib.metadata import Distribution
 from os import PathLike
 from pathlib import Path
 
@@ -52,10 +55,19 @@ PACKAGE_NAME = APP_NAME.replace("_", "-")
 # │          directory definitions and environment variables / dotenv                │
 # └──────────────────────────────────────────────────────────────────────────────────┘
 
+
+@cache
+def pkg_is_editable():
+    direct_url = Distribution.from_name(PACKAGE_NAME).read_text("direct_url.json")
+    assert direct_url is not None
+    return json.loads(direct_url).get("dir_info", {}).get("editable", False)
+
+
 # NOTE: The value is None if you haven't installed with `pip install -e .` (development mode).
 # We make it None to discourage the use of this path. Only use for development.
-PROJECT_DIR: Path | None = Path(__file__).parent.parent.parent
-if PROJECT_DIR.name.startswith("python3."):
+if pkg_is_editable():
+    PROJECT_DIR = Path(__file__).parent.parent.parent
+else:
     PROJECT_DIR = None
 
 _env_deferred_logger = DeferredLogger()
