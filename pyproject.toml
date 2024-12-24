@@ -159,6 +159,7 @@ ignore = [
   "UP017",   # datetime.timezone.utc -> datetime.UTC
   "SIM108",  # use ternary operator instead of if-else
   "TRY003",  # long message in except
+  "TRY400",  # logger.exception instead of logger.error
   "PLR2004", # magic value comparison
   "PLW2901"  # loop variable overwritten by assignment target
 ]
