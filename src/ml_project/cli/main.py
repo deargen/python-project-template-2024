@@ -9,6 +9,8 @@ import typer
 from rich.prompt import Prompt
 from rich.syntax import Syntax
 
+from .docstring import from_docstring
+
 app = typer.Typer(
     no_args_is_help=True, context_settings={"help_option_names": ["-h", "--help"]}
 )
@@ -35,6 +37,9 @@ def common(
 
 @app.command()
 def health():
+    """
+    Check the health of the environment, like binaries and environment variables.
+    """
     from .. import setup_logging
     from ..health import main as health_main
 
@@ -43,9 +48,13 @@ def health():
 
 
 @app.command()
+@from_docstring
 def config(config_dir: Path | None = None):
     """
     Copy the template .env file to the config directory.
+
+    Args:
+        config_dir: `.env` dir. Default is either project root or user config dir (~/.config/{APPNAME}).
     """
     from dotenv import dotenv_values, set_key
     from platformdirs import user_config_path

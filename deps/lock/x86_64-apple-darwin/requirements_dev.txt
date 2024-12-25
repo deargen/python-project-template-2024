@@ -31,6 +31,8 @@ cycler==0.12.1
     # via matplotlib
 defusedxml==0.7.1
     # via cairosvg
+docstring-parser==0.16
+    # via -r requirements.in
 exceptiongroup==1.2.2
     # via pytest
 fonttools==4.53.0

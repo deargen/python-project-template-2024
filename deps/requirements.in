@@ -1,5 +1,6 @@
 rich>=13.0.0
 tqdm>=4.0.0
 typer>=0.12.4  # python 3.11 `SomeType | None` support
+docstring_parser  # typer help text from_docstring
 python-dotenv
 platformdirs
