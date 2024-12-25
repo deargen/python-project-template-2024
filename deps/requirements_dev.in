@@ -1,6 +1,7 @@
 -r requirements.in
 -r requirements_docs.in
-ruff==0.8.0
+ruff==0.8.4
+version-pioneer
 pytest>=8.0.1
 pytest-cov>=4.1.0
 types-tqdm==4.66.0.20240106

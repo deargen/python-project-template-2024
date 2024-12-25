@@ -43,10 +43,10 @@ from pathlib import Path
 import rich
 from dotenv import load_dotenv
 
-from . import _version
+from ._version import get_version_dict
 from .utils.deferred_logger import DeferredLogger
 
-__version__ = _version.get_versions()["version"]
+__version__ = get_version_dict()["version"]
 APP_NAME = __name__
 APP_NAME_UPPER = APP_NAME.upper()
 PACKAGE_NAME = APP_NAME.replace("_", "-")
@@ -59,7 +59,9 @@ PACKAGE_NAME = APP_NAME.replace("_", "-")
 @cache
 def pkg_is_editable():
     direct_url = Distribution.from_name(PACKAGE_NAME).read_text("direct_url.json")
-    assert direct_url is not None
+    if direct_url is None:
+        # package is not installed at all
+        return False
     return json.loads(direct_url).get("dir_info", {}).get("editable", False)
 
 

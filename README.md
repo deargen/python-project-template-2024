@@ -10,13 +10,20 @@
 
 We use all good stuffs like:
 
-ruff, uv, basedpyright, pytest, doctest, MkDocs, versioneer, GitHub Actions, conventional commit, changelog, typer CLI, rich logging, ...
+ruff,
+uv,
+basedpyright,
+pytest, doctest, MkDocs,
+[version-pioneer](https://github.com/kiyoon/version-pioneer),
+GitHub Actions, conventional commit, changelog, typer CLI, rich logging,,
+hatchling build backend,
+...
 
 This template is designed to make it easy to install in various ways as follows.
 
 ```sh
 # For developers
-pip install -e .
+pip install -e '.[dev]'
 
 # If you want to use both API and CLI
 pip install .
@@ -75,7 +82,7 @@ uv tool install 'git+https://github.com/deargen/python-project-template-2024'
 📂 src/
 └ 📂 ml_project/            # `import ml_project` to define functions, classes, etc.
   │ 🐍 __init__.py
-  │ 🐍 _version.py          # versioneer file to read version information from git tag (DO NOT modify)
+  │ 🐍 _version.py          # versione-pioneer file to read version information from git tag (DO NOT modify)
   │ 📜 template.env         # Environment settings file copied to `.env` when `ml-project config` is executed
   └ 🐍 ...
 
@@ -139,13 +146,21 @@ Other useful things to know:
 
 # 한국어 README
 
-ruff, uv, basedpyright, pytest, doctest, MkDocs, versioneer, GitHub Actions, conventional commit, changelog, typer CLI, rich logging 등 좋은 것 다 쓰는 파이썬 프로젝트 템플릿입니다.
+ruff,
+uv,
+basedpyright,
+pytest, doctest, MkDocs,
+[version-pioneer](https://github.com/kiyoon/version-pioneer),
+GitHub Actions, conventional commit, changelog, typer CLI, rich logging,,
+hatchling build backend,
+
+... 등 좋은 것 다 쓰는 파이썬 프로젝트 템플릿입니다.
 
 본 템플릿으로 만든 패키지는 다음과 같이 쉽게 설치할 수 있도록 고안되었습니다.
 
 ```sh
 # 개발자는
-pip install -e .
+pip install -e '.[dev]'
 
 # API, CLI 둘 다 사용하고 싶다면
 pip install .
@@ -204,7 +219,7 @@ uv tool install 'git+https://github.com/deargen/python-project-template-2024'
 📂 src/
 └ 📂 ml_project/             # `import ml_project`해서 사용하는 함수나 클래스 등 정의하는 곳
   │ 🐍 __init__.py
-  │ 🐍 _version.py          # git tag로 버전 정보를 읽는 versioneer 파일 (수정X)
+  │ 🐍 _version.py          # git tag로 버전 정보를 읽는 version-pioneer 파일 (수정X)
   │ 📜 template.env         # `ml-project config` 실행시 `.env`로 복사되는 환경설정 파일
   └ 🐍 ...
 

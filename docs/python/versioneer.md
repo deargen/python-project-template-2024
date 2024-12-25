@@ -1,4 +1,4 @@
-# Versioneer로 동적 버전 관리
+# Versione-Pioneer로 동적 버전 관리
 
 **Why?**
 
@@ -8,7 +8,7 @@
 
 **Solution**
 
-- [**Versioneer**](https://github.com/python-versioneer/python-versioneer): 버전 정보를 git tag에서 읽어와 python project versioning
+- [**Version-Pioneer**](https://github.com/kiyoon/version-pioneer): 버전 정보를 git tag에서 읽어와 python project versioning
 
 ```python hl_lines="3"
 import ml_project
@@ -28,8 +28,8 @@ print(ml_project.__version__)
 ## 설치
 
 1. `src/ml_project/__init__.py`, `src/ml_project/_version.py` 가져다 쓰기
-2. `pyproject.toml`에 versioneer 관련 섹션 가져다 쓰기
+2. `pyproject.toml`에 version-pioneer 관련 섹션 가져다 쓰기
 
 ## 비슷한 툴
 
-- `setuptools-scm`: 비슷하긴 하나 한번 pip로 설치할때 버전이 평생 버전이고, 다시 설치를 해야 버전 업데이트됨. versioneer는 동적으로 바뀜. 연구코드는 versioneer가 편할듯.
+- `setuptools-scm`: 비슷하긴 하나 한번 pip로 설치할때 버전이 평생 버전이고, 다시 설치를 해야 버전 업데이트됨. version-pioneer는 동적으로 바뀜. 연구코드는 version-pioneer가 편할듯.
