@@ -14,7 +14,7 @@ def get_version_dict():
 
     return get_version_dict_wo_exec(
         cwd=cwd,
-        style="pep440",
+        style="pep440-master",
         tag_prefix="v",
         parentdir_prefix=None,
     )
