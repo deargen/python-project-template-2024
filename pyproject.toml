@@ -41,7 +41,10 @@ classifiers = [
 keywords = ["development", "template"]
 
 [project.urls]
-"Homepage" = "https://github.com/deargen/python-project-template-2024" # OPTIONALLY CHANGE
+# OPTIONALLY CHANGE
+homepage = "https://github.com/deargen/python-project-template-2024"
+source = "https://github.com/deargen/python-project-template-2024"
+documentation = "https://deargen-ai.gitlab.io/python-project-template-docs"
 
 [project.scripts]
 ml-project = "ml_project.cli:main"  # CHANGE
