@@ -194,7 +194,7 @@ rich==13.7.1
     # via
     #   -r requirements.in
     #   typer
-ruff==0.8.0
+ruff==0.8.4
     # via -r requirements_dev.in
 shellingham==1.5.4
     # via typer
@@ -208,6 +208,7 @@ tomli==2.0.1
     # via
     #   coverage
     #   pytest
+    #   version-pioneer
 tqdm==4.66.4
     # via -r requirements.in
 typer==0.12.5
@@ -222,6 +223,8 @@ typing-extensions==4.12.2
     # via typer
 urllib3==2.2.2
     # via requests
+version-pioneer==0.0.7
+    # via -r requirements_dev.in
 verspec==0.1.0
     # via mike
 watchdog==4.0.1
