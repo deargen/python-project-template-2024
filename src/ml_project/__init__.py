@@ -36,7 +36,7 @@ import json
 import os
 import sys
 from functools import cache
-from importlib.metadata import Distribution
+from importlib.metadata import Distribution, PackageNotFoundError
 from os import PathLike
 from pathlib import Path
 
@@ -58,7 +58,12 @@ PACKAGE_NAME = APP_NAME.replace("_", "-")
 
 @cache
 def pkg_is_editable():
-    direct_url = Distribution.from_name(PACKAGE_NAME).read_text("direct_url.json")
+    try:
+        direct_url = Distribution.from_name(PACKAGE_NAME).read_text("direct_url.json")
+    except PackageNotFoundError:
+        # Not installed?
+        return False
+
     if direct_url is None:
         # package is not installed at all
         return False
