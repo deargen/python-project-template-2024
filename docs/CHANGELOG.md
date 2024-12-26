@@ -5,6 +5,31 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v0.4.0] - 2024-12-26
+### :boom: BREAKING CHANGES
+- due to [`5cb3c66`](https://github.com/deargen/python-project-template-2024/commit/5cb3c6663f494b3c99dfd23b5394fa2da7f49cef) - hatchling, version-pioneer *(commit by [@kiyoon](https://github.com/kiyoon))*:
+
+  hatchling, version-pioneer
+
+
+### :sparkles: New Features
+- [`e44cf89`](https://github.com/deargen/python-project-template-2024/commit/e44cf89340221a3439d04eadaa05c71bdb3c4d4d) - do not fix ruff version *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`e965403`](https://github.com/deargen/python-project-template-2024/commit/e9654034a0db9082fe753af67fa4ab64017e5496) - ignore D205 1 blank line lint *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`2c00c0e`](https://github.com/deargen/python-project-template-2024/commit/2c00c0ed4e46a5459bc70f47739a0c50a789d3c3) - typer help text from docstring *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`5cb3c66`](https://github.com/deargen/python-project-template-2024/commit/5cb3c6663f494b3c99dfd23b5394fa2da7f49cef) - hatchling, version-pioneer *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`1f8ca7b`](https://github.com/deargen/python-project-template-2024/commit/1f8ca7b7a6e96ba2a48841905c07e08a540a5a3b) - version style with master and dev branch distance *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+### :bug: Bug Fixes
+- [`a855d64`](https://github.com/deargen/python-project-template-2024/commit/a855d640912f728b8946eddba41ed5b2a992f394) - pkg_is_editable *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+### :recycle: Refactors
+- [`f1e4220`](https://github.com/deargen/python-project-template-2024/commit/f1e422003e35c699cce58536e1fddb82897b5871) - editable install detect *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+### :wrench: Chores
+- [`76d4f58`](https://github.com/deargen/python-project-template-2024/commit/76d4f58eb9864d457aa6fc4a37f13ca92a85c475) - ignore logger.exception lint *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`54a01de`](https://github.com/deargen/python-project-template-2024/commit/54a01de9d37fd198c83bb010e41e1d93f0692540) - pip compile *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+
 ## [v0.3.3] - 2024-12-17
 ### :sparkles: New Features
 - [`8a87e9a`](https://github.com/deargen/python-project-template-2024/commit/8a87e9a085a9f580f2396e671fd57b5d6a0828df) - **mkdocs**: use github flavoured callouts *(commit by [@kiyoon](https://github.com/kiyoon))*
@@ -308,3 +333,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.3.1]: https://github.com/deargen/python-project-template-2024/compare/v0.3.0...v0.3.1
 [v0.3.2]: https://github.com/deargen/python-project-template-2024/compare/v0.3.1...v0.3.2
 [v0.3.3]: https://github.com/deargen/python-project-template-2024/compare/v0.3.2...v0.3.3
+[v0.4.0]: https://github.com/deargen/python-project-template-2024/compare/v0.3.3...v0.4.0
