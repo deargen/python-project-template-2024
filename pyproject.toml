@@ -18,6 +18,19 @@ versionscript = "src/ml_project/_version.py"
 versionfile-sdist = "src/ml_project/_version.py"
 versionfile-wheel = "ml_project/_version.py"
 
+[tool.hatch.build.targets.sdist]
+include = [
+  "src",
+  "docs",
+  "tests",
+  "tools",
+  "scripts",
+  "deps",
+]
+
+[tool.hatch.build.targets.wheel]
+sources = ["src"]
+
 [project]
 name = "ml-project" # CHANGE
 dynamic = ["version", "dependencies", "optional-dependencies"]
