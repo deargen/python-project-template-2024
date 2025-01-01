@@ -77,8 +77,6 @@ theme:
 
 plugins:
   - search
-  - callouts:
-      aliases: false
   - gen-files:
       scripts:
         - scripts/gen_ref_nav.py
@@ -111,6 +109,7 @@ markdown_extensions:
       anchor_linenums: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
+  - markdown_gfm_admonition
   - admonition
   - pymdownx.arithmatex:
       generic: true
