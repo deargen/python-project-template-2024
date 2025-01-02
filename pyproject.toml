@@ -101,52 +101,7 @@ namespace-packages = ["scripts"]
 [tool.ruff.lint]
 # OPTIONALLY ADD MORE LATER
 select = [
-  # flake8
-  "E",
-  "F",
-  "W",
-  "B",    # Bugbear
-  "D",    # Docstring
-  "D213", # Multi-line docstring summary should start at the second line (replace D212)
-  "N",    # Naming
-  "C4",   # flake8-comprehensions
-  "UP",   # pyupgrade
-  "SIM",  # simplify
-  "RUF",  # ruff-specific
-  "RET501",  # return
-  "RET502",  # return
-  "RET503",  # return
-  "PTH",  # path
-  "NPY",  # numpy
-  "PD",   # pandas
-  "PYI",  # type stubs for pyright/pylance
-  "PT",   # pytest
-  "PIE",  #
-  "LOG",  # logging
-  "COM818",  # comma misplaced
-  "COM819",  # comma
-  "DTZ",  # datetime
-  "YTT",
-  "ASYNC",
-  "FBT",  # boolean trap
-  "A",    # Shadowing python builtins
-  "EXE",  # executable (shebang) "FA",   # future annotations
-  "ISC",  # Implicit string concatenation
-  "ICN",  # Import convention 
-  "INP",  # Implicit namespace package (no __init__.py)
-  "Q",    # Quotes
-  "RSE",  # raise
-  "SLOT", # __slots__
-  "PL",   # Pylint
-  "TRY",  # try
-  "FAST", # FastAPI
-  "AIR",  # airflow
-  "DOC",  # docstring
-  "TID",  # tidy-imports
-
-  # Not important
-  "T10",  # debug statements
-  "T20",  # print statements
+  "ALL",
 ]
 
 ignore = [
@@ -169,7 +124,17 @@ ignore = [
   "TRY003",  # long message in except
   "TRY400",  # logger.exception instead of logger.error
   "PLR2004", # magic value comparison
-  "PLW2901"  # loop variable overwritten by assignment target
+  "PLW2901",  # loop variable overwritten by assignment target
+  "COM812",  # missing trailing comma
+  "RET504",  # return with unnecessary assignment
+  "RET505",
+  "RET506",
+  "RET507",
+  "RET508",
+  "S",       # Security issues
+  "ANN",     # Missing type annotations
+  "ERA001",  # commented-out code
+  "G",       # Logging with format string
 ]
 
 [tool.ruff.lint.per-file-ignores]
