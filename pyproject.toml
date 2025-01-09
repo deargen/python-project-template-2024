@@ -135,6 +135,8 @@ ignore = [
   "ANN",     # Missing type annotations
   "ERA001",  # commented-out code
   "G",       # Logging with format string
+  "EM",      # error message has to be variable
+  "SLF001",  # private member access
 ]
 
 [tool.ruff.lint.per-file-ignores]
@@ -193,3 +195,6 @@ max-nested-blocks = 10
 max-locals = 30
 max-branches = 24
 
+[tool.ruff.lint.mccabe]
+# C901: limit the number of decision points in a function
+max-complexity = 20
