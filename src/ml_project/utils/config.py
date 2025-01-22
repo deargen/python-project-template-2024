@@ -58,9 +58,9 @@ class BaseConfig(ABC):
         """Set the string value as the given type."""
         if get_origin(vartype) is list:
             setattr(self, key, ast.literal_eval(value))
-            assert isinstance(
-                getattr(self, key), vartype
-            ), f"{type(self).__name__}.{key} has to be {vartype} but got {type(getattr(self, key))}"
+            assert isinstance(getattr(self, key), vartype), (
+                f"{type(self).__name__}.{key} has to be {vartype} but got {type(getattr(self, key))}"
+            )
         elif vartype is bool:
             if value == "True":
                 setattr(self, key, True)

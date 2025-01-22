@@ -131,7 +131,7 @@ def config(config_dir: Path | None = None):
     rich.print()
     rich.print("Type in the values for the following variables:")
     for i, (key, value) in enumerate(template_envs.items()):
-        choice = Prompt.ask(f"{i+1}/{len(template_envs)}. {key}", default=value)
+        choice = Prompt.ask(f"{i + 1}/{len(template_envs)}. {key}", default=value)
         if choice is None:
             set_key(dotenv_file, key, "", quote_mode="auto")
         else:

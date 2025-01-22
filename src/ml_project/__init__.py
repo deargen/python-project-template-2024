@@ -222,9 +222,9 @@ def setup_logging(
         file_levels: List of logging levels for each output file. Only applies if log_dir is not None.
         log_init_messages: Whether to log the initialisation messages.
     """
-    assert len(output_files) == len(
-        file_levels
-    ), "output_files and file_levels must have the same length"
+    assert len(output_files) == len(file_levels), (
+        "output_files and file_levels must have the same length"
+    )
 
     if log_dir is None:
         output_files = []
