@@ -137,6 +137,8 @@ ignore = [
   "G",       # Logging with format string
   "EM",      # error message has to be variable
   "SLF001",  # private member access
+  "TD",      # TODO
+  "FIX",     # TODO
 ]
 
 [tool.ruff.lint.per-file-ignores]
