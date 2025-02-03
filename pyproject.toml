@@ -139,6 +139,7 @@ ignore = [
   "SLF001",  # private member access
   "TD",      # TODO
   "FIX",     # TODO
+  "ARG",     # unused argument
 ]
 
 [tool.ruff.lint.per-file-ignores]
