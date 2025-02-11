@@ -1,7 +1,8 @@
 # Allow print
 # Allow many arguments
 # Allow relative import from parent
-# ruff: noqa: T201 PLR0913 TID252
+# TC: typer reads type annotations, so TYPE_CHECKING block shouldn't be used.
+# ruff: noqa: T201 PLR0913 TID252 TC001 TC002 TC003
 from pathlib import Path
 
 import rich
