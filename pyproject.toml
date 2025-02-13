@@ -140,6 +140,7 @@ ignore = [
   "TD",      # TODO
   "FIX",     # TODO
   "ARG",     # unused argument
+  "PERF"
 ]
 
 [tool.ruff.lint.per-file-ignores]
