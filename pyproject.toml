@@ -66,7 +66,9 @@ ml-project = "ml_project.cli:main"  # CHANGE
 # https://github.com/deargen/workflows/blob/master/python-projector
 requirements-in-dir = "deps"
 requirements-out-dir = "deps/lock"
-python-platforms = ["x86_64-manylinux_2_28", "aarch64-apple-darwin", "x86_64-apple-darwin"]
+python-platforms = ["x86_64-manylinux_2_28", "aarch64-apple-darwin", "x86_64-apple-darwin",
+  # "x86_64-pc-windows-msvc",
+]
 
 [tool.pytest.ini_options]
 addopts = ["--cov=ml_project", "--nbval", "--nbval-current-env"] # CHANGE (name of the importing module name)
