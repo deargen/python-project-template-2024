@@ -49,7 +49,7 @@ from .utils.deferred_logger import DeferredLogger
 __version__ = get_version_dict()["version"]
 APP_NAME = __name__
 APP_NAME_UPPER = APP_NAME.upper()
-PACKAGE_NAME = APP_NAME.replace("_", "-")
+PACKAGE_NAME = APP_NAME.replace("_", "-") if __package__ is None else __package__
 
 # ┌──────────────────────────────────────────────────────────────────────────────────┐
 # │          directory definitions and environment variables / dotenv                │

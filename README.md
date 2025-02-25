@@ -16,7 +16,7 @@ basedpyright,
 pytest, doctest, nbval (Jupyter Notebook regression testing),
 MkDocs,
 [version-pioneer](https://github.com/kiyoon/version-pioneer),
-GitHub Actions, conventional commit, changelog, typer CLI, rich logging,,
+GitHub Actions, conventional commit, changelog, cyclopts CLI, rich logging,,
 hatchling build backend,
 ...
 
@@ -50,7 +50,7 @@ uv tool install 'git+https://github.com/deargen/python-project-template-2024'
 4. Versioning the project and automatically generating changelog.
     - Release new version in Actions (commit changelog and tag, create release)
     - Refer to <https://github.com/deargen/workflows>
-5. Provide convenience features with CLI (typer)
+5. Provide convenience features with CLI (cyclopts)
     - `ml-project health` to check environment settings.
     - `ml-project --version` to check the current version.
 
@@ -153,7 +153,7 @@ basedpyright,
 pytest, doctest, nbval (Jupyter Notebook regression testing),
 MkDocs,
 [version-pioneer](https://github.com/kiyoon/version-pioneer),
-GitHub Actions, conventional commit, changelog, typer CLI, rich logging,,
+GitHub Actions, conventional commit, changelog, cyclopts CLI, rich logging,,
 hatchling build backend,
 
 ... 등 좋은 것 다 쓰는 파이썬 프로젝트 템플릿입니다.

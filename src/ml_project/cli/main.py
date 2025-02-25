@@ -3,40 +3,27 @@
 # Allow relative import from parent
 # TC: typer reads type annotations, so TYPE_CHECKING block shouldn't be used.
 # ruff: noqa: T201 PLR0913 TID252 TC001 TC002 TC003
+from os import PathLike
 from pathlib import Path
 
 import rich
-import typer
+from cyclopts import App, Parameter
 from rich.prompt import Prompt
 from rich.syntax import Syntax
 
-from .docstring import from_docstring
+from .. import __version__
 
-app = typer.Typer(
-    no_args_is_help=True, context_settings={"help_option_names": ["-h", "--help"]}
+app = App(
+    help_format="markdown",
+    default_parameter=Parameter(
+        consume_multiple=True,  # Allow list of arguments without repeating --option a --option b ..
+        negative=False,  # Do not make --no-option as a boolean flag
+    ),
+    version=__version__,
 )
 
 
-def version_callback(*, value: bool):
-    if value:
-        from .. import __version__
-
-        print(__version__)
-        raise typer.Exit
-
-
-@app.callback()
-def common(
-    ctx: typer.Context,
-    *,
-    version: bool = typer.Option(
-        None, "-v", "--version", callback=version_callback, help="Show version"
-    ),
-):
-    pass
-
-
-@app.command()
+@app.command
 def health():
     """
     Check the health of the environment, like binaries and environment variables.
@@ -48,20 +35,19 @@ def health():
     health_main()
 
 
-@app.command()
-@from_docstring
-def config(config_dir: Path | None = None):
+@app.command
+def config(config_dir: str | PathLike | None = None):
     """
-    Copy the template .env file to the config directory.
+    Copy the template `.env` file to the config directory.
 
     Args:
-        config_dir: `.env` dir. Default is either project root or user config dir (~/.config/{APPNAME}).
+        config_dir: `.env` dir. Default: choose either project root or user config dir (`~/.config/{APP_NAME}`).
     """
     from dotenv import dotenv_values, set_key
     from platformdirs import user_config_path
 
-    from ml_project import APP_NAME, PROJECT_DIR
-    from ml_project import __file__ as package_root_file
+    from .. import APP_NAME, PROJECT_DIR
+    from .. import __file__ as package_root_file
 
     template_file = Path(package_root_file).parent / "template.env"
     template_envs = dotenv_values(template_file, interpolate=False)
@@ -92,7 +78,7 @@ def config(config_dir: Path | None = None):
             else:
                 config_dir = user_config_dir
 
-    config_dir = config_dir.resolve()
+    config_dir = Path(config_dir).resolve()
     config_dir.mkdir(parents=True, exist_ok=True)
 
     dotenv_file = config_dir / ".env"
