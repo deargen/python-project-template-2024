@@ -147,7 +147,10 @@ ignore = [
 
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = [
-    "F401", # Ignore seemingly unused imports (they're meant for re-export)
+  "F401",   # Ignore seemingly unused imports (they're meant for re-export)
+]
+"*.ipynb" = [
+  "T201",   # ignore print statement in notebook
 ]
 # Directories that do not contain s, r, and c
 "[!s][!r][!c]*/**" = ["INP001"] # Implicit namespace package (no __init__.py)
