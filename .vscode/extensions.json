@@ -3,6 +3,7 @@
     "charliermarsh.ruff",
     "jgclark.vscode-todo-highlight",
     "usernamehw.errorlens",
-    "timonwong.shellcheck"
+    "timonwong.shellcheck",
+    "detachhead.basedpyright"
   ]
 }
