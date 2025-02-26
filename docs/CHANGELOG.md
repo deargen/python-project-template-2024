@@ -5,6 +5,29 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v0.4.1] - 2025-02-26
+### :sparkles: New Features
+- [`e79995e`](https://github.com/deargen/python-project-template-2024/commit/e79995ef846370f05b2a821646ed7f91cf6d08e8) - more project urls *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`3ee3c22`](https://github.com/deargen/python-project-template-2024/commit/3ee3c22864515156c7fd9b1d4d04c19ed99b69e6) - mkdocstrings make indented *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`3f9fef3`](https://github.com/deargen/python-project-template-2024/commit/3f9fef3c0ab8a4f72b3196d73bcecb0e7a2a6372) - ruff select all rules except ignored rules *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`ebc31f1`](https://github.com/deargen/python-project-template-2024/commit/ebc31f16ae0ac6640ffa6d2ad4bc21e075776107) - fix ruff rules *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`a4e93df`](https://github.com/deargen/python-project-template-2024/commit/a4e93df8aa59595a5a53d6d427d4b1263b9043fe) - ruff ignore todo comments *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`a84c483`](https://github.com/deargen/python-project-template-2024/commit/a84c4835a0905a83708ec55155ede32ab17671b2) - nbval Jupyter Notebook regression testing *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`12b98ec`](https://github.com/deargen/python-project-template-2024/commit/12b98ec9e9673306f44b07ba64df05fd839e172b) - ignore ruff ARG *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`62c86e5`](https://github.com/deargen/python-project-template-2024/commit/62c86e57e4baee6baad11cc2c6585de1f8bfcaa6) - ruff ignore TC in cli *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`0fe5c9a`](https://github.com/deargen/python-project-template-2024/commit/0fe5c9abdcef3da457e275fa0921cdc7734fd8cc) - remove PERF ruff lint *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`147e072`](https://github.com/deargen/python-project-template-2024/commit/147e07257675cb26ae0c2864f6f291abd3608067) - optionally support windows *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`d78ae4f`](https://github.com/deargen/python-project-template-2024/commit/d78ae4ffc80ad84ee2c39959a4dd2f6fd083899c) - typer -> cyclopts *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`2fda191`](https://github.com/deargen/python-project-template-2024/commit/2fda1917e56fe7e86a8fbd7cbb3a21f9badc7919) - vscode basedpyright *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`9b5dea2`](https://github.com/deargen/python-project-template-2024/commit/9b5dea2304a850d3d43f89c3b6275d6fa1b2c5c9) - no ruff T201 (print statement) in ipynb *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+### :bug: Bug Fixes
+- [`2e154ef`](https://github.com/deargen/python-project-template-2024/commit/2e154ef8c633aa95cf27f371958aac870fd2524a) - build include directories *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`d6ee73b`](https://github.com/deargen/python-project-template-2024/commit/d6ee73b6912b357c716097bbf16bfe1889db3e9a) - **mkdocs**: github flavored alert not rendered when used with snippets *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`d4c1f63`](https://github.com/deargen/python-project-template-2024/commit/d4c1f638353832f97ffc81d1c6ea2ccac9f4e9a3) - wrong year in LICENSE *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`aeb670f`](https://github.com/deargen/python-project-template-2024/commit/aeb670fab1864e4c3a003076969f1ac6a007f794) - nbval ignore kernel in notebook. Use current env *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+
 ## [v0.4.0] - 2024-12-26
 ### :boom: BREAKING CHANGES
 - due to [`5cb3c66`](https://github.com/deargen/python-project-template-2024/commit/5cb3c6663f494b3c99dfd23b5394fa2da7f49cef) - hatchling, version-pioneer *(commit by [@kiyoon](https://github.com/kiyoon))*:
@@ -334,3 +357,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.3.2]: https://github.com/deargen/python-project-template-2024/compare/v0.3.1...v0.3.2
 [v0.3.3]: https://github.com/deargen/python-project-template-2024/compare/v0.3.2...v0.3.3
 [v0.4.0]: https://github.com/deargen/python-project-template-2024/compare/v0.3.3...v0.4.0
+[v0.4.1]: https://github.com/deargen/python-project-template-2024/compare/v0.4.0...v0.4.1
