@@ -19,14 +19,7 @@ versionfile-sdist = "src/ml_project/_version.py"
 versionfile-wheel = "ml_project/_version.py"
 
 [tool.hatch.build.targets.sdist]
-include = [
-  "src",
-  "docs",
-  "tests",
-  "tools",
-  "scripts",
-  "deps",
-]
+include = ["src", "docs", "tests", "tools", "scripts", "deps"]
 
 [tool.hatch.build.targets.wheel]
 sources = ["src"]
@@ -60,18 +53,25 @@ source = "https://github.com/deargen/python-project-template-2024"
 documentation = "https://deargen-ai.gitlab.io/python-project-template-docs"
 
 [project.scripts]
-ml-project = "ml_project.cli:main"  # CHANGE
+ml-project = "ml_project.cli:main" # CHANGE
 
 [tool.projector.pip-compile]
 # https://github.com/deargen/workflows/blob/master/python-projector
 requirements-in-dir = "deps"
 requirements-out-dir = "deps/lock"
-python-platforms = ["x86_64-manylinux_2_28", "aarch64-apple-darwin", "x86_64-apple-darwin",
+python-platforms = [
+  "x86_64-manylinux_2_28",
+  "aarch64-apple-darwin",
+  "x86_64-apple-darwin",
   # "x86_64-pc-windows-msvc",
 ]
 
 [tool.pytest.ini_options]
-addopts = ["--cov=ml_project", "--nbval", "--nbval-current-env"] # CHANGE (name of the importing module name)
+addopts = [
+  "--cov=ml_project",
+  "--nbval",
+  "--nbval-current-env",
+] # CHANGE (name of the importing module name)
 testpaths = ["tests"]
 
 log_cli = true
@@ -102,9 +102,7 @@ namespace-packages = ["scripts"]
 
 [tool.ruff.lint]
 # OPTIONALLY ADD MORE LATER
-select = [
-  "ALL",
-]
+select = ["ALL"]
 
 ignore = [
   "E402",    # Module level import not at top of file
@@ -126,7 +124,7 @@ ignore = [
   "TRY003",  # long message in except
   "TRY400",  # logger.exception instead of logger.error
   "PLR2004", # magic value comparison
-  "PLW2901",  # loop variable overwritten by assignment target
+  "PLW2901", # loop variable overwritten by assignment target
   "COM812",  # missing trailing comma
   "RET504",  # return with unnecessary assignment
   "RET505",
@@ -142,15 +140,15 @@ ignore = [
   "TD",      # TODO
   "FIX",     # TODO
   "ARG",     # unused argument
-  "PERF"
+  "PERF",
 ]
 
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = [
-  "F401",   # Ignore seemingly unused imports (they're meant for re-export)
+  "F401", # Ignore seemingly unused imports (they're meant for re-export)
 ]
 "*.ipynb" = [
-  "T201",   # ignore print statement in notebook
+  "T201", # ignore print statement in notebook
 ]
 # Directories that do not contain s, r, and c
 "[!s][!r][!c]*/**" = ["INP001"] # Implicit namespace package (no __init__.py)
