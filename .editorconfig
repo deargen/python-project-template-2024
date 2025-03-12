@@ -1,3 +1,5 @@
+# https://editorconfig.org/
+
 [*.{json,jsonc,yaml,yml}]
 indent_style = space
 indent_size = 2

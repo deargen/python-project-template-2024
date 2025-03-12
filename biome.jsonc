@@ -1,3 +1,4 @@
+// Use json,jsonc formatter with biome: https://biomejs.dev/internals/language-support/
 {
   "formatter": {
     "useEditorconfig": true

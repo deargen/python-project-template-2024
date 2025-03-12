@@ -4,6 +4,7 @@
     "jgclark.vscode-todo-highlight",
     "usernamehw.errorlens",
     "timonwong.shellcheck",
-    "detachhead.basedpyright"
+    "detachhead.basedpyright",
+    "editorconfig.editorconfig"
   ]
 }
