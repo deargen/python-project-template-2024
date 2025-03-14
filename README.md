@@ -1,5 +1,7 @@
 # python-project-template-2024
 
+[한국어](?tab=readme-ov-file#한국어-readme)
+
 |  |  |
 |--|--|
 |[![Ruff](https://img.shields.io/badge/Ruff-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)](https://github.com/astral-sh/ruff) |[![Actions status](https://github.com/deargen/python-project-template-2024/workflows/Style%20checking/badge.svg)](https://github.com/deargen/python-project-template-2024/actions)|
