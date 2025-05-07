@@ -5,6 +5,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v0.5.0] - 2025-05-07
+### :boom: BREAKING CHANGES
+- due to [`722b226`](https://github.com/deargen/python-project-template-2024/commit/722b226e740fa91b22c83a5cdbe0262902c62ae2) - deploy creates a PR, and merging it will create a release *(commit by [@kiyoon](https://github.com/kiyoon))*:
+
+  deploy creates a PR, and merging it will create a release
+
+
+### :sparkles: New Features
+- [`9b9a822`](https://github.com/deargen/python-project-template-2024/commit/9b9a8225a98faa2b2846b5a92fc3d5e4fac33d17) - **ci**: basedpyright type checking *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`e96c60f`](https://github.com/deargen/python-project-template-2024/commit/e96c60fabae144d592e87cd4523e45873d9ba6af) - yaml, yml editorconfig *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`3659b36`](https://github.com/deargen/python-project-template-2024/commit/3659b3680ea5b517342a514f10c3d5aa95cb6c15) - editorconfig vscode *(commit by [@kiyoon](https://github.com/kiyoon))*
+- [`722b226`](https://github.com/deargen/python-project-template-2024/commit/722b226e740fa91b22c83a5cdbe0262902c62ae2) - deploy creates a PR, and merging it will create a release *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+### :bug: Bug Fixes
+- [`476d317`](https://github.com/deargen/python-project-template-2024/commit/476d3179c4cc1f4828ac66b40cdd5097965aa3b8) - vscode settings *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+### :wrench: Chores
+- [`e5bd44a`](https://github.com/deargen/python-project-template-2024/commit/e5bd44ab28062e2bb35aff679bbda6a51027f22f) - taplo format pyproject.toml *(commit by [@kiyoon](https://github.com/kiyoon))*
+
+
 ## [v0.4.1] - 2025-02-26
 ### :sparkles: New Features
 - [`e79995e`](https://github.com/deargen/python-project-template-2024/commit/e79995ef846370f05b2a821646ed7f91cf6d08e8) - more project urls *(commit by [@kiyoon](https://github.com/kiyoon))*
@@ -358,3 +378,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.3.3]: https://github.com/deargen/python-project-template-2024/compare/v0.3.2...v0.3.3
 [v0.4.0]: https://github.com/deargen/python-project-template-2024/compare/v0.3.3...v0.4.0
 [v0.4.1]: https://github.com/deargen/python-project-template-2024/compare/v0.4.0...v0.4.1
+[v0.5.0]: https://github.com/deargen/python-project-template-2024/compare/v0.4.1...v0.5.0
