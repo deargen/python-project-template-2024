@@ -8,6 +8,13 @@ on:
     paths:
       - 'docs/CHANGELOG.md'
 
+  # When triggered manually, make sure that CHANGELOG.md contains the set version
+  workflow_dispatch:
+    inputs:
+      release_version:
+        description: 'Version to release (e.g., v1.0.0)'
+        required: false
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -20,6 +27,13 @@ jobs:
       - name: Parse commit message to get version
         id: parse_commit
         run: |
+          # If the workflow is triggered manually, use the provided version if available
+          if [[ -n "${{ github.event.inputs.release_version }}" ]]; then
+            VERSION="${{ github.event.inputs.release_version }}"
+            echo "RELEASE_VERSION=$VERSION" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
           # Commit message must be in the format of
           # "chore: release vX.X"
           VERSION=$(echo "$COMMIT_MESSAGE" | grep -oP '^chore:\ release\ v[a-zA-Z0-9.\-\+]+' | head -n 1 | cut -d' ' -f3)
