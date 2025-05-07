@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ## [v0.5.0] - 2025-05-07
+
+### Key Changes
+
+- Adapt `changelog-action` and `parse-changelog-action`
+    - The changelog will not be commited automatically. Instead, it will create a PR.
+    - Merging the PR will create a release.
+
 ### :boom: BREAKING CHANGES
 - due to [`722b226`](https://github.com/deargen/python-project-template-2024/commit/722b226e740fa91b22c83a5cdbe0262902c62ae2) - deploy creates a PR, and merging it will create a release *(commit by [@kiyoon](https://github.com/kiyoon))*:
 
