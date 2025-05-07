@@ -119,48 +119,21 @@ logger.info(rich.pretty.pretty_repr(config))
 pydantic 사용법은 공식 문서를 참고하세요.
 
 
-## typer를 이용한 방법
+## cyclopts를 이용한 방법
 
-Typer는 argparse보다 장점이 많습니다.
+cyclopts는 argparse보다 장점이 많습니다.
 
 1. typing을 이용해 명확하게 parameter를 정의할 수 있음.
 2. command line 프로그램이 쉽게 API로 노출됨.
     - 예: `my-program run --batch-size 32` 를 `import my_program; my_program.run(batch_size=32)`로 사용 가능
 3. shell completion도 쉽게 설치해 사용 가능.
 
-복잡한 config 대신 typer를 이용해 command line argument로 사용하는 것도 좋은 방법입니다. 특히 다음과 같은 경우에 유용합니다.
+복잡한 config 대신 cyclopts를 이용해 command line argument로 사용하는 것도 좋은 방법입니다. 특히 다음과 같은 경우에 유용합니다.
 
 1. 변수 개수가 몇 개 없는 경우
 
 
 ## dataclass과 환경변수를 이용한 방법
-
-사용법을 먼저 보여드리자면, 
-
-### ::: ml_project.utils.config._ExampleConfig
-    options:
-        show_docstring_description: true
-        show_docstring_examples: false
-        members: false
-        show_bases: false
-        show_source: true
-
-### ::: ml_project.utils.config._ExampleConfig
-    options:
-        show_docstring_description: false
-        show_docstring_examples: true
-        members: false
-        show_bases: false
-        show_source: false
-
-BaseConfig 소스코드:  
-### ::: ml_project.utils.config.BaseConfig
-    options:
-        show_docstring_description: false
-        show_docstring_examples: false
-        members: false
-        show_bases: false
-        show_source: true
 
 ### 장점
 
